@@ -95,6 +95,34 @@ A synthetic example input/output is checked in under
 `sample_data/sample_downtime.csv` and `sample_data/sample_output/` for
 reference.
 
+### `scripts/generate_output_dashboard.py` — standalone viewer, no analysis needed
+
+A **separate** tool from `report.html`, for a different job: turning an
+**already-existing** `output/` folder (from this run, an old run, or one
+copied from another machine) into a browsable HTML page, without needing
+to re-run — or even have installed — `prince`/`scikit-learn`/`matplotlib`/
+`pandas`. It only uses the Python standard library.
+
+- Discovers variable folders, `MultiWayMCA/`, and `pivots/` by scanning
+  the folder itself (no hardcoded variable list), so it keeps working
+  even if the set of analyzed columns changes.
+- **Accurate by construction**: every `.txt` report is shown verbatim
+  inside a `<pre>` block — the exact bytes `analyze_ca_mca.py` wrote,
+  never re-parsed or guessed. `.csv` pivots are parsed with the stdlib
+  `csv` module into real, paginated tables (unambiguous). PNGs are
+  embedded as base64 (the exact image bytes). `INTERPRETATION.md` is
+  rendered as styled HTML via a small tailored markdown converter, with
+  a one-click "View raw markdown" toggle to see the untouched original.
+- Same tabbed layout as `report.html` (Overview, one tab per variable
+  with "Compare with" sub-tabs, Multi-Cause, Pivots, Interpretation,
+  Summary), with the same table pagination.
+
+```bash
+cd scripts
+python3 generate_output_dashboard.py                    # reads ./output, writes ./output/dashboard.html
+python3 generate_output_dashboard.py path/to/output --out somewhere/dashboard.html
+```
+
 ### `scripts/analyze_downtime.py` — lightweight, no dependencies
 
 A simpler, dependency-free (stdlib only) fallback that produces the same
