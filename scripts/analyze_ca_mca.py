@@ -61,16 +61,29 @@ What it does (the full, one-script process)
    report.html, so the dashboard is built strictly from files in this
    folder, not from anything kept only in memory. report.html is a
    single, self-contained (all images embedded as base64, no external
-   network calls) modern HTML page with one tab per variable (a table +
-   Pareto chart), a "compare with" sub-tab per other variable inside each
-   (CA stats, CA biplot map highlighting the two variables' categories,
-   lift table, top-N combination table), a Multi-Cause tab (dropdown
-   over the highlighted triple + all 20 triples + all 6 variables, each
-   with its category map and tables), and an Interpretation tab mirroring
-   INTERPRETATION.md. Open it directly in a browser - no server needed.
-   Pass --rebuild-html-only to regenerate report.html purely by reading
-   an existing report_data.json back from --outdir, with no CSV, no
-   re-run of the analysis, and no network access.
+   network calls) modern HTML page with:
+     - an Overview tab: KPIs, the top-5 pairwise associations across all
+       15 pairs (by Cramer's V and by lift), the top-5 three-way findings
+       across all 20 MCA combinations (by duration and by lift), and a
+       Pareto thumbnail grid;
+     - one tab per variable (a table + Pareto chart), with a "compare
+       with" sub-tab per other variable (CA stats, CA biplot map
+       highlighting the two variables' categories, lift table, top-N
+       combination table);
+     - a Multi-Cause tab (dropdown over the highlighted triple + all 20
+       triples + all 6 variables) showing, for the selected combination,
+       its category map/coordinates plus EVERY combination it found (not
+       just the top N) in the downtime, lift, and closest-category-pair
+       tables;
+     - an Interpretation tab mirroring INTERPRETATION.md.
+   Every table beyond a handful of rows is paginated client-side (10
+   rows/page, Prev/Next controls) so large tables (all Lot ID values, all
+   MCA combinations, ...) stay scannable instead of dumping hundreds of
+   rows on the page at once.
+   Open it directly in a browser - no server needed. Pass
+   --rebuild-html-only to regenerate report.html purely by reading an
+   existing report_data.json back from --outdir, with no CSV, no re-run
+   of the analysis, and no network access.
 
 10. Output layout (under --outdir, default "output"):
      output/
@@ -545,15 +558,32 @@ def lift_table(df, cols, min_count):
     return g.sort_values("lift", ascending=False)
 
 
-def lift_table_records(table, cols, top_n):
+def lift_table_records(table, cols, top_n=None):
+    subset = table if top_n is None else table.head(top_n)
     records = []
-    for rank, (_, r) in enumerate(table.head(top_n).iterrows(), start=1):
+    for rank, (_, r) in enumerate(subset.iterrows(), start=1):
         records.append({
             "rank": rank, "values": {c: str(r[c]) for c in cols}, "count": int(r["count"]),
             "support_pct": round(float(r["support"]) * 100, 2),
             "expected_count": round(float(r["expected_count"]), 1),
             "lift": round(float(r["lift"]), 2),
         })
+    return records
+
+
+def combo_all_records(df, cols, total_duration, min_count=1):
+    """Like combo_top_report's records, but every combination meeting
+    min_count (not just the top N) - used for the HTML dashboard's "all
+    outputs" tables."""
+    g = df.groupby(cols)["Duration (sec)"].agg(["count", "sum"])
+    g = g[g["count"] >= min_count].sort_values("sum", ascending=False)
+    records = []
+    for rank, (key, r) in enumerate(g.iterrows(), start=1):
+        key = key if isinstance(key, tuple) else (key,)
+        pct = (r["sum"] / total_duration * 100) if total_duration else 0.0
+        records.append({"rank": rank, "count": int(r["count"]), "duration_sec": float(r["sum"]),
+                         "duration_hms": fmt_hms(r["sum"]), "pct": round(pct, 1),
+                         "values": {c: str(v) for c, v in zip(cols, key)}})
     return records
 
 
@@ -699,17 +729,21 @@ def mca_report(df, vars_list, total_duration, top_n=5, min_count=5, plot_path=No
     category_df = combined.round(3).reset_index()
     category_df.columns = ["category"] + list(category_df.columns[1:])
 
-    # Raw top-N combination by total downtime (practical / easy to read)
+    # Raw top-N combination by total downtime (practical / easy to read), plus
+    # every combination for the HTML dashboard's "all outputs" table.
     combo_text, combo_records = combo_top_report(df, list(vars_list), total_duration, top_n)
+    combo_records_all = combo_all_records(df, list(vars_list), total_duration, min_count)
     lines.append(combo_text)
     top_combo = None
     if combo_records:
         top_combo = {"values": combo_records[0]["values"], "count": combo_records[0]["count"],
                      "duration": combo_records[0]["duration_sec"], "pct": combo_records[0]["pct"]}
 
-    # Lift analysis for the same set of variables
+    # Lift analysis for the same set of variables (top-N for the text report,
+    # every combination meeting --min-count for the HTML dashboard).
     lift = lift_table(df, list(vars_list), min_count)
     lift_records = lift_table_records(lift, list(vars_list), top_n)
+    lift_records_all = lift_table_records(lift, list(vars_list))
     lines.append(render_lift_report(list(vars_list), lift, top_n, min_count))
     top_lift = None
     if lift_records:
@@ -733,11 +767,13 @@ def mca_report(df, vars_list, total_duration, top_n=5, min_count=5, plot_path=No
     dist_rows.sort(key=lambda t: t[2])
     lines.append(f"Top {top_n} closest cross-variable category pairs in the MCA map (most associated)")
     lines.append("-" * 40)
-    rows, closest_records = [], []
-    for rank, (a, b, d) in enumerate(dist_rows[:top_n], start=1):
-        rows.append([rank, a.replace("__", ": "), b.replace("__", ": "), f"{d:.3f}"])
-        closest_records.append({"rank": rank, "a": a.replace("__", ": "), "b": b.replace("__", ": "),
-                                 "distance": round(float(d), 3)})
+    rows, closest_records, closest_records_all = [], [], []
+    for rank, (a, b, d) in enumerate(dist_rows, start=1):
+        rec = {"rank": rank, "a": a.replace("__", ": "), "b": b.replace("__", ": "), "distance": round(float(d), 3)}
+        closest_records_all.append(rec)
+        if rank <= top_n:
+            rows.append([rank, rec["a"], rec["b"], f"{d:.3f}"])
+            closest_records.append(rec)
     headers = ["Rank", "Category A", "Category B", "Distance (smaller = more associated)"]
     aligns = ["<", "<", "<", ">"]
     lines.extend(fmt_table(headers, rows, aligns))
@@ -751,6 +787,8 @@ def mca_report(df, vars_list, total_duration, top_n=5, min_count=5, plot_path=No
         "top_closest_pair": {"a": dist_rows[0][0], "b": dist_rows[0][1], "dist": float(dist_rows[0][2])} if dist_rows else None,
         "eigen_records": eigen_df.to_dict("records"), "category_records": category_df.to_dict("records"),
         "combo_records": combo_records, "lift_records": lift_records, "closest_records": closest_records,
+        "combo_records_all": combo_records_all, "lift_records_all": lift_records_all,
+        "closest_records_all": closest_records_all,
     }
     return "\n".join(lines), stats
 
@@ -891,8 +929,20 @@ def esc(s):
     return html.escape(str(s))
 
 
-def html_table(headers, rows):
-    out = ['<div class="table-wrap"><table><thead><tr>']
+# Registry of tables that need client-side pagination, filled in by every
+# html_table() call and drained once at the end of build_html_report() into
+# a block of pgInit(...) calls - see PAGE_JS.
+_TABLE_SEQ = [0]
+_PAGINATION_INITS = []
+TABLE_PAGE_SIZE = 10
+
+
+def html_table(headers, rows, page_size=TABLE_PAGE_SIZE):
+    _TABLE_SEQ[0] += 1
+    table_id = f"tbl-{_TABLE_SEQ[0]}"
+    paginate = len(rows) > page_size
+
+    out = [f'<div id="{table_id}" class="table-wrap"><table><thead><tr>']
     for h in headers:
         out.append(f"<th>{esc(h)}</th>")
     out.append("</tr></thead><tbody>")
@@ -901,7 +951,15 @@ def html_table(headers, rows):
     for r in rows:
         cells = "".join(f"<td>{c if isinstance(c, Raw) else esc(c)}</td>" for c in r)
         out.append(f"<tr>{cells}</tr>")
-    out.append("</tbody></table></div>")
+    out.append("</tbody></table>")
+    if paginate:
+        out.append('<div class="pg-controls">'
+                    f'<button class="pg-prev" onclick="pgNav(\'{table_id}\',-1)">&larr; Prev</button>'
+                    '<span class="pg-label"></span>'
+                    f'<button class="pg-next" onclick="pgNav(\'{table_id}\',1)">Next &rarr;</button>'
+                    "</div>")
+        _PAGINATION_INITS.append((table_id, page_size))
+    out.append("</div>")
     return "".join(out)
 
 
@@ -996,6 +1054,12 @@ h1{margin:.2rem 0 .1rem;font-size:1.5rem;}
 .stat-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px;}
 .foot{text-align:center;color:var(--text-muted);font-size:.78rem;padding:26px 0 40px;}
 ul.notes{padding-left:20px;line-height:1.6;}
+.pg-controls{display:flex;align-items:center;gap:10px;padding:8px 2px 2px;}
+.pg-controls button{padding:5px 12px;border-radius:7px;border:1px solid var(--border);background:var(--surface);
+color:var(--text);cursor:pointer;font-size:.78rem;font-weight:600;}
+.pg-controls button:hover:not(:disabled){border-color:var(--accent);}
+.pg-controls button:disabled{opacity:.4;cursor:default;}
+.pg-controls .pg-label{color:var(--text-muted);font-size:.78rem;}
 """
 
 PAGE_JS = """
@@ -1015,6 +1079,32 @@ function showSub(groupId, subId, btn){
 function showMca(select){
   document.querySelectorAll('.mca-panel').forEach(function(p){p.classList.remove('active');});
   document.getElementById(select.value).classList.add('active');
+}
+var __pg = {};
+function pgInit(id, pageSize){
+  var el = document.getElementById(id);
+  if(!el) return;
+  var rows = Array.prototype.slice.call(el.querySelectorAll('tbody tr'));
+  var totalPages = Math.max(1, Math.ceil(rows.length / pageSize));
+  __pg[id] = {rows: rows, pageSize: pageSize, page: 1, totalPages: totalPages};
+  pgRender(id);
+}
+function pgRender(id){
+  var st = __pg[id];
+  var el = document.getElementById(id);
+  st.rows.forEach(function(r, i){
+    r.style.display = (i >= (st.page - 1) * st.pageSize && i < st.page * st.pageSize) ? '' : 'none';
+  });
+  var lbl = el.querySelector('.pg-label');
+  if(lbl) lbl.textContent = 'Page ' + st.page + ' of ' + st.totalPages + ' (' + st.rows.length + ' rows)';
+  var prevBtn = el.querySelector('.pg-prev'), nextBtn = el.querySelector('.pg-next');
+  if(prevBtn) prevBtn.disabled = st.page <= 1;
+  if(nextBtn) nextBtn.disabled = st.page >= st.totalPages;
+}
+function pgNav(id, delta){
+  var st = __pg[id];
+  st.page = Math.min(Math.max(1, st.page + delta), st.totalPages);
+  pgRender(id);
 }
 """
 
@@ -1125,17 +1215,60 @@ def render_mca_combo(name, stats, png, label, top_n):
     parts.append(html_table(cat_headers, cat_rows))
     parts.append("</div></div>")
 
-    parts.append(f'<h3 style="margin-top:18px">Top {top_n} combinations (by downtime)</h3>')
-    parts.append(render_combo_panel(stats["vars"], stats["combo_records"]))
+    n_combo = len(stats["combo_records_all"])
+    parts.append(f'<h3 style="margin-top:18px">All {n_combo} combinations (by downtime)</h3>')
+    parts.append(render_combo_panel(stats["vars"], stats["combo_records_all"]))
 
-    parts.append(f'<h3 style="margin-top:18px">Lift analysis</h3>')
-    parts.append(render_lift_panel(stats["vars"], stats["lift_records"]))
+    n_lift = len(stats["lift_records_all"])
+    parts.append(f'<h3 style="margin-top:18px">All {n_lift} combinations by lift</h3>')
+    parts.append(render_lift_panel(stats["vars"], stats["lift_records_all"]))
 
-    parts.append('<h3 style="margin-top:18px">Closest cross-variable category pairs</h3>')
-    rows = [[r["rank"], r["a"], r["b"], r["distance"]] for r in stats["closest_records"]]
+    n_close = len(stats["closest_records_all"])
+    parts.append(f'<h3 style="margin-top:18px">All {n_close} closest cross-variable category pairs</h3>')
+    rows = [[r["rank"], r["a"], r["b"], r["distance"]] for r in stats["closest_records_all"]]
     parts.append(html_table(["Rank", "Category A", "Category B", "Distance"], rows))
     parts.append("</div></div>")
     return "".join(parts)
+
+
+def render_ca_ranking_table(sig_sorted, limit=5):
+    if not sig_sorted:
+        return '<p class="muted">No pair reached statistical significance (p&lt;0.05).</p>'
+    rows = []
+    for s in sig_sorted[:limit]:
+        tr = s["top_residual"]
+        cell = f"{s['var_a']}='{tr['a']}' & {s['var_b']}='{tr['b']}' ({tr['direction']})" if tr else "n/a"
+        rows.append([f"{s['var_a']} x {s['var_b']}", f"{s['cramers_v']:.3f}", Raw(strength_badge(s["strength"])),
+                     f"{s['p']:.3g}", cell])
+    return html_table(["Pair", "Cramer's V", "Strength", "p-value", "Most surprising cell"], rows)
+
+
+def render_lift_ranking_table(lift_sorted, limit=5):
+    if not lift_sorted:
+        return '<p class="muted">No combination reached the minimum count.</p>'
+    rows = [[", ".join(f"{c}={v}" for c, v in s["values"].items()), Raw(lift_badge(s["lift"])), s["count"]]
+            for s in lift_sorted[:limit]]
+    return html_table(["Combination", "Lift", "Count"], rows)
+
+
+def render_top3way_combo_table(combo_pool, limit=5):
+    if not combo_pool:
+        return '<p class="muted">No data.</p>'
+    rows = []
+    for rank, c in enumerate(combo_pool[:limit], start=1):
+        combo_str = ", ".join(f"{k}={v}" for k, v in c["values"].items())
+        rows.append([rank, c["label"], combo_str, f"{c['duration']:,.0f}", f"{c['pct']}%", c["count"]])
+    return html_table(["Rank", "Analysis", "Combination", "Duration(sec)", "% of Total", "Count"], rows)
+
+
+def render_top3way_lift_table(lift_pool, limit=5):
+    if not lift_pool:
+        return '<p class="muted">No data.</p>'
+    rows = []
+    for rank, c in enumerate(lift_pool[:limit], start=1):
+        combo_str = ", ".join(f"{k}={v}" for k, v in c["values"].items())
+        rows.append([rank, c["label"], combo_str, Raw(lift_badge(c["lift"])), c["count"]])
+    return html_table(["Rank", "Analysis", "Combination", "Lift", "Count"], rows)
 
 
 def render_interpretation_panel(csv_path, int_flag_col, int_dropped, total_duration, total_events,
@@ -1166,23 +1299,12 @@ def render_interpretation_panel(csv_path, int_flag_col, int_dropped, total_durat
     parts.append("</div>")
 
     parts.append('<div class="card"><h2>Strongest pairwise associations (CA)</h2>')
-    if sig_sorted:
-        rows = []
-        for s in sig_sorted[:5]:
-            tr = s["top_residual"]
-            cell = f"{s['var_a']}='{tr['a']}' & {s['var_b']}='{tr['b']}' ({tr['direction']})" if tr else "n/a"
-            rows.append([f"{s['var_a']} x {s['var_b']}", f"{s['cramers_v']:.3f}", Raw(strength_badge(s["strength"])),
-                         f"{s['p']:.3g}", cell])
-        parts.append(html_table(["Pair", "Cramer's V", "Strength", "p-value", "Most surprising cell"], rows))
-    else:
-        parts.append('<p class="muted">No pair reached statistical significance (p&lt;0.05).</p>')
+    parts.append(render_ca_ranking_table(sig_sorted))
     parts.append("</div>")
 
     parts.append('<div class="card"><h2>Strongest associations by lift</h2>')
     if lift_sorted:
-        rows = [[", ".join(f"{c}={v}" for c, v in s["values"].items()), Raw(lift_badge(s["lift"])), s["count"]]
-                for s in lift_sorted[:5]]
-        parts.append(html_table(["Combination", "Lift", "Count"], rows))
+        parts.append(render_lift_ranking_table(lift_sorted))
         top = lift_sorted[0]
         combo_str = ", ".join(f"{c}='{v}'" for c, v in top["values"].items())
         parts.append(f'<p style="margin-top:10px"><strong>Strongest co-occurrence:</strong> {esc(combo_str)} happens '
@@ -1224,6 +1346,8 @@ def render_interpretation_panel(csv_path, int_flag_col, int_dropped, total_durat
 
 
 def build_html_report(path, meta, variables_ctx, mca_ctx, interpretation_ctx, top_n):
+    _TABLE_SEQ[0] = 0
+    _PAGINATION_INITS.clear()
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
     nav = ['<div class="navbar"><span class="brand">Downtime CA / MCA</span>']
@@ -1245,6 +1369,26 @@ def build_html_report(path, meta, variables_ctx, mca_ctx, interpretation_ctx, to
     if meta["int_flag_col"]:
         overview.append(kpi(f'Rows dropped ({meta["int_flag_col"]}=0)', str(meta["int_dropped"])))
     overview.append("</div></div>")
+
+    summary = interpretation_ctx["summary"]
+    overview.append('<div class="card"><h2>Top 5 pairwise associations (all 15 pairs)</h2>')
+    overview.append("<h3>By statistical significance (Correspondence Analysis)</h3>")
+    overview.append(render_ca_ranking_table(summary["sig_sorted"], limit=5))
+    overview.append('<h3 style="margin-top:16px">By lift</h3>')
+    overview.append(render_lift_ranking_table(summary["lift_sorted"], limit=5))
+    overview.append("</div>")
+
+    three_way = [mca_ctx["highlight"]] + mca_ctx["triples"]
+    combo_pool = [{"label": t["label"], **t["stats"]["top_combo"]} for t in three_way if t["stats"].get("top_combo")]
+    lift_pool = [{"label": t["label"], **t["stats"]["top_lift"]} for t in three_way if t["stats"].get("top_lift")]
+    combo_pool.sort(key=lambda c: c["duration"], reverse=True)
+    lift_pool.sort(key=lambda c: c["lift"], reverse=True)
+    overview.append(f'<div class="card"><h2>Top 5 three-way (MCA) findings (across all {len(three_way)} combinations)</h2>')
+    overview.append("<h3>By total downtime</h3>")
+    overview.append(render_top3way_combo_table(combo_pool, limit=5))
+    overview.append('<h3 style="margin-top:16px">By lift</h3>')
+    overview.append(render_top3way_lift_table(lift_pool, limit=5))
+    overview.append("</div>")
 
     overview.append('<div class="card"><h2>Pareto overview - click a variable to open its tab</h2><div class="pareto-grid">')
     for var in VARIABLES:
@@ -1287,11 +1431,14 @@ def build_html_report(path, meta, variables_ctx, mca_ctx, interpretation_ctx, to
     body = "".join(nav) + "".join(overview) + "".join(var_panels) + "".join(mca_panel) + interp_panel
     body += f'<div class="foot">Generated by analyze_ca_mca.py on {now} &middot; fully offline, no data leaves this file.</div>'
 
+    pg_init_script = "".join(f"pgInit('{tid}',{size});" for tid, size in _PAGINATION_INITS)
+
     doc = (
         "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\">"
         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
         "<title>Downtime CA / MCA Dashboard</title>"
-        f"<style>{PAGE_CSS}</style></head><body>{body}<script>{PAGE_JS}</script></body></html>"
+        f"<style>{PAGE_CSS}</style></head><body>{body}"
+        f"<script>{PAGE_JS}{pg_init_script}</script></body></html>"
     )
     write(path, doc)
 

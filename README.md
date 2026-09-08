@@ -50,16 +50,27 @@ Correspondence Analysis (CA) and Multiple Correspondence Analysis (MCA):
   numbers behind the dashboard.
 - **`report.html`** — a single, self-contained, offline HTML dashboard (no
   server, no external network calls — every chart is embedded as base64):
-  a tab per variable with its Pareto table+chart, a "Compare with" sub-tab
-  strip inside each variable to switch between every other variable (CA
-  stats + biplot map highlighting both variables' categories, a lift table,
-  a top-N combination table), a Multi-Cause tab with a dropdown over the
-  highlighted triple + all 20 triples + all 6 variables at once (each with
-  its category map and tables), and an Interpretation tab mirroring
-  `INTERPRETATION.md` with colored strength/significance/lift badges. Just
-  open it in a browser. Run with `--rebuild-html-only` to regenerate just
-  `report.html` from an existing `report_data.json` — no CSV, no re-run of
-  the analysis.
+  - **Overview tab** — KPIs, the top-5 pairwise associations across *all
+    15 pairs* (by Cramer's V and by lift), the top-5 three-way findings
+    across *all 20 MCA combinations* (by downtime and by lift), and a
+    Pareto thumbnail grid.
+  - **One tab per variable** with its Pareto table+chart, and a "Compare
+    with" sub-tab strip to switch between every other variable (CA stats +
+    biplot map highlighting both variables' categories, a lift table, a
+    top-N combination table).
+  - **Multi-Cause tab** — a dropdown over the highlighted triple + all 20
+    triples + all 6 variables at once; each shows its category map plus
+    *every* combination found (not just the top N) in the downtime, lift,
+    and closest-category-pair tables.
+  - **Interpretation tab** mirroring `INTERPRETATION.md` with colored
+    strength/significance/lift badges.
+  - **Every table beyond a handful of rows is paginated** (10 rows/page,
+    Prev/Next controls) so large tables — all 40 Lot IDs, all 45+ MCA
+    combinations, etc. — stay scannable instead of dumping everything at
+    once.
+  Just open it in a browser. Run with `--rebuild-html-only` to regenerate
+  just `report.html` from an existing `report_data.json` — no CSV, no
+  re-run of the analysis.
 - Output is organized **variable by variable**, one subfolder per variable
   under `--outdir`, each holding that variable's own Pareto detail plus its
   CA/Lift/top-N reports (and plots) against every other variable; multi-way
