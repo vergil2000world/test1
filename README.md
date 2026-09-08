@@ -29,21 +29,32 @@ Correspondence Analysis (CA) and Multiple Correspondence Analysis (MCA):
   in `MultiWayMCA/`, and duration-sum pivot CSVs for every pair live in
   `pivots/`. See the script's docstring for the full layout.
 
+Both scripts default to a file named **`cleaned_file.csv` placed next to the
+script itself** (`scripts/cleaned_file.csv`), so on a local setup you can
+just drop your CSV there and run the script with no arguments:
+
 ```bash
 pip install -r requirements.txt
-python3 scripts/analyze_ca_mca.py path/to/your.csv --outdir output --top 5 --quantiles 4
+cd scripts
+python3 analyze_ca_mca.py                       # reads ./cleaned_file.csv, writes ./output/
+# or explicitly:
+python3 analyze_ca_mca.py path/to/other.csv --outdir output --top 5 --quantiles 4
 ```
 
 A synthetic example input/output is checked in under
-`sample_data/sample_downtime.csv` and `sample_data/sample_output/` — run the
-command above against your own file to get the real reports.
+`sample_data/sample_downtime.csv` and `sample_data/sample_output/` for
+reference.
 
 ### `scripts/analyze_downtime.py` — lightweight, no dependencies
 
 A simpler, dependency-free (stdlib only) fallback that produces the same
 kind of Pareto/top-N-combination text reports (business-style "cause
-analysis") without needing pandas/prince installed:
+analysis") without needing pandas/prince installed. Also defaults to
+`scripts/cleaned_file.csv`:
 
 ```bash
-python3 scripts/analyze_downtime.py path/to/your.csv --outdir reports --top 5
+cd scripts
+python3 analyze_downtime.py                     # reads ./cleaned_file.csv, writes ./reports/
+# or explicitly:
+python3 analyze_downtime.py path/to/other.csv --outdir reports --top 5
 ```

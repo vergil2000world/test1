@@ -49,7 +49,10 @@ Requirements: pandas, numpy, scipy, scikit-learn==1.5.2, prince==0.14.0
 scikit-learn removed an internal API prince 0.14.0 relies on).
 
 Usage:
-    python3 analyze_ca_mca.py INPUT.csv --outdir output --top 5 --quantiles 4
+    python3 analyze_ca_mca.py [INPUT.csv] [--outdir output] [--top 5] [--quantiles 4]
+
+    INPUT.csv defaults to "cleaned_file.csv" next to this script, so with a
+    file placed there you can just run: python3 analyze_ca_mca.py
 """
 
 import argparse
@@ -398,13 +401,21 @@ def mca_report(df, vars_list, total_duration, top_n=5):
 # Main
 # ---------------------------------------------------------------------------
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_CSV = os.path.join(SCRIPT_DIR, "cleaned_file.csv")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Statistical CA/MCA downtime analyzer (prince 0.14)")
-    parser.add_argument("csv_path", help="Input CSV file")
+    parser.add_argument("csv_path", nargs="?", default=DEFAULT_CSV,
+                         help=f"Input CSV file (default: {DEFAULT_CSV})")
     parser.add_argument("--outdir", default="output", help="Output directory (default: output)")
     parser.add_argument("--top", type=int, default=5, help="Top-N for association reports (default: 5)")
     parser.add_argument("--quantiles", type=int, default=4, help="Number of quantile bins for DurationLevel (default: 4)")
     args = parser.parse_args()
+
+    if not os.path.isfile(args.csv_path):
+        raise SystemExit(f"ERROR: CSV file not found: {args.csv_path}")
 
     df, bad_rows = load_data(args.csv_path)
     if df.empty:

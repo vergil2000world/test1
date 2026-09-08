@@ -18,7 +18,10 @@ ReasonCode, Lot ID, Product Code, Machine Group) and produces:
                                   pairs, etc).
 
 Usage:
-    python3 analyze_downtime.py INPUT.csv [--outdir reports] [--top 5]
+    python3 analyze_downtime.py [INPUT.csv] [--outdir reports] [--top 5]
+
+    INPUT.csv defaults to "cleaned_file.csv" next to this script, so with a
+    file placed there you can just run: python3 analyze_downtime.py
 
 Only uses the Python standard library - no third-party packages required.
 """
@@ -358,12 +361,20 @@ def write_pivot_csv(path, rows, dim_a, dim_b):
 # Main
 # ---------------------------------------------------------------------------
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_CSV = os.path.join(SCRIPT_DIR, "cleaned_file.csv")
+
+
 def main():
     parser = argparse.ArgumentParser(description="CA/MCA downtime analyzer")
-    parser.add_argument("csv_path", help="Input CSV file")
+    parser.add_argument("csv_path", nargs="?", default=DEFAULT_CSV,
+                         help=f"Input CSV file (default: {DEFAULT_CSV})")
     parser.add_argument("--outdir", default="reports", help="Output directory (default: reports)")
     parser.add_argument("--top", type=int, default=5, help="Top-N for MCA/association reports (default: 5)")
     args = parser.parse_args()
+
+    if not os.path.isfile(args.csv_path):
+        raise SystemExit(f"ERROR: CSV file not found: {args.csv_path}")
 
     rows, bad_duration = load_rows(args.csv_path)
     if not rows:
