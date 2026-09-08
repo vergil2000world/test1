@@ -1,0 +1,48 @@
+CORRESPONDENCE ANALYSIS (CA) - DurationLevel  x  Product Code
+======================================================================
+Contingency table: 4 x 5 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 7.34, dof = 12, p-value = 0.8344
+  Cramer's V = 0.040  -> negligible association
+  Not statistically significant (p>=0.05) association between DurationLevel and Product Code.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.004        74.23%                     74.23%
+1              0.001        15.85%                     90.08%
+
+Top 5 most statistically associated DurationLevel x Product Code cells (largest standardized residuals)
+----------------------------------------
+Rank  DurationLevel  Product Code  Observed  Expected  Std.Resid  Direction        
+----  -------------  ------------  --------  --------  ---------  -----------------
+1     High           PRD-A               88      74.0      +1.63  over-represented 
+2     Critical       PRD-A               66      73.6      -0.89  under-represented
+3     Medium         PRD-A               66      73.6      -0.89  under-represented
+4     High           PRD-B               72      79.2      -0.81  under-represented
+5     Medium         PRD-B               86      78.8      +0.81  over-represented 
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+DurationLevel coordinates (CA map)
+----------------------------------------
+                   0      1
+DurationLevel              
+Critical      -0.044  0.043
+High           0.096  0.006
+Low            0.004 -0.025
+Medium        -0.057 -0.024
+
+Product Code coordinates (CA map)
+----------------------------------------
+                  0      1
+Product Code              
+PRD-A         0.119 -0.010
+PRD-B        -0.051 -0.047
+PRD-C        -0.024  0.033
+PRD-D        -0.019  0.010
+PRD-E        -0.022  0.018

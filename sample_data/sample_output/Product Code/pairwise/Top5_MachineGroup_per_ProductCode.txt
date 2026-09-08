@@ -1,0 +1,37 @@
+TOP 5 Machine Group PER Product Code
+======================================================================
+
+Product Code: PRD-E  (total downtime 108,357 sec / 30:05:57)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA           137         47,749            13:15:49             44.1%
+    GroupC           113         39,521            10:58:41             36.5%
+    GroupB            65         21,087            05:51:27             19.5%
+
+Product Code: PRD-D  (total downtime 101,357 sec / 28:09:17)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC           112         39,222            10:53:42             38.7%
+    GroupA           111         39,042            10:50:42             38.5%
+    GroupB            71         23,093            06:24:53             22.8%
+
+Product Code: PRD-A  (total downtime 100,332 sec / 27:52:12)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA           115         43,311            12:01:51             43.2%
+    GroupC           110         36,878            10:14:38             36.8%
+    GroupB            71         20,143            05:35:43             20.1%
+
+Product Code: PRD-C  (total downtime 98,348 sec / 27:19:08)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA           105         36,791            10:13:11             37.4%
+    GroupC           106         35,884            09:58:04             36.5%
+    GroupB            67         25,673            07:07:53             26.1%
+
+Product Code: PRD-B  (total downtime 98,206 sec / 27:16:46)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC           125         36,471            10:07:51             37.1%
+    GroupA           103         34,414            09:33:34             35.0%
+    GroupB            89         27,321            07:35:21             27.8%

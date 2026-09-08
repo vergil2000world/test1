@@ -1,0 +1,12 @@
+ReasonCode,Critical,High,Low,Medium,Row Total
+Adjustment,0,2851,412,2585,5848
+Changeover,168078,57675,0,0,225753
+Jam,0,11336,7864,30971,50171
+Material Shortage,10647,37337,146,3870,52000
+Operator Break,6148,17445,0,0,23593
+PM-Scheduled,104366,0,0,0,104366
+Power Blip,0,0,2000,0,2000
+Quality Check,0,2751,78,1199,4028
+Sensor Fault,0,0,7458,7094,14552
+Unplanned Stop,18703,4955,61,570,24289
+Column Total,307942,134350,18019,46289,506600

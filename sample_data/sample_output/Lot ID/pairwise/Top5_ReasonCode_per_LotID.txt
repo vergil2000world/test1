@@ -1,0 +1,362 @@
+TOP 5 ReasonCode PER Lot ID
+======================================================================
+
+Lot ID: LOT-0032  (total downtime 18,231 sec / 05:03:51)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            12          6,923            01:55:23             38.0%
+    PM-Scheduled           5          6,227            01:43:47             34.2%
+    Jam                   14          1,450            00:24:10              8.0%
+    Unplanned Stop         1          1,249            00:20:49              6.9%
+    Material Shortage      3          1,070            00:17:50              5.9%
+
+Lot ID: LOT-0036  (total downtime 17,043 sec / 04:44:03)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            14          8,491            02:21:31             49.8%
+    PM-Scheduled           3          4,273            01:11:13             25.1%
+    Material Shortage      4          1,677            00:27:57              9.8%
+    Jam                   13          1,175            00:19:35              6.9%
+    Operator Break         2          1,109            00:18:29              6.5%
+
+Lot ID: LOT-0013  (total downtime 16,945 sec / 04:42:25)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            17         11,563            03:12:43             68.2%
+    PM-Scheduled           1          1,658            00:27:38              9.8%
+    Operator Break         2            993            00:16:33              5.9%
+    Material Shortage      2            786            00:13:06              4.6%
+    Jam                    8            750            00:12:30              4.4%
+
+Lot ID: LOT-0019  (total downtime 16,680 sec / 04:38:00)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            11          6,610            01:50:10             39.6%
+    PM-Scheduled           4          5,671            01:34:31             34.0%
+    Jam                   13          1,267            00:21:07              7.6%
+    Operator Break         3          1,208            00:20:08              7.2%
+    Material Shortage      3            706            00:11:46              4.2%
+
+Lot ID: LOT-0034  (total downtime 16,342 sec / 04:32:22)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            12          5,899            01:38:19             36.1%
+    PM-Scheduled           5          5,880            01:38:00             36.0%
+    Material Shortage      3          1,148            00:19:08              7.0%
+    Jam                    9            981            00:16:21              6.0%
+    Unplanned Stop         1            705            00:11:45              4.3%
+
+Lot ID: LOT-0021  (total downtime 16,208 sec / 04:30:08)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            10          6,602            01:50:02             40.7%
+    PM-Scheduled           2          2,924            00:48:44             18.0%
+    Material Shortage      5          2,303            00:38:23             14.2%
+    Unplanned Stop         1          1,573            00:26:13              9.7%
+    Jam                   13          1,436            00:23:56              8.9%
+
+Lot ID: LOT-0008  (total downtime 15,930 sec / 04:25:30)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            15          9,066            02:31:06             56.9%
+    PM-Scheduled           2          2,978            00:49:38             18.7%
+    Unplanned Stop         3          1,502            00:25:02              9.4%
+    Jam                   11          1,274            00:21:14              8.0%
+    Material Shortage      3            585            00:09:45              3.7%
+
+Lot ID: LOT-0031  (total downtime 15,857 sec / 04:24:17)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            12          6,642            01:50:42             41.9%
+    PM-Scheduled           3          4,384            01:13:04             27.6%
+    Material Shortage      8          2,489            00:41:29             15.7%
+    Jam                   14          1,508            00:25:08              9.5%
+    Operator Break         1            389            00:06:29              2.5%
+
+Lot ID: LOT-0024  (total downtime 15,451 sec / 04:17:31)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            10          6,253            01:44:13             40.5%
+    PM-Scheduled           5          5,426            01:30:26             35.1%
+    Unplanned Stop         2          1,472            00:24:32              9.5%
+    Jam                    6            938            00:15:38              6.1%
+    Material Shortage      3            684            00:11:24              4.4%
+
+Lot ID: LOT-0016  (total downtime 15,280 sec / 04:14:40)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            10          6,260            01:44:20             41.0%
+    PM-Scheduled           2          2,982            00:49:42             19.5%
+    Jam                   22          2,749            00:45:49             18.0%
+    Material Shortage      5          1,537            00:25:37             10.1%
+    Operator Break         2            937            00:15:37              6.1%
+
+Lot ID: LOT-0009  (total downtime 14,347 sec / 03:59:07)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            10          6,665            01:51:05             46.5%
+    Material Shortage      7          2,070            00:34:30             14.4%
+    Jam                   13          1,682            00:28:02             11.7%
+    Unplanned Stop         3          1,523            00:25:23             10.6%
+    Operator Break         3          1,171            00:19:31              8.2%
+
+Lot ID: LOT-0012  (total downtime 14,298 sec / 03:58:18)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    PM-Scheduled           5          7,273            02:01:13             50.9%
+    Changeover             6          4,002            01:06:42             28.0%
+    Jam                   13          1,377            00:22:57              9.6%
+    Material Shortage      2          1,030            00:17:10              7.2%
+    Operator Break         1            338            00:05:38              2.4%
+
+Lot ID: LOT-0033  (total downtime 13,995 sec / 03:53:15)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            11          6,257            01:44:17             44.7%
+    Material Shortage      6          2,247            00:37:27             16.1%
+    PM-Scheduled           2          1,928            00:32:08             13.8%
+    Unplanned Stop         3          1,605            00:26:45             11.5%
+    Jam                    6            711            00:11:51              5.1%
+
+Lot ID: LOT-0025  (total downtime 13,786 sec / 03:49:46)
+    ReasonCode      Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------------  -----  -------------  ------------------  ----------------
+    PM-Scheduled        4          5,241            01:27:21             38.0%
+    Changeover          7          3,756            01:02:36             27.2%
+    Jam                12          1,560            00:26:00             11.3%
+    Sensor Fault       13          1,006            00:16:46              7.3%
+    Operator Break      2            998            00:16:38              7.2%
+
+Lot ID: LOT-0030  (total downtime 13,459 sec / 03:44:19)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            10          6,209            01:43:29             46.1%
+    PM-Scheduled           3          2,593            00:43:13             19.3%
+    Material Shortage      4          1,860            00:31:00             13.8%
+    Jam                    9          1,042            00:17:22              7.7%
+    Operator Break         2          1,003            00:16:43              7.5%
+
+Lot ID: LOT-0007  (total downtime 13,393 sec / 03:43:13)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            14          8,601            02:23:21             64.2%
+    Material Shortage      5          1,857            00:30:57             13.9%
+    Jam                    7            889            00:14:49              6.6%
+    PM-Scheduled           1            698            00:11:38              5.2%
+    Sensor Fault           7            570            00:09:30              4.3%
+
+Lot ID: LOT-0029  (total downtime 13,362 sec / 03:42:42)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            12          6,969            01:56:09             52.2%
+    Operator Break         5          2,321            00:38:41             17.4%
+    Jam                   10          1,059            00:17:39              7.9%
+    Unplanned Stop         1            992            00:16:32              7.4%
+    Material Shortage      4            945            00:15:45              7.1%
+
+Lot ID: LOT-0018  (total downtime 13,253 sec / 03:40:53)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            11          6,265            01:44:25             47.3%
+    Jam                   13          1,883            00:31:23             14.2%
+    PM-Scheduled           1          1,690            00:28:10             12.8%
+    Material Shortage      4          1,619            00:26:59             12.2%
+    Unplanned Stop         3          1,536            00:25:36             11.6%
+
+Lot ID: LOT-0027  (total downtime 13,075 sec / 03:37:55)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    PM-Scheduled           3          5,190            01:26:30             39.7%
+    Changeover             8          4,689            01:18:09             35.9%
+    Jam                   11          1,303            00:21:43             10.0%
+    Material Shortage      2            835            00:13:55              6.4%
+    Unplanned Stop         2            735            00:12:15              5.6%
+
+Lot ID: LOT-0011  (total downtime 12,971 sec / 03:36:11)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            10          6,460            01:47:40             49.8%
+    PM-Scheduled           3          2,435            00:40:35             18.8%
+    Material Shortage      5          1,933            00:32:13             14.9%
+    Jam                    7            815            00:13:35              6.3%
+    Quality Check          3            513            00:08:33              4.0%
+
+Lot ID: LOT-0023  (total downtime 12,715 sec / 03:31:55)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             7          4,530            01:15:30             35.6%
+    PM-Scheduled           3          3,477            00:57:57             27.3%
+    Jam                   15          1,890            00:31:30             14.9%
+    Material Shortage      3          1,118            00:18:38              8.8%
+    Unplanned Stop         1            860            00:14:20              6.8%
+
+Lot ID: LOT-0002  (total downtime 12,099 sec / 03:21:39)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    PM-Scheduled           4          5,059            01:24:19             41.8%
+    Changeover             7          3,889            01:04:49             32.1%
+    Material Shortage      3          1,283            00:21:23             10.6%
+    Jam                    8            917            00:15:17              7.6%
+    Unplanned Stop         1            606            00:10:06              5.0%
+
+Lot ID: LOT-0035  (total downtime 12,080 sec / 03:21:20)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            10          5,979            01:39:39             49.5%
+    PM-Scheduled           1          1,454            00:24:14             12.0%
+    Material Shortage      3          1,201            00:20:01              9.9%
+    Jam                   12          1,161            00:19:21              9.6%
+    Operator Break         2            872            00:14:32              7.2%
+
+Lot ID: LOT-0022  (total downtime 11,720 sec / 03:15:20)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             7          4,098            01:08:18             35.0%
+    PM-Scheduled           2          3,011            00:50:11             25.7%
+    Material Shortage      3          1,295            00:21:35             11.0%
+    Jam                   12          1,217            00:20:17             10.4%
+    Operator Break         2            972            00:16:12              8.3%
+
+Lot ID: LOT-0006  (total downtime 11,435 sec / 03:10:35)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            11          6,471            01:47:51             56.6%
+    Material Shortage      7          2,158            00:35:58             18.9%
+    PM-Scheduled           1          1,683            00:28:03             14.7%
+    Jam                    7            496            00:08:16              4.3%
+    Sensor Fault           7            470            00:07:50              4.1%
+
+Lot ID: LOT-0004  (total downtime 11,402 sec / 03:10:02)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            12          6,511            01:48:31             57.1%
+    PM-Scheduled           2          2,005            00:33:25             17.6%
+    Jam                   11          1,310            00:21:50             11.5%
+    Material Shortage      2            619            00:10:19              5.4%
+    Sensor Fault           6            510            00:08:30              4.5%
+
+Lot ID: LOT-0003  (total downtime 10,984 sec / 03:03:04)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            11          7,603            02:06:43             69.2%
+    Operator Break         3          1,472            00:24:32             13.4%
+    Jam                    9            897            00:14:57              8.2%
+    Material Shortage      2            669            00:11:09              6.1%
+    Power Blip             4            168            00:02:48              1.5%
+
+Lot ID: LOT-0028  (total downtime 10,884 sec / 03:01:24)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             7          4,012            01:06:52             36.9%
+    PM-Scheduled           2          2,450            00:40:50             22.5%
+    Material Shortage      6          2,354            00:39:14             21.6%
+    Jam                   14          1,513            00:25:13             13.9%
+    Sensor Fault           3            271            00:04:31              2.5%
+
+Lot ID: LOT-0010  (total downtime 10,531 sec / 02:55:31)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             5          3,636            01:00:36             34.5%
+    Material Shortage      6          1,947            00:32:27             18.5%
+    PM-Scheduled           1          1,758            00:29:18             16.7%
+    Unplanned Stop         1            848            00:14:08              8.1%
+    Jam                    8            783            00:13:03              7.4%
+
+Lot ID: LOT-0020  (total downtime 10,367 sec / 02:52:47)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             9          4,343            01:12:23             41.9%
+    Jam                   13          1,802            00:30:02             17.4%
+    Material Shortage      4          1,437            00:23:57             13.9%
+    Operator Break         2            875            00:14:35              8.4%
+    PM-Scheduled           1            735            00:12:15              7.1%
+
+Lot ID: LOT-0026  (total downtime 10,304 sec / 02:51:44)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             6          3,188            00:53:08             30.9%
+    PM-Scheduled           2          3,020            00:50:20             29.3%
+    Material Shortage      3          1,442            00:24:02             14.0%
+    Jam                   11          1,437            00:23:57             13.9%
+    Adjustment             3            509            00:08:29              4.9%
+
+Lot ID: LOT-0038  (total downtime 10,296 sec / 02:51:36)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             6          2,865            00:47:45             27.8%
+    PM-Scheduled           2          2,474            00:41:14             24.0%
+    Jam                   14          2,096            00:34:56             20.4%
+    Material Shortage      5          1,509            00:25:09             14.7%
+    Unplanned Stop         1            550            00:09:10              5.3%
+
+Lot ID: LOT-0014  (total downtime 9,900 sec / 02:45:00)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            11          6,821            01:53:41             68.9%
+    Material Shortage      3            998            00:16:38             10.1%
+    Jam                   12            930            00:15:30              9.4%
+    Operator Break         1            528            00:08:48              5.3%
+    Sensor Fault           8            462            00:07:42              4.7%
+
+Lot ID: LOT-0001  (total downtime 9,866 sec / 02:44:26)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             8          4,530            01:15:30             45.9%
+    Unplanned Stop         3          1,315            00:21:55             13.3%
+    Jam                   10          1,206            00:20:06             12.2%
+    Material Shortage      4          1,106            00:18:26             11.2%
+    PM-Scheduled           1            920            00:15:20              9.3%
+
+Lot ID: LOT-0017  (total downtime 9,657 sec / 02:40:57)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             5          3,142            00:52:22             32.5%
+    PM-Scheduled           2          2,218            00:36:58             23.0%
+    Unplanned Stop         3          1,734            00:28:54             18.0%
+    Material Shortage      3            971            00:16:11             10.1%
+    Jam                    5            480            00:08:00              5.0%
+
+Lot ID: LOT-0040  (total downtime 9,632 sec / 02:40:32)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            10          6,203            01:43:23             64.4%
+    Jam                   10          1,260            00:21:00             13.1%
+    PM-Scheduled           1          1,222            00:20:22             12.7%
+    Sensor Fault           7            450            00:07:30              4.7%
+    Material Shortage      2            261            00:04:21              2.7%
+
+Lot ID: LOT-0005  (total downtime 8,884 sec / 02:28:04)
+    ReasonCode      Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------------  -----  -------------  ------------------  ----------------
+    Changeover          6          3,275            00:54:35             36.9%
+    PM-Scheduled        2          1,880            00:31:20             21.2%
+    Operator Break      3          1,649            00:27:29             18.6%
+    Jam                10            829            00:13:49              9.3%
+    Sensor Fault        8            592            00:09:52              6.7%
+
+Lot ID: LOT-0015  (total downtime 8,722 sec / 02:25:22)
+    ReasonCode      Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------------  -----  -------------  ------------------  ----------------
+    Changeover          5          3,605            01:00:05             41.3%
+    PM-Scheduled        1          1,549            00:25:49             17.8%
+    Jam                 9          1,219            00:20:19             14.0%
+    Unplanned Stop      2          1,011            00:16:51             11.6%
+    Operator Break      1            529            00:08:49              6.1%
+
+Lot ID: LOT-0039  (total downtime 7,765 sec / 02:09:25)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             4          2,731            00:45:31             35.2%
+    Jam                   15          1,783            00:29:43             23.0%
+    Material Shortage      4          1,158            00:19:18             14.9%
+    Operator Break         2            853            00:14:13             11.0%
+    Unplanned Stop         1            830            00:13:50             10.7%
+
+Lot ID: LOT-0037  (total downtime 7,451 sec / 02:04:11)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover             7          4,139            01:08:59             55.5%
+    Material Shortage      5          1,380            00:23:00             18.5%
+    Jam                   14          1,096            00:18:16             14.7%
+    Sensor Fault           9            645            00:10:45              8.7%
+    Adjustment             1            147            00:02:27              2.0%

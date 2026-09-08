@@ -1,0 +1,83 @@
+CORRESPONDENCE ANALYSIS (CA) - DurationLevel  x  Lot ID
+======================================================================
+Contingency table: 4 x 40 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 124.13, dof = 117, p-value = 0.3084
+  Cramer's V = 0.166  -> weak association
+  Not statistically significant (p>=0.05) association between DurationLevel and Lot ID.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.032        38.07%                     38.07%
+1              0.026        31.99%                     70.06%
+
+Top 5 most statistically associated DurationLevel x Lot ID cells (largest standardized residuals)
+----------------------------------------
+Rank  DurationLevel  Lot ID    Observed  Expected  Std.Resid  Direction       
+----  -------------  --------  --------  --------  ---------  ----------------
+1     High           LOT-0034        18      10.2      +2.42  over-represented
+2     Critical       LOT-0024        15       8.5      +2.25  over-represented
+3     Medium         LOT-0016        20      12.2      +2.24  over-represented
+4     Critical       LOT-0013        16       9.7      +2.02  over-represented
+5     High           LOT-0020        16       9.8      +2.00  over-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+DurationLevel coordinates (CA map)
+----------------------------------------
+                   0      1
+DurationLevel              
+Critical       0.302  0.019
+High          -0.139  0.240
+Low           -0.042 -0.046
+Medium        -0.120 -0.214
+
+Lot ID coordinates (CA map)
+----------------------------------------
+              0      1
+Lot ID                
+LOT-0001 -0.131 -0.178
+LOT-0002  0.126  0.135
+LOT-0003  0.172 -0.029
+LOT-0004 -0.017 -0.214
+LOT-0005  0.148 -0.263
+LOT-0006 -0.034  0.025
+LOT-0007  0.101  0.037
+LOT-0008  0.316  0.119
+LOT-0009 -0.186  0.056
+LOT-0010 -0.119  0.154
+LOT-0011  0.167 -0.023
+LOT-0012  0.177 -0.260
+LOT-0013  0.379  0.084
+LOT-0014 -0.006 -0.159
+LOT-0015  0.094 -0.149
+LOT-0016 -0.204 -0.164
+LOT-0017  0.260  0.119
+LOT-0018  0.025  0.108
+LOT-0019 -0.025  0.009
+LOT-0020 -0.302  0.278
+LOT-0021  0.088  0.039
+LOT-0022 -0.012  0.160
+LOT-0023  0.007  0.020
+LOT-0024  0.409 -0.151
+LOT-0025 -0.155 -0.151
+LOT-0026 -0.091 -0.084
+LOT-0027  0.159 -0.060
+LOT-0028 -0.130  0.095
+LOT-0029 -0.161  0.098
+LOT-0030  0.162  0.012
+LOT-0031 -0.066  0.286
+LOT-0032  0.136 -0.127
+LOT-0033 -0.008  0.281
+LOT-0034 -0.115  0.427
+LOT-0035 -0.189 -0.211
+LOT-0036  0.207  0.098
+LOT-0037 -0.275 -0.166
+LOT-0038 -0.247 -0.165
+LOT-0039 -0.193 -0.071
+LOT-0040 -0.119 -0.118

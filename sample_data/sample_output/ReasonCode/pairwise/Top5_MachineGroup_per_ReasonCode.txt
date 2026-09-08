@@ -1,0 +1,72 @@
+TOP 5 Machine Group PER ReasonCode
+======================================================================
+
+ReasonCode: Changeover  (total downtime 225,753 sec / 62:42:33)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC           148         89,022            24:43:42             39.4%
+    GroupA           135         79,967            22:12:47             35.4%
+    GroupB            93         56,764            15:46:04             25.1%
+
+ReasonCode: PM-Scheduled  (total downtime 104,366 sec / 28:59:26)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            37         49,433            13:43:53             47.4%
+    GroupC            28         33,455            09:17:35             32.1%
+    GroupB            17         21,478            05:57:58             20.6%
+
+ReasonCode: Material Shortage  (total downtime 52,000 sec / 14:26:40)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            57         20,337            05:38:57             39.1%
+    GroupA            55         18,586            05:09:46             35.7%
+    GroupB            40         13,077            03:37:57             25.1%
+
+ReasonCode: Jam  (total downtime 50,171 sec / 13:56:11)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA           163         21,893            06:04:53             43.6%
+    GroupC           172         17,282            04:48:02             34.4%
+    GroupB           108         10,996            03:03:16             21.9%
+
+ReasonCode: Unplanned Stop  (total downtime 24,289 sec / 06:44:49)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            15         10,776            02:59:36             44.4%
+    GroupA            23         10,763            02:59:23             44.3%
+    GroupB             7          2,750            00:45:50             11.3%
+
+ReasonCode: Operator Break  (total downtime 23,593 sec / 06:33:13)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            23         10,349            02:52:29             43.9%
+    GroupC            15          6,688            01:51:28             28.3%
+    GroupB            14          6,556            01:49:16             27.8%
+
+ReasonCode: Sensor Fault  (total downtime 14,552 sec / 04:02:32)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            86          5,480            01:31:20             37.7%
+    GroupC            77          5,049            01:24:09             34.7%
+    GroupB            63          4,023            01:07:03             27.6%
+
+ReasonCode: Adjustment  (total downtime 5,848 sec / 01:37:28)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            24          3,511            00:58:31             60.0%
+    GroupA            10          1,490            00:24:50             25.5%
+    GroupB             6            847            00:14:07             14.5%
+
+ReasonCode: Quality Check  (total downtime 4,028 sec / 01:07:08)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            13          2,427            00:40:27             60.3%
+    GroupC             7          1,230            00:20:30             30.5%
+    GroupB             2            371            00:06:11              9.2%
+
+ReasonCode: Power Blip  (total downtime 2,000 sec / 00:33:20)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            26            919            00:15:19             46.0%
+    GroupC            23            626            00:10:26             31.3%
+    GroupB            13            455            00:07:35             22.8%

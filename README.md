@@ -1,30 +1,49 @@
 # test1
 mon premier test
 
-## Downtime CA / MCA analyzer
+## Downtime CA / MCA analyzers
 
-`scripts/analyze_downtime.py` analyzes a machine-downtime CSV (columns:
-`Machine ID`, `Duration (sec)`, `ReasonCode`, `Lot ID`, `Product Code`,
-`Machine Group`) and generates text reports:
+Both scripts analyze a machine-downtime CSV with columns `Machine ID`,
+`Duration (sec)`, `ReasonCode`, `Lot ID`, `Product Code`, `Machine Group`.
 
-- **CA (Cause Analysis)** — full Pareto detail for each single dimension
-  (ReasonCode, Machine ID, Machine Group, Product Code, Lot ID): count,
-  total duration, % of total, cumulative %, and an 80/20 callout.
-- **MCA (Multiple Cause Analysis)** — top-N most associated pair
-  combinations (e.g. Machine ID + ReasonCode, Machine Group + ReasonCode,
-  Product Code + ReasonCode, Lot ID + ReasonCode, Machine Group + Machine ID).
-- **Top-N per group** — e.g. top 5 ReasonCodes for *each* Machine ID or
-  Machine Group.
-- **Pivot CSVs** — Machine/Group/Product x ReasonCode matrices for Excel.
+### `scripts/analyze_ca_mca.py` — statistical CA/MCA (recommended)
 
-Pure Python standard library, no dependencies required.
+Uses [`prince`](https://github.com/MaxHalford/prince) 0.14.0 to run real
+Correspondence Analysis (CA) and Multiple Correspondence Analysis (MCA):
+
+- Adds a derived **DurationLevel** feature (`Low`/`Medium`/`High`/`Critical`)
+  by cutting `Duration (sec)` into quantile bins (`pandas.qcut`, `q=4` by
+  default), and analyzes it alongside the 5 original columns.
+- **CA** — for *every* pair of the 6 variables (all 15 combinations):
+  contingency table, chi-square test, Cramer's V, eigenvalues/explained
+  inertia, row/column coordinates, and the top-N statistically most
+  associated cells (largest standardized residuals).
+- **MCA** — for every 3-way combination of variables (all 20), for all 6
+  variables at once, and specifically for **Machine Group + ReasonCode +
+  DurationLevel** (highlighted): eigenvalues, category coordinates/cos2,
+  top-N raw combinations by downtime, and the top-N closest cross-variable
+  category pairs in the MCA map (most "associated").
+- Output is organized **variable by variable**, one subfolder per variable
+  under `--outdir`, each holding that variable's own Pareto detail plus its
+  CA/top-N reports against every other variable; multi-way MCA reports live
+  in `MultiWayMCA/`, and duration-sum pivot CSVs for every pair live in
+  `pivots/`. See the script's docstring for the full layout.
+
+```bash
+pip install -r requirements.txt
+python3 scripts/analyze_ca_mca.py path/to/your.csv --outdir output --top 5 --quantiles 4
+```
+
+A synthetic example input/output is checked in under
+`sample_data/sample_downtime.csv` and `sample_data/sample_output/` — run the
+command above against your own file to get the real reports.
+
+### `scripts/analyze_downtime.py` — lightweight, no dependencies
+
+A simpler, dependency-free (stdlib only) fallback that produces the same
+kind of Pareto/top-N-combination text reports (business-style "cause
+analysis") without needing pandas/prince installed:
 
 ```bash
 python3 scripts/analyze_downtime.py path/to/your.csv --outdir reports --top 5
 ```
-
-Reports are written to `--outdir` (default `reports/`), including a combined
-`CA_MCA_Full_Report.txt`. A synthetic example input and its generated output
-are checked in under `sample_data/sample_downtime.csv` and
-`sample_data/sample_reports/` — run the command above against your own file
-to reproduce them for real data.

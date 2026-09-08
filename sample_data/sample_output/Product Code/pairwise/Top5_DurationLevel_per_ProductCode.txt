@@ -1,0 +1,42 @@
+TOP 5 DurationLevel PER Product Code
+======================================================================
+
+Product Code: PRD-E  (total downtime 108,357 sec / 30:05:57)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          81         65,781            18:16:21             60.7%
+    High              78         28,431            07:53:51             26.2%
+    Medium            82         10,471            02:54:31              9.7%
+    Low               74          3,674            01:01:14              3.4%
+
+Product Code: PRD-D  (total downtime 101,357 sec / 28:09:17)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          76         64,841            18:00:41             64.0%
+    High              70         24,250            06:44:10             23.9%
+    Medium            71          8,771            02:26:11              8.7%
+    Low               77          3,495            00:58:15              3.4%
+
+Product Code: PRD-A  (total downtime 100,332 sec / 27:52:12)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          66         55,636            15:27:16             55.5%
+    High              88         33,364            09:16:04             33.3%
+    Medium            66          7,974            02:12:54              7.9%
+    Low               76          3,358            00:55:58              3.3%
+
+Product Code: PRD-C  (total downtime 98,348 sec / 27:19:08)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          74         62,528            17:22:08             63.6%
+    High              67         23,994            06:39:54             24.4%
+    Medium            68          8,473            02:21:13              8.6%
+    Low               69          3,353            00:55:53              3.4%
+
+Product Code: PRD-B  (total downtime 98,206 sec / 27:16:46)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          76         59,156            16:25:56             60.2%
+    High              72         24,311            06:45:11             24.8%
+    Medium            86         10,600            02:56:40             10.8%
+    Low               83          4,139            01:08:59              4.2%

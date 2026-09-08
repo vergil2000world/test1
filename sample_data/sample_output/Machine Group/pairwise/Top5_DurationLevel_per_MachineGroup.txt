@@ -1,0 +1,26 @@
+TOP 5 DurationLevel PER Machine Group
+======================================================================
+
+Machine Group: GroupA  (total downtime 201,307 sec / 55:55:07)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical         145        122,885            34:08:05             61.0%
+    High             167         56,358            15:39:18             28.0%
+    Medium           127         15,836            04:23:56              7.9%
+    Low              132          6,228            01:43:48              3.1%
+
+Machine Group: GroupC  (total downtime 187,976 sec / 52:12:56)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical         139        113,244            31:27:24             60.2%
+    High             125         48,267            13:24:27             25.7%
+    Medium           156         19,526            05:25:26             10.4%
+    Low              146          6,939            01:55:39              3.7%
+
+Machine Group: GroupB  (total downtime 117,317 sec / 32:35:17)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          89         71,813            19:56:53             61.2%
+    High              83         29,725            08:15:25             25.3%
+    Medium            90         10,927            03:02:07              9.3%
+    Low              101          4,852            01:20:52              4.1%

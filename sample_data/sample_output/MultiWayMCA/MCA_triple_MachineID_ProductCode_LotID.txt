@@ -1,0 +1,90 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine ID x Product Code x Lot ID
+======================================================================
+Variables: Machine ID, Product Code, Lot ID   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.423         2.54%                      2.54%
+1              0.411         2.46%                      5.00%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                      dim0   dim1  cos2_dim0  cos2_dim1  quality
+Product Code__PRD-D -0.176  1.069      0.008      0.279    0.286
+Machine ID__M-201    1.228 -0.517      0.196      0.035    0.231
+Product Code__PRD-C  0.965 -0.068      0.212      0.001    0.213
+Product Code__PRD-E -0.813 -0.259      0.176      0.018    0.194
+Product Code__PRD-B  0.027 -0.816      0.000      0.179    0.179
+Machine ID__M-103   -0.048  1.063      0.000      0.166    0.166
+Machine ID__M-102   -0.935 -0.397      0.124      0.022    0.146
+Lot ID__LOT-0011    -0.368  2.120      0.003      0.114    0.117
+Lot ID__LOT-0026    -1.077 -1.778      0.026      0.071    0.097
+Machine ID__M-303    0.739  0.360      0.078      0.018    0.096
+Lot ID__LOT-0038    -0.172 -1.698      0.001      0.075    0.076
+Lot ID__LOT-0002     1.922 -0.079      0.075      0.000    0.075
+Lot ID__LOT-0020    -1.285 -0.490      0.044      0.006    0.050
+Lot ID__LOT-0003     1.480  0.039      0.049      0.000    0.049
+Lot ID__LOT-0019     1.141 -0.500      0.040      0.008    0.048
+Lot ID__LOT-0017    -1.064 -1.296      0.019      0.028    0.048
+Lot ID__LOT-0013     1.193 -0.597      0.038      0.010    0.048
+Lot ID__LOT-0012     0.770  1.288      0.013      0.035    0.048
+Lot ID__LOT-0025     0.074  1.178      0.000      0.046    0.046
+Lot ID__LOT-0010     1.281  0.527      0.038      0.006    0.044
+Lot ID__LOT-0014     0.623 -1.077      0.010      0.029    0.038
+Lot ID__LOT-0015    -0.982  0.994      0.018      0.019    0.037
+Lot ID__LOT-0005    -0.738  1.048      0.012      0.024    0.036
+Lot ID__LOT-0023    -1.096  0.395      0.030      0.004    0.034
+Lot ID__LOT-0032    -0.957  0.362      0.030      0.004    0.034
+Lot ID__LOT-0039    -0.710 -1.002      0.011      0.022    0.033
+Machine ID__M-202   -0.267 -0.385      0.010      0.022    0.032
+Lot ID__LOT-0029    -0.217  0.902      0.001      0.026    0.027
+Machine ID__M-101   -0.405 -0.036      0.024      0.000    0.024
+Lot ID__LOT-0006    -0.931 -0.263      0.021      0.002    0.022
+Lot ID__LOT-0016     0.551 -0.557      0.010      0.010    0.021
+Lot ID__LOT-0018    -0.885  0.165      0.019      0.001    0.020
+Machine ID__M-302   -0.082 -0.347      0.001      0.018    0.019
+Lot ID__LOT-0035     0.770  0.048      0.018      0.000    0.018
+Lot ID__LOT-0034     0.507  0.610      0.007      0.010    0.018
+Lot ID__LOT-0040     0.044 -0.799      0.000      0.014    0.014
+Lot ID__LOT-0024    -0.403 -0.651      0.004      0.010    0.014
+Lot ID__LOT-0028     0.660 -0.294      0.010      0.002    0.012
+Lot ID__LOT-0021    -0.315  0.544      0.003      0.009    0.012
+Lot ID__LOT-0004     0.420 -0.440      0.004      0.005    0.009
+Machine ID__M-301   -0.123  0.224      0.002      0.007    0.009
+Product Code__PRD-A  0.106  0.151      0.003      0.006    0.008
+Lot ID__LOT-0033    -0.363  0.425      0.003      0.005    0.008
+Lot ID__LOT-0022    -0.515 -0.240      0.006      0.001    0.007
+Lot ID__LOT-0030     0.431 -0.212      0.004      0.001    0.006
+Lot ID__LOT-0031     0.286 -0.330      0.002      0.003    0.005
+Lot ID__LOT-0008    -0.251  0.349      0.002      0.003    0.005
+Lot ID__LOT-0027     0.304  0.194      0.002      0.001    0.003
+Lot ID__LOT-0009    -0.014  0.282      0.000      0.003    0.003
+Lot ID__LOT-0037     0.120 -0.296      0.000      0.002    0.003
+Lot ID__LOT-0007    -0.268  0.118      0.002      0.000    0.002
+Lot ID__LOT-0036    -0.219 -0.042      0.001      0.000    0.001
+Lot ID__LOT-0001    -0.143  0.161      0.000      0.001    0.001
+
+TOP 5 Machine ID + Product Code + Lot ID COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  Product Code  Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  ------------  --------  -----  -------------  ------------------  ----------
+1     M-201       PRD-D         LOT-0034      3          2,983            00:49:43        0.6%
+2     M-302       PRD-D         LOT-0032      4          2,877            00:47:57        0.6%
+3     M-101       PRD-E         LOT-0018      4          2,774            00:46:14        0.5%
+4     M-201       PRD-C         LOT-0012      2          2,711            00:45:11        0.5%
+5     M-101       PRD-B         LOT-0027      3          2,563            00:42:43        0.5%
+
+Most associated combination: Machine ID='M-201', Product Code='PRD-D', Lot ID='LOT-0034' -> 2,983 sec (0.6% of total downtime, 3 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A           Category B        Distance (smaller = more associated)
+----  -------------------  ----------------  ------------------------------------
+1     Product Code: PRD-B  Lot ID: LOT-0040                                 0.025
+2     Machine ID: M-301    Lot ID: LOT-0001                                 0.066
+3     Machine ID: M-201    Lot ID: LOT-0013                                 0.087
+4     Machine ID: M-201    Lot ID: LOT-0019                                 0.089
+5     Product Code: PRD-E  Lot ID: LOT-0006                                 0.118

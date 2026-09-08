@@ -1,0 +1,15 @@
+CAUSE ANALYSIS (CA) - descriptive Pareto by DurationLevel
+======================================================================
+Total events   : 1500
+Total downtime : 506,600 sec (140:43:20)
+Unique DurationLevel values: 4
+
+Rank  DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % Total   Cum %
+----  -------------  -----  -------------  ------------------  -------  ------
+1     Critical         373        307,942            85:32:22    60.8%   60.8%
+2     High             375        134,350            37:19:10    26.5%   87.3%
+3     Medium           373         46,289            12:51:29     9.1%   96.4%
+4     Low              379         18,019            05:00:19     3.6%  100.0%
+
+Top contributor: 'Critical' -> 307,942 sec (60.8% of total downtime, 373 events)
+Pareto (80/20): top 2 of 4 DurationLevel value(s) account for ~80% of total downtime.

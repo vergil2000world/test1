@@ -1,0 +1,66 @@
+TOP 5 DurationLevel PER Machine ID
+======================================================================
+
+Machine ID: M-101  (total downtime 67,770 sec / 18:49:30)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          43         38,270            10:37:50             56.5%
+    High              78         24,123            06:42:03             35.6%
+    Medium            27          3,088            00:51:28              4.6%
+    Low               45          2,289            00:38:09              3.4%
+
+Machine ID: M-103  (total downtime 66,921 sec / 18:35:21)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          49         40,518            11:15:18             60.5%
+    High              50         18,379            05:06:19             27.5%
+    Medium            47          6,006            01:40:06              9.0%
+    Low               46          2,018            00:33:38              3.0%
+
+Machine ID: M-102  (total downtime 66,616 sec / 18:30:16)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          53         44,097            12:14:57             66.2%
+    High              39         13,856            03:50:56             20.8%
+    Medium            53          6,742            01:52:22             10.1%
+    Low               41          1,921            00:32:01              2.9%
+
+Machine ID: M-302  (total downtime 65,124 sec / 18:05:24)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          50         39,748            11:02:28             61.0%
+    High              44         15,750            04:22:30             24.2%
+    Medium            57          7,266            02:01:06             11.2%
+    Low               47          2,360            00:39:20              3.6%
+
+Machine ID: M-301  (total downtime 63,193 sec / 17:33:13)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          46         38,835            10:47:15             61.5%
+    High              43         16,700            04:38:20             26.4%
+    Medium            44          5,426            01:30:26              8.6%
+    Low               48          2,232            00:37:12              3.5%
+
+Machine ID: M-202  (total downtime 61,457 sec / 17:04:17)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          46         35,766            09:56:06             58.2%
+    High              49         17,328            04:48:48             28.2%
+    Medium            48          6,048            01:40:48              9.8%
+    Low               47          2,315            00:38:35              3.8%
+
+Machine ID: M-303  (total downtime 59,659 sec / 16:34:19)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          43         34,661            09:37:41             58.1%
+    High              38         15,817            04:23:37             26.5%
+    Medium            55          6,834            01:53:54             11.5%
+    Low               51          2,347            00:39:07              3.9%
+
+Machine ID: M-201  (total downtime 55,860 sec / 15:31:00)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          43         36,047            10:00:47             64.5%
+    High              34         12,397            03:26:37             22.2%
+    Medium            42          4,879            01:21:19              8.7%
+    Low               54          2,537            00:42:17              4.5%

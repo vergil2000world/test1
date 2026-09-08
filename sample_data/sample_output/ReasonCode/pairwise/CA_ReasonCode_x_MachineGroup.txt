@@ -1,0 +1,52 @@
+CORRESPONDENCE ANALYSIS (CA) - Machine Group  x  ReasonCode
+======================================================================
+Contingency table: 3 x 10 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 24.55, dof = 18, p-value = 0.1377
+  Cramer's V = 0.090  -> negligible association
+  Not statistically significant (p>=0.05) association between Machine Group and ReasonCode.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.010        61.28%                     61.28%
+1              0.006        38.72%                    100.00%
+
+Top 5 most statistically associated Machine Group x ReasonCode cells (largest standardized residuals)
+----------------------------------------
+Rank  Machine Group  ReasonCode      Observed  Expected  Std.Resid  Direction        
+----  -------------  --------------  --------  --------  ---------  -----------------
+1     GroupC         Adjustment            24      15.1      +2.29  over-represented 
+2     GroupA         Quality Check         13       8.4      +1.60  over-represented 
+3     GroupB         Quality Check          2       5.3      -1.44  under-represented
+4     GroupA         Unplanned Stop        23      17.1      +1.42  over-represented 
+5     GroupA         Adjustment            10      15.2      -1.34  under-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+Machine Group coordinates (CA map)
+----------------------------------------
+                   0      1
+Machine Group              
+GroupA         0.121 -0.032
+GroupB        -0.025  0.139
+GroupC        -0.106 -0.058
+
+ReasonCode coordinates (CA map)
+----------------------------------------
+                       0      1
+ReasonCode                     
+Adjustment        -0.372 -0.270
+Changeover        -0.045  0.006
+Jam               -0.027  0.000
+Material Shortage -0.026  0.046
+Operator Break     0.162  0.088
+PM-Scheduled       0.132 -0.063
+Power Blip         0.062 -0.067
+Quality Check      0.356 -0.305
+Sensor Fault       0.029  0.091
+Unplanned Stop     0.227 -0.171

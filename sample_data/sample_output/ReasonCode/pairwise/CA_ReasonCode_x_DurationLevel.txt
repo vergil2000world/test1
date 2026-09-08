@@ -1,0 +1,53 @@
+CORRESPONDENCE ANALYSIS (CA) - DurationLevel  x  ReasonCode
+======================================================================
+Contingency table: 4 x 10 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 1756.41, dof = 27, p-value = 0
+  Cramer's V = 0.625  -> strong association
+  Statistically significant (p<0.05) association between DurationLevel and ReasonCode.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.804        68.66%                     68.66%
+1              0.254        21.70%                     90.37%
+
+Top 5 most statistically associated DurationLevel x ReasonCode cells (largest standardized residuals)
+----------------------------------------
+Rank  DurationLevel  ReasonCode    Observed  Expected  Std.Resid  Direction       
+----  -------------  ------------  --------  --------  ---------  ----------------
+1     Critical       Changeover         237      93.5     +14.84  over-represented
+2     Critical       PM-Scheduled        82      20.4     +13.64  over-represented
+3     Low            Sensor Fault       155      57.1     +12.96  over-represented
+4     Medium         Jam                240     110.2     +12.37  over-represented
+5     Low            Power Blip          62      15.7     +11.71  over-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+DurationLevel coordinates (CA map)
+----------------------------------------
+                   0      1
+DurationLevel              
+Critical       1.179 -0.515
+High           0.555  0.664
+Low           -0.997 -0.459
+Medium        -0.724  0.315
+
+ReasonCode coordinates (CA map)
+----------------------------------------
+                       0      1
+ReasonCode                     
+Adjustment        -0.369  0.560
+Changeover         1.058 -0.158
+Jam               -0.740  0.187
+Material Shortage  0.402  0.858
+Operator Break     0.766  0.822
+PM-Scheduled       1.315 -1.022
+Power Blip        -1.112 -0.911
+Quality Check     -0.108  0.901
+Sensor Fault      -1.016 -0.429
+Unplanned Stop     0.825 -0.042

@@ -1,0 +1,92 @@
+TOP 5 Product Code PER ReasonCode
+======================================================================
+
+ReasonCode: Changeover  (total downtime 225,753 sec / 62:42:33)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            85         50,140            13:55:40             22.2%
+    PRD-E            81         47,580            13:13:00             21.1%
+    PRD-C            75         46,362            12:52:42             20.5%
+    PRD-A            69         40,837            11:20:37             18.1%
+    PRD-D            66         40,834            11:20:34             18.1%
+
+ReasonCode: PM-Scheduled  (total downtime 104,366 sec / 28:59:26)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D            19         24,747            06:52:27             23.7%
+    PRD-E            17         22,138            06:08:58             21.2%
+    PRD-C            18         21,677            06:01:17             20.8%
+    PRD-A            16         20,913            05:48:33             20.0%
+    PRD-B            12         14,891            04:08:11             14.3%
+
+ReasonCode: Material Shortage  (total downtime 52,000 sec / 14:26:40)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A            40         15,095            04:11:35             29.0%
+    PRD-E            28         10,393            02:53:13             20.0%
+    PRD-D            30          9,875            02:44:35             19.0%
+    PRD-C            29          8,444            02:20:44             16.2%
+    PRD-B            25          8,193            02:16:33             15.8%
+
+ReasonCode: Jam  (total downtime 50,171 sec / 13:56:11)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E            90         10,803            03:00:03             21.5%
+    PRD-B           102         10,759            02:59:19             21.4%
+    PRD-D            84          9,813            02:43:33             19.6%
+    PRD-A            85          9,590            02:39:50             19.1%
+    PRD-C            82          9,206            02:33:26             18.3%
+
+ReasonCode: Unplanned Stop  (total downtime 24,289 sec / 06:44:49)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D            11          5,973            01:39:33             24.6%
+    PRD-C             7          5,008            01:23:28             20.6%
+    PRD-B            11          5,005            01:23:25             20.6%
+    PRD-E             8          4,672            01:17:52             19.2%
+    PRD-A             8          3,631            01:00:31             14.9%
+
+ReasonCode: Operator Break  (total downtime 23,593 sec / 06:33:13)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E            14          6,567            01:49:27             27.8%
+    PRD-A            14          6,152            01:42:32             26.1%
+    PRD-D            11          5,117            01:25:17             21.7%
+    PRD-C             7          3,006            00:50:06             12.7%
+    PRD-B             6          2,751            00:45:51             11.7%
+
+ReasonCode: Sensor Fault  (total downtime 14,552 sec / 04:02:32)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            46          3,264            00:54:24             22.4%
+    PRD-D            49          3,147            00:52:27             21.6%
+    PRD-E            45          2,819            00:46:59             19.4%
+    PRD-A            43          2,796            00:46:36             19.2%
+    PRD-C            43          2,526            00:42:06             17.4%
+
+ReasonCode: Adjustment  (total downtime 5,848 sec / 01:37:28)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E            13          1,795            00:29:55             30.7%
+    PRD-B            11          1,694            00:28:14             29.0%
+    PRD-C             8          1,301            00:21:41             22.2%
+    PRD-A             5            567            00:09:27              9.7%
+    PRD-D             3            491            00:08:11              8.4%
+
+ReasonCode: Quality Check  (total downtime 4,028 sec / 01:07:08)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E             7          1,139            00:18:59             28.3%
+    PRD-B             5          1,054            00:17:34             26.2%
+    PRD-D             5            814            00:13:34             20.2%
+    PRD-C             3            634            00:10:34             15.7%
+    PRD-A             2            387            00:06:27              9.6%
+
+ReasonCode: Power Blip  (total downtime 2,000 sec / 00:33:20)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D            16            546            00:09:06             27.3%
+    PRD-B            14            455            00:07:35             22.8%
+    PRD-E            12            451            00:07:31             22.6%
+    PRD-A            14            364            00:06:04             18.2%
+    PRD-C             6            184            00:03:04              9.2%

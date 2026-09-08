@@ -1,0 +1,12 @@
+TOP 5 Machine ID + ReasonCode COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  ReasonCode  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  ----------  -----  -------------  ------------------  ----------
+1     M-202       Changeover     54         33,325            09:15:25        6.6%
+2     M-303       Changeover     51         30,290            08:24:50        6.0%
+3     M-302       Changeover     50         29,442            08:10:42        5.8%
+4     M-102       Changeover     48         29,422            08:10:22        5.8%
+5     M-301       Changeover     47         29,290            08:08:10        5.8%
+
+Most associated combination: Machine ID='M-202', ReasonCode='Changeover' -> 33,325 sec (6.6% of total downtime, 54 events)

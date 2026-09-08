@@ -1,0 +1,89 @@
+CORRESPONDENCE ANALYSIS (CA) - Lot ID  x  ReasonCode
+======================================================================
+Contingency table: 40 x 10 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 362.57, dof = 351, p-value = 0.3238
+  Cramer's V = 0.164  -> weak association
+  Not statistically significant (p>=0.05) association between Lot ID and ReasonCode.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.045        18.77%                     18.77%
+1              0.041        16.97%                     35.74%
+
+Top 5 most statistically associated Lot ID x ReasonCode cells (largest standardized residuals)
+----------------------------------------
+Rank  Lot ID    ReasonCode      Observed  Expected  Std.Resid  Direction       
+----  --------  --------------  --------  --------  ---------  ----------------
+1     LOT-0011  Quality Check          3       0.5      +3.34  over-represented
+2     LOT-0034  Quality Check          3       0.6      +3.09  over-represented
+3     LOT-0029  Operator Break         5       1.6      +2.70  over-represented
+4     LOT-0017  Unplanned Stop         3       0.8      +2.60  over-represented
+5     LOT-0012  PM-Scheduled           5       1.7      +2.54  over-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+Lot ID coordinates (CA map)
+----------------------------------------
+              0      1
+Lot ID                
+LOT-0001 -0.030  0.128
+LOT-0002 -0.286 -0.093
+LOT-0003  0.076 -0.303
+LOT-0004  0.006 -0.186
+LOT-0005  0.275 -0.075
+LOT-0006  0.156  0.068
+LOT-0007  0.011  0.124
+LOT-0008 -0.145  0.060
+LOT-0009  0.199 -0.027
+LOT-0010  0.337  0.158
+LOT-0011  0.023  0.377
+LOT-0012 -0.423 -0.145
+LOT-0013  0.178  0.178
+LOT-0014  0.295 -0.075
+LOT-0015 -0.154 -0.177
+LOT-0016  0.107 -0.118
+LOT-0017 -0.117  0.522
+LOT-0018 -0.218 -0.103
+LOT-0019 -0.039  0.042
+LOT-0020  0.222 -0.143
+LOT-0021 -0.087 -0.113
+LOT-0022 -0.004 -0.019
+LOT-0023 -0.259 -0.272
+LOT-0024 -0.324  0.322
+LOT-0025  0.037 -0.206
+LOT-0026 -0.117 -0.189
+LOT-0027 -0.141 -0.072
+LOT-0028 -0.131 -0.057
+LOT-0029  0.537  0.124
+LOT-0030 -0.104  0.099
+LOT-0031 -0.128  0.220
+LOT-0032 -0.356 -0.190
+LOT-0033  0.039  0.431
+LOT-0034 -0.304  0.492
+LOT-0035  0.284  0.057
+LOT-0036 -0.049 -0.030
+LOT-0037  0.265 -0.200
+LOT-0038 -0.143 -0.207
+LOT-0039  0.160 -0.169
+LOT-0040  0.050 -0.187
+
+ReasonCode coordinates (CA map)
+----------------------------------------
+                       0      1
+ReasonCode                     
+Adjustment        -0.016  0.328
+Changeover        -0.015  0.090
+Jam               -0.036 -0.170
+Material Shortage  0.041  0.119
+Operator Break     0.433  0.003
+PM-Scheduled      -0.570  0.152
+Power Blip        -0.320 -0.501
+Quality Check     -0.073  0.898
+Sensor Fault       0.314 -0.020
+Unplanned Stop    -0.207  0.293

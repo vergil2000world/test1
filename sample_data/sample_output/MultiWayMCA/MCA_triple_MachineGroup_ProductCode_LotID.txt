@@ -1,0 +1,85 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine Group x Product Code x Lot ID
+======================================================================
+Variables: Machine Group, Product Code, Lot ID   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.413         2.75%                      2.75%
+1              0.397         2.65%                      5.40%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                        dim0   dim1  cos2_dim0  cos2_dim1  quality
+Product Code__PRD-D    0.956 -0.883      0.223      0.190    0.413
+Product Code__PRD-B   -0.596  0.794      0.095      0.169    0.264
+Product Code__PRD-E    0.567  0.818      0.085      0.178    0.263
+Product Code__PRD-C   -0.847 -0.606      0.163      0.084    0.247
+Machine Group__GroupA  0.516  0.310      0.164      0.059    0.223
+Machine Group__GroupB -0.650 -0.046      0.135      0.001    0.136
+Lot ID__LOT-0025       1.016 -1.664      0.034      0.092    0.126
+Lot ID__LOT-0038      -0.388  2.025      0.004      0.107    0.111
+Lot ID__LOT-0011       1.706 -1.007      0.074      0.026    0.099
+Lot ID__LOT-0026       0.059  1.935      0.000      0.084    0.084
+Lot ID__LOT-0002      -1.379 -1.124      0.039      0.026    0.065
+Lot ID__LOT-0010      -1.050 -1.270      0.026      0.037    0.063
+Lot ID__LOT-0013      -1.372 -0.620      0.050      0.010    0.060
+Lot ID__LOT-0029       0.563 -1.229      0.010      0.048    0.058
+Machine Group__GroupC -0.104 -0.283      0.006      0.048    0.055
+Lot ID__LOT-0023       1.465  0.164      0.054      0.001    0.055
+Lot ID__LOT-0032       1.261 -0.301      0.051      0.003    0.054
+Lot ID__LOT-0017      -0.578  1.557      0.006      0.041    0.047
+Lot ID__LOT-0035      -1.027 -0.679      0.032      0.014    0.046
+Lot ID__LOT-0003      -0.778 -1.024      0.014      0.024    0.037
+Lot ID__LOT-0008      -0.064  0.989      0.000      0.026    0.026
+Product Code__PRD-A   -0.120 -0.274      0.004      0.019    0.022
+Lot ID__LOT-0014      -0.808  0.439      0.016      0.005    0.021
+Lot ID__LOT-0015       1.027 -0.089      0.020      0.000    0.020
+Lot ID__LOT-0018       0.726  0.520      0.013      0.007    0.020
+Lot ID__LOT-0028      -0.776 -0.486      0.014      0.005    0.019
+Lot ID__LOT-0005       0.900  0.194      0.018      0.001    0.018
+Lot ID__LOT-0019      -0.737 -0.144      0.017      0.001    0.017
+Lot ID__LOT-0036      -0.627  0.458      0.011      0.006    0.017
+Lot ID__LOT-0040      -0.691  0.524      0.011      0.006    0.017
+Lot ID__LOT-0016      -0.654 -0.136      0.014      0.001    0.015
+Lot ID__LOT-0006       0.630  0.483      0.009      0.006    0.015
+Lot ID__LOT-0022       0.604  0.532      0.008      0.006    0.015
+Lot ID__LOT-0001       0.658  0.275      0.010      0.002    0.011
+Lot ID__LOT-0034       0.010 -0.635      0.000      0.011    0.011
+Lot ID__LOT-0004      -0.608  0.302      0.009      0.002    0.011
+Lot ID__LOT-0030      -0.525 -0.406      0.007      0.004    0.011
+Lot ID__LOT-0007      -0.193  0.515      0.001      0.007    0.008
+Lot ID__LOT-0031      -0.322 -0.356      0.003      0.004    0.007
+Lot ID__LOT-0024       0.143  0.499      0.000      0.006    0.006
+Lot ID__LOT-0039       0.190  0.459      0.001      0.005    0.005
+Lot ID__LOT-0037      -0.204  0.382      0.001      0.004    0.005
+Lot ID__LOT-0012       0.468 -0.015      0.005      0.000    0.005
+Lot ID__LOT-0020       0.326  0.170      0.003      0.001    0.004
+Lot ID__LOT-0027       0.090  0.380      0.000      0.003    0.003
+Lot ID__LOT-0009       0.233 -0.145      0.002      0.001    0.003
+Lot ID__LOT-0021       0.268  0.110      0.002      0.000    0.003
+Lot ID__LOT-0033       0.167  0.021      0.001      0.000    0.001
+
+TOP 5 Machine Group + Product Code + Lot ID COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine Group  Product Code  Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  ------------  --------  -----  -------------  ------------------  ----------
+1     GroupA         PRD-E         LOT-0008      8          5,091            01:24:51        1.0%
+2     GroupC         PRD-E         LOT-0032      8          4,888            01:21:28        1.0%
+3     GroupB         PRD-D         LOT-0034      5          4,280            01:11:20        0.8%
+4     GroupA         PRD-E         LOT-0018      7          4,265            01:11:05        0.8%
+5     GroupC         PRD-D         LOT-0032      7          3,928            01:05:28        0.8%
+
+Most associated combination: Machine Group='GroupA', Product Code='PRD-E', Lot ID='LOT-0008' -> 5,091 sec (1.0% of total downtime, 8 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A             Category B           Distance (smaller = more associated)
+----  ---------------------  -------------------  ------------------------------------
+1     Machine Group: GroupC  Product Code: PRD-A                                 0.018
+2     Machine Group: GroupB  Lot ID: LOT-0016                                    0.090
+3     Machine Group: GroupB  Lot ID: LOT-0019                                    0.131
+4     Product Code: PRD-C    Lot ID: LOT-0028                                    0.140
+5     Machine Group: GroupA  Lot ID: LOT-0001                                    0.146

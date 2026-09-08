@@ -1,0 +1,38 @@
+TOP 5 ReasonCode PER DurationLevel
+======================================================================
+
+DurationLevel: Critical  (total downtime 307,942 sec / 85:32:22)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover           237        168,078            46:41:18             54.6%
+    PM-Scheduled          82        104,366            28:59:26             33.9%
+    Unplanned Stop        24         18,703            05:11:43              6.1%
+    Material Shortage     19         10,647            02:57:27              3.5%
+    Operator Break        11          6,148            01:42:28              2.0%
+
+DurationLevel: High  (total downtime 134,350 sec / 37:19:10)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover           139         57,675            16:01:15             42.9%
+    Material Shortage    101         37,337            10:22:17             27.8%
+    Operator Break        41         17,445            04:50:45             13.0%
+    Jam                   53         11,336            03:08:56              8.4%
+    Unplanned Stop        16          4,955            01:22:35              3.7%
+
+DurationLevel: Medium  (total downtime 46,289 sec / 12:51:29)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Jam                  240         30,971            08:36:11             66.9%
+    Sensor Fault          71          7,094            01:58:14             15.3%
+    Material Shortage     30          3,870            01:04:30              8.4%
+    Adjustment            18          2,585            00:43:05              5.6%
+    Quality Check         10          1,199            00:19:59              2.6%
+
+DurationLevel: Low  (total downtime 18,019 sec / 05:00:19)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Jam                  150          7,864            02:11:04             43.6%
+    Sensor Fault         155          7,458            02:04:18             41.4%
+    Power Blip            62          2,000            00:33:20             11.1%
+    Adjustment             8            412            00:06:52              2.3%
+    Material Shortage      2            146            00:02:26              0.8%

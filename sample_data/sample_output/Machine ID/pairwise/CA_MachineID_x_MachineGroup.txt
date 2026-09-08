@@ -1,0 +1,50 @@
+CORRESPONDENCE ANALYSIS (CA) - Machine Group  x  Machine ID
+======================================================================
+Contingency table: 3 x 8 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 3000.00, dof = 14, p-value = 0
+  Cramer's V = 1.000  -> strong association
+  Statistically significant (p<0.05) association between Machine Group and Machine ID.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              1.000        50.00%                     50.00%
+1              1.000        50.00%                    100.00%
+
+Top 5 most statistically associated Machine Group x Machine ID cells (largest standardized residuals)
+----------------------------------------
+Rank  Machine Group  Machine ID  Observed  Expected  Std.Resid  Direction       
+----  -------------  ----------  --------  --------  ---------  ----------------
+1     GroupB         M-202            190      46.0     +21.24  over-represented
+2     GroupB         M-201            173      41.9     +20.27  over-represented
+3     GroupC         M-302            198      74.7     +14.26  over-represented
+4     GroupA         M-101            193      73.5     +13.95  over-represented
+5     GroupA         M-103            192      73.1     +13.91  over-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+Machine Group coordinates (CA map)
+----------------------------------------
+                   0      1
+Machine Group              
+GroupA         1.276 -0.000
+GroupB        -0.784  1.587
+GroupC        -0.784 -1.018
+
+Machine ID coordinates (CA map)
+----------------------------------------
+                0      1
+Machine ID              
+M-101       1.276 -0.000
+M-102       1.276 -0.000
+M-103       1.276 -0.000
+M-201      -0.784  1.587
+M-202      -0.784  1.587
+M-301      -0.784 -1.018
+M-302      -0.784 -1.018
+M-303      -0.784 -1.018

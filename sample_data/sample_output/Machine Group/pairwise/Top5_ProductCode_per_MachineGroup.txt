@@ -1,0 +1,29 @@
+TOP 5 Product Code PER Machine Group
+======================================================================
+
+Machine Group: GroupA  (total downtime 201,307 sec / 55:55:07)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E           137         47,749            13:15:49             23.7%
+    PRD-A           115         43,311            12:01:51             21.5%
+    PRD-D           111         39,042            10:50:42             19.4%
+    PRD-C           105         36,791            10:13:11             18.3%
+    PRD-B           103         34,414            09:33:34             17.1%
+
+Machine Group: GroupC  (total downtime 187,976 sec / 52:12:56)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E           113         39,521            10:58:41             21.0%
+    PRD-D           112         39,222            10:53:42             20.9%
+    PRD-A           110         36,878            10:14:38             19.6%
+    PRD-B           125         36,471            10:07:51             19.4%
+    PRD-C           106         35,884            09:58:04             19.1%
+
+Machine Group: GroupB  (total downtime 117,317 sec / 32:35:17)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            89         27,321            07:35:21             23.3%
+    PRD-C            67         25,673            07:07:53             21.9%
+    PRD-D            71         23,093            06:24:53             19.7%
+    PRD-E            65         21,087            05:51:27             18.0%
+    PRD-A            71         20,143            05:35:43             17.2%

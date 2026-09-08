@@ -1,0 +1,42 @@
+TOP 5 Machine Group PER Machine ID
+======================================================================
+
+Machine ID: M-101  (total downtime 67,770 sec / 18:49:30)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA           193         67,770            18:49:30            100.0%
+
+Machine ID: M-103  (total downtime 66,921 sec / 18:35:21)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA           192         66,921            18:35:21            100.0%
+
+Machine ID: M-102  (total downtime 66,616 sec / 18:30:16)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA           186         66,616            18:30:16            100.0%
+
+Machine ID: M-302  (total downtime 65,124 sec / 18:05:24)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC           198         65,124            18:05:24            100.0%
+
+Machine ID: M-301  (total downtime 63,193 sec / 17:33:13)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC           181         63,193            17:33:13            100.0%
+
+Machine ID: M-202  (total downtime 61,457 sec / 17:04:17)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupB           190         61,457            17:04:17            100.0%
+
+Machine ID: M-303  (total downtime 59,659 sec / 16:34:19)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC           187         59,659            16:34:19            100.0%
+
+Machine ID: M-201  (total downtime 55,860 sec / 15:31:00)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupB           173         55,860            15:31:00            100.0%

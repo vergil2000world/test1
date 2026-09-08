@@ -1,0 +1,12 @@
+TOP 5 DurationLevel + Product Code COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  DurationLevel  Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  ------------  -----  -------------  ------------------  ----------
+1     Critical       PRD-E            81         65,781            18:16:21       13.0%
+2     Critical       PRD-D            76         64,841            18:00:41       12.8%
+3     Critical       PRD-C            74         62,528            17:22:08       12.3%
+4     Critical       PRD-B            76         59,156            16:25:56       11.7%
+5     Critical       PRD-A            66         55,636            15:27:16       11.0%
+
+Most associated combination: DurationLevel='Critical', Product Code='PRD-E' -> 65,781 sec (13.0% of total downtime, 81 events)

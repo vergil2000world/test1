@@ -1,0 +1,38 @@
+TOP 5 Product Code PER DurationLevel
+======================================================================
+
+DurationLevel: Critical  (total downtime 307,942 sec / 85:32:22)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E            81         65,781            18:16:21             21.4%
+    PRD-D            76         64,841            18:00:41             21.1%
+    PRD-C            74         62,528            17:22:08             20.3%
+    PRD-B            76         59,156            16:25:56             19.2%
+    PRD-A            66         55,636            15:27:16             18.1%
+
+DurationLevel: High  (total downtime 134,350 sec / 37:19:10)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A            88         33,364            09:16:04             24.8%
+    PRD-E            78         28,431            07:53:51             21.2%
+    PRD-B            72         24,311            06:45:11             18.1%
+    PRD-D            70         24,250            06:44:10             18.0%
+    PRD-C            67         23,994            06:39:54             17.9%
+
+DurationLevel: Medium  (total downtime 46,289 sec / 12:51:29)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            86         10,600            02:56:40             22.9%
+    PRD-E            82         10,471            02:54:31             22.6%
+    PRD-D            71          8,771            02:26:11             18.9%
+    PRD-C            68          8,473            02:21:13             18.3%
+    PRD-A            66          7,974            02:12:54             17.2%
+
+DurationLevel: Low  (total downtime 18,019 sec / 05:00:19)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            83          4,139            01:08:59             23.0%
+    PRD-E            74          3,674            01:01:14             20.4%
+    PRD-D            77          3,495            00:58:15             19.4%
+    PRD-A            76          3,358            00:55:58             18.6%
+    PRD-C            69          3,353            00:55:53             18.6%

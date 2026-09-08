@@ -1,0 +1,14 @@
+CAUSE ANALYSIS (CA) - descriptive Pareto by Machine Group
+======================================================================
+Total events   : 1500
+Total downtime : 506,600 sec (140:43:20)
+Unique Machine Group values: 3
+
+Rank  Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % Total   Cum %
+----  -------------  -----  -------------  ------------------  -------  ------
+1     GroupA           571        201,307            55:55:07    39.7%   39.7%
+2     GroupC           566        187,976            52:12:56    37.1%   76.8%
+3     GroupB           363        117,317            32:35:17    23.2%  100.0%
+
+Top contributor: 'GroupA' -> 201,307 sec (39.7% of total downtime, 571 events)
+Pareto (80/20): top 3 of 3 Machine Group value(s) account for ~80% of total downtime.

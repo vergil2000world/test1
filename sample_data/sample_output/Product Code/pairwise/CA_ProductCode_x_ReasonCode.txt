@@ -1,0 +1,54 @@
+CORRESPONDENCE ANALYSIS (CA) - Product Code  x  ReasonCode
+======================================================================
+Contingency table: 5 x 10 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 33.02, dof = 36, p-value = 0.6109
+  Cramer's V = 0.074  -> negligible association
+  Not statistically significant (p>=0.05) association between Product Code and ReasonCode.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.011        51.68%                     51.68%
+1              0.005        21.03%                     72.71%
+
+Top 5 most statistically associated Product Code x ReasonCode cells (largest standardized residuals)
+----------------------------------------
+Rank  Product Code  ReasonCode         Observed  Expected  Std.Resid  Direction        
+----  ------------  -----------------  --------  --------  ---------  -----------------
+1     PRD-A         Material Shortage        40      30.0      +1.83  over-represented 
+2     PRD-D         Adjustment                3       7.8      -1.73  under-represented
+3     PRD-C         Power Blip                6      11.5      -1.62  under-represented
+4     PRD-E         Adjustment               13       8.4      +1.59  over-represented 
+5     PRD-B         Operator Break            6      11.0      -1.51  under-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+Product Code coordinates (CA map)
+----------------------------------------
+                  0      1
+Product Code              
+PRD-A         0.143 -0.044
+PRD-B        -0.127  0.074
+PRD-C        -0.041 -0.081
+PRD-D         0.112  0.087
+PRD-E        -0.075 -0.043
+
+ReasonCode coordinates (CA map)
+----------------------------------------
+                       0      1
+ReasonCode                     
+Adjustment        -0.386 -0.130
+Changeover        -0.067 -0.022
+Jam               -0.032  0.020
+Material Shortage  0.161 -0.082
+Operator Break     0.205 -0.107
+PM-Scheduled       0.101 -0.062
+Power Blip         0.132  0.193
+Quality Check     -0.185  0.116
+Sensor Fault       0.027  0.024
+Unplanned Stop     0.019  0.167

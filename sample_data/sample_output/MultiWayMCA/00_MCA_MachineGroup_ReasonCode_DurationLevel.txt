@@ -1,0 +1,54 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine Group x ReasonCode x DurationLevel
+======================================================================
+Variables: Machine Group, ReasonCode, DurationLevel   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.633        13.57%                     13.57%
+1              0.502        10.75%                     24.32%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                                dim0   dim1  cos2_dim0  cos2_dim1  quality
+DurationLevel__Critical        1.274 -0.893      0.537      0.264    0.801
+DurationLevel__Low            -1.083 -0.784      0.396      0.208    0.604
+DurationLevel__High            0.613  1.143      0.125      0.435    0.560
+ReasonCode__Changeover         1.140 -0.282      0.435      0.027    0.461
+ReasonCode__Jam               -0.804  0.324      0.271      0.044    0.315
+ReasonCode__Sensor Fault      -1.102 -0.734      0.215      0.096    0.311
+DurationLevel__Medium         -0.790  0.542      0.206      0.097    0.304
+ReasonCode__PM-Scheduled       1.429 -1.756      0.118      0.178    0.296
+ReasonCode__Material Shortage  0.437  1.468      0.021      0.243    0.264
+ReasonCode__Power Blip        -1.196 -1.544      0.062      0.103    0.164
+ReasonCode__Operator Break     0.847  1.412      0.026      0.072    0.097
+ReasonCode__Quality Check     -0.073  1.596      0.000      0.038    0.038
+ReasonCode__Adjustment        -0.419  0.965      0.005      0.026    0.030
+ReasonCode__Unplanned Stop     0.917 -0.050      0.026      0.000    0.026
+Machine Group__GroupA          0.104  0.054      0.007      0.002    0.008
+Machine Group__GroupB         -0.075 -0.084      0.002      0.002    0.004
+Machine Group__GroupC         -0.056 -0.000      0.002      0.000    0.002
+
+TOP 5 Machine Group + ReasonCode + DurationLevel COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine Group  ReasonCode    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  ------------  -------------  -----  -------------  ------------------  ----------
+1     GroupC         Changeover    Critical          90         64,327            17:52:07       12.7%
+2     GroupA         Changeover    Critical          85         59,342            16:29:02       11.7%
+3     GroupA         PM-Scheduled  Critical          37         49,433            13:43:53        9.8%
+4     GroupB         Changeover    Critical          62         44,409            12:20:09        8.8%
+5     GroupC         PM-Scheduled  Critical          28         33,455            09:17:35        6.6%
+
+Most associated combination: Machine Group='GroupC', ReasonCode='Changeover', DurationLevel='Critical' -> 64,327 sec (12.7% of total downtime, 90 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A                     Category B             Distance (smaller = more associated)
+----  -----------------------------  ---------------------  ------------------------------------
+1     ReasonCode: Sensor Fault       DurationLevel: Low                                    0.054
+2     ReasonCode: Jam                DurationLevel: Medium                                 0.218
+3     ReasonCode: Operator Break     DurationLevel: High                                   0.357
+4     ReasonCode: Material Shortage  DurationLevel: High                                   0.370
+5     ReasonCode: Adjustment         DurationLevel: Medium                                 0.563

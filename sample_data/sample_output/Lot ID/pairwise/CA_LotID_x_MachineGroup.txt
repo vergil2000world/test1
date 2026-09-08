@@ -1,0 +1,82 @@
+CORRESPONDENCE ANALYSIS (CA) - Lot ID  x  Machine Group
+======================================================================
+Contingency table: 40 x 3 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 67.64, dof = 78, p-value = 0.7926
+  Cramer's V = 0.150  -> weak association
+  Not statistically significant (p>=0.05) association between Lot ID and Machine Group.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.025        56.13%                     56.13%
+1              0.020        43.87%                    100.00%
+
+Top 5 most statistically associated Lot ID x Machine Group cells (largest standardized residuals)
+----------------------------------------
+Rank  Lot ID    Machine Group  Observed  Expected  Std.Resid  Direction        
+----  --------  -------------  --------  --------  ---------  -----------------
+1     LOT-0004  GroupB               14       8.7      +1.79  over-represented 
+2     LOT-0001  GroupB                3       8.0      -1.76  under-represented
+3     LOT-0010  GroupC               19      12.8      +1.72  over-represented 
+4     LOT-0013  GroupA                9      14.8      -1.52  under-represented
+5     LOT-0016  GroupB               17      11.9      +1.49  over-represented 
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+Lot ID coordinates (CA map)
+----------------------------------------
+              0      1
+Lot ID                
+LOT-0001 -0.283  0.220
+LOT-0002  0.167 -0.241
+LOT-0003  0.227  0.012
+LOT-0004  0.183 -0.297
+LOT-0005 -0.242 -0.045
+LOT-0006 -0.032 -0.255
+LOT-0007 -0.141 -0.131
+LOT-0008 -0.191 -0.135
+LOT-0009 -0.024 -0.001
+LOT-0010  0.083  0.371
+LOT-0011 -0.209  0.148
+LOT-0012 -0.133 -0.068
+LOT-0013  0.338 -0.065
+LOT-0014  0.201  0.067
+LOT-0015 -0.273  0.067
+LOT-0016  0.165 -0.181
+LOT-0017  0.062 -0.064
+LOT-0018  0.001  0.149
+LOT-0019  0.136  0.044
+LOT-0020 -0.059 -0.017
+LOT-0021  0.027  0.212
+LOT-0022 -0.178 -0.160
+LOT-0023 -0.172  0.012
+LOT-0024  0.043  0.059
+LOT-0025  0.030 -0.064
+LOT-0026 -0.106 -0.190
+LOT-0027  0.030  0.025
+LOT-0028  0.134 -0.044
+LOT-0029  0.002  0.079
+LOT-0030  0.262  0.007
+LOT-0031 -0.036  0.129
+LOT-0032  0.019  0.242
+LOT-0033 -0.226 -0.103
+LOT-0034 -0.091  0.066
+LOT-0035  0.261  0.065
+LOT-0036 -0.028 -0.087
+LOT-0037  0.209  0.098
+LOT-0038 -0.073 -0.049
+LOT-0039 -0.221 -0.124
+LOT-0040 -0.064  0.131
+
+Machine Group coordinates (CA map)
+----------------------------------------
+                   0      1
+Machine Group              
+GroupA        -0.196 -0.048
+GroupB         0.187 -0.186
+GroupC         0.077  0.167

@@ -1,0 +1,86 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Product Code x Lot ID x DurationLevel
+======================================================================
+Variables: Product Code, Lot ID, DurationLevel   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.406         2.65%                      2.65%
+1              0.399         2.60%                      5.25%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                          dim0   dim1  cos2_dim0  cos2_dim1  quality
+Product Code__PRD-D      1.202 -0.769      0.352      0.144    0.496
+Product Code__PRD-B     -0.169  1.078      0.008      0.312    0.319
+Product Code__PRD-A     -0.750 -0.697      0.138      0.120    0.258
+DurationLevel__High     -0.608 -0.551      0.123      0.101    0.224
+Lot ID__LOT-0025         0.872 -1.551      0.025      0.080    0.105
+Lot ID__LOT-0011         1.758 -0.790      0.078      0.016    0.094
+Product Code__PRD-C     -0.604 -0.101      0.083      0.002    0.085
+DurationLevel__Critical  0.409  0.250      0.055      0.021    0.076
+Lot ID__LOT-0017        -0.056  2.120      0.000      0.076    0.076
+Lot ID__LOT-0023         1.686 -0.252      0.072      0.002    0.073
+Lot ID__LOT-0028        -0.984 -1.462      0.022      0.050    0.072
+Lot ID__LOT-0038        -0.495  1.553      0.006      0.063    0.069
+Lot ID__LOT-0032         1.379 -0.186      0.062      0.001    0.063
+Lot ID__LOT-0005         1.554  0.646      0.053      0.009    0.062
+Product Code__PRD-E      0.286  0.377      0.022      0.038    0.060
+Lot ID__LOT-0010        -1.345 -0.738      0.042      0.013    0.055
+Lot ID__LOT-0029         0.283 -1.146      0.003      0.042    0.044
+Lot ID__LOT-0019        -0.597  1.034      0.011      0.033    0.044
+DurationLevel__Medium   -0.030  0.327      0.000      0.035    0.036
+Lot ID__LOT-0030        -1.073 -0.560      0.027      0.007    0.035
+Lot ID__LOT-0026        -0.470  1.123      0.005      0.028    0.033
+Lot ID__LOT-0031        -1.037 -0.052      0.031      0.000    0.031
+Lot ID__LOT-0020        -0.766 -0.709      0.016      0.013    0.029
+Lot ID__LOT-0006         1.050  0.101      0.026      0.000    0.027
+Lot ID__LOT-0034        -0.184 -0.902      0.001      0.023    0.024
+Lot ID__LOT-0015         0.629 -0.914      0.008      0.016    0.023
+Lot ID__LOT-0033        -0.634 -0.689      0.010      0.012    0.023
+Lot ID__LOT-0024         0.490  0.771      0.006      0.014    0.019
+Lot ID__LOT-0040        -0.112  0.917      0.000      0.019    0.019
+Lot ID__LOT-0014        -0.077  0.872      0.000      0.019    0.019
+Lot ID__LOT-0018         0.599  0.610      0.009      0.009    0.018
+Lot ID__LOT-0009        -0.286 -0.653      0.003      0.015    0.018
+DurationLevel__Low       0.228 -0.023      0.018      0.000    0.018
+Lot ID__LOT-0016        -0.694  0.202      0.016      0.001    0.018
+Lot ID__LOT-0035        -0.738  0.103      0.016      0.000    0.017
+Lot ID__LOT-0027         0.436  0.676      0.004      0.010    0.015
+Lot ID__LOT-0021         0.560  0.141      0.009      0.001    0.010
+Lot ID__LOT-0039        -0.650 -0.198      0.009      0.001    0.010
+Lot ID__LOT-0012         0.646 -0.178      0.009      0.001    0.009
+Lot ID__LOT-0036        -0.100  0.548      0.000      0.009    0.009
+Lot ID__LOT-0002        -0.486 -0.417      0.005      0.004    0.008
+Lot ID__LOT-0007        -0.161  0.459      0.001      0.006    0.007
+Lot ID__LOT-0037         0.043  0.508      0.000      0.007    0.007
+Lot ID__LOT-0004        -0.428  0.004      0.005      0.000    0.005
+Lot ID__LOT-0008        -0.194  0.341      0.001      0.003    0.004
+Lot ID__LOT-0003         0.421  0.051      0.004      0.000    0.004
+Lot ID__LOT-0013        -0.331  0.005      0.003      0.000    0.003
+Lot ID__LOT-0022        -0.077 -0.344      0.000      0.003    0.003
+Lot ID__LOT-0001        -0.229  0.244      0.001      0.001    0.003
+
+TOP 5 Product Code + Lot ID + DurationLevel COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Product Code  Lot ID    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ------------  --------  -------------  -----  -------------  ------------------  ----------
+1     PRD-C         LOT-0036  Critical           6          5,369            01:29:29        1.1%
+2     PRD-E         LOT-0032  Critical           5          5,184            01:26:24        1.0%
+3     PRD-E         LOT-0008  Critical           5          5,090            01:24:50        1.0%
+4     PRD-D         LOT-0034  Critical           4          4,992            01:23:12        1.0%
+5     PRD-C         LOT-0013  Critical           7          4,648            01:17:28        0.9%
+
+Most associated combination: Product Code='PRD-C', Lot ID='LOT-0036', DurationLevel='Critical' -> 5,369 sec (1.1% of total downtime, 6 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A           Category B             Distance (smaller = more associated)
+----  -------------------  ---------------------  ------------------------------------
+1     Product Code: PRD-A  Lot ID: LOT-0020                                      0.020
+2     Product Code: PRD-C  Lot ID: LOT-0039                                      0.107
+3     Product Code: PRD-A  Lot ID: LOT-0033                                      0.116
+4     Lot ID: LOT-0033     DurationLevel: High                                   0.140
+5     Lot ID: LOT-0008     DurationLevel: Medium                                 0.164

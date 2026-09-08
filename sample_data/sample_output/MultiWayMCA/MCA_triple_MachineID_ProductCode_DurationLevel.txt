@@ -1,0 +1,54 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine ID x Product Code x DurationLevel
+======================================================================
+Variables: Machine ID, Product Code, DurationLevel   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.393         8.42%                      8.42%
+1              0.370         7.92%                     16.33%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                          dim0   dim1  cos2_dim0  cos2_dim1  quality
+DurationLevel__High      1.175  0.190      0.460      0.012    0.472
+Machine ID__M-101        1.665  0.032      0.409      0.000    0.409
+Product Code__PRD-E     -0.104  1.158      0.003      0.356    0.359
+Machine ID__M-102       -0.607  1.351      0.052      0.259    0.311
+DurationLevel__Medium   -0.816  0.217      0.220      0.016    0.236
+DurationLevel__Low      -0.173 -0.753      0.010      0.192    0.202
+Machine ID__M-201       -0.388 -1.121      0.020      0.164    0.183
+Product Code__PRD-B     -0.474 -0.558      0.060      0.083    0.144
+Product Code__PRD-A      0.624 -0.121      0.096      0.004    0.099
+Machine ID__M-103        0.245  0.739      0.009      0.080    0.089
+Machine ID__M-302       -0.625  0.194      0.059      0.006    0.065
+Product Code__PRD-D      0.190 -0.452      0.009      0.050    0.059
+DurationLevel__Critical -0.189  0.357      0.012      0.042    0.054
+Machine ID__M-303       -0.484 -0.282      0.033      0.011    0.045
+Machine ID__M-202        0.087 -0.533      0.001      0.041    0.042
+Machine ID__M-301        0.051 -0.498      0.000      0.034    0.034
+Product Code__PRD-C     -0.208 -0.069      0.010      0.001    0.011
+
+TOP 5 Machine ID + Product Code + DurationLevel COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  Product Code  DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  ------------  -------------  -----  -------------  ------------------  ----------
+1     M-201       PRD-C         Critical          14         12,686            03:31:26        2.5%
+2     M-103       PRD-A         Critical          13         11,005            03:03:25        2.2%
+3     M-302       PRD-B         Critical          15         10,993            03:03:13        2.2%
+4     M-302       PRD-D         Critical          13         10,812            03:00:12        2.1%
+5     M-102       PRD-E         Critical          14         10,578            02:56:18        2.1%
+
+Most associated combination: Machine ID='M-201', Product Code='PRD-C', DurationLevel='Critical' -> 12,686 sec (2.5% of total downtime, 14 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A         Category B             Distance (smaller = more associated)
+----  -----------------  ---------------------  ------------------------------------
+1     Machine ID: M-202  Product Code: PRD-D                                   0.131
+2     Machine ID: M-301  Product Code: PRD-D                                   0.147
+3     Machine ID: M-302  DurationLevel: Medium                                 0.192
+4     Machine ID: M-303  Product Code: PRD-B                                   0.277
+5     Machine ID: M-301  DurationLevel: Low                                    0.339

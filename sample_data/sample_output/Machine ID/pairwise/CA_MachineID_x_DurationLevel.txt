@@ -1,0 +1,51 @@
+CORRESPONDENCE ANALYSIS (CA) - DurationLevel  x  Machine ID
+======================================================================
+Contingency table: 4 x 8 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 43.13, dof = 21, p-value = 0.003028
+  Cramer's V = 0.098  -> negligible association
+  Statistically significant (p<0.05) association between DurationLevel and Machine ID.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.024        85.06%                     85.06%
+1              0.003        11.87%                     96.93%
+
+Top 5 most statistically associated DurationLevel x Machine ID cells (largest standardized residuals)
+----------------------------------------
+Rank  DurationLevel  Machine ID  Observed  Expected  Std.Resid  Direction        
+----  -------------  ----------  --------  --------  ---------  -----------------
+1     High           M-101             78      48.2      +4.28  over-represented 
+2     Medium         M-101             27      48.0      -3.03  under-represented
+3     Low            M-201             54      43.7      +1.56  over-represented 
+4     High           M-201             34      43.2      -1.41  under-represented
+5     High           M-303             38      46.8      -1.28  under-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+DurationLevel coordinates (CA map)
+----------------------------------------
+                   0      1
+DurationLevel              
+Critical      -0.039 -0.035
+High           0.252 -0.022
+Low           -0.035  0.100
+Medium        -0.179 -0.044
+
+Machine ID coordinates (CA map)
+----------------------------------------
+                0      1
+Machine ID              
+M-101       0.383  0.005
+M-102      -0.108 -0.088
+M-103       0.022 -0.027
+M-201      -0.093  0.126
+M-202       0.011 -0.011
+M-301      -0.018  0.027
+M-302      -0.087 -0.047
+M-303      -0.127  0.029

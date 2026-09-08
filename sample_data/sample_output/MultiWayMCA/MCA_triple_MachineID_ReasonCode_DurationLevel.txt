@@ -1,0 +1,59 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine ID x ReasonCode x DurationLevel
+======================================================================
+Variables: Machine ID, ReasonCode, DurationLevel   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.634        10.01%                     10.01%
+1              0.505         7.97%                     17.98%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                                dim0   dim1  cos2_dim0  cos2_dim1  quality
+DurationLevel__Critical        1.265  0.914      0.530      0.276    0.806
+DurationLevel__Low            -1.087  0.744      0.399      0.187    0.586
+DurationLevel__High            0.624 -1.155      0.130      0.445    0.575
+ReasonCode__Changeover         1.137  0.287      0.433      0.028    0.460
+ReasonCode__Jam               -0.801 -0.315      0.269      0.042    0.311
+ReasonCode__PM-Scheduled       1.407  1.819      0.114      0.191    0.306
+ReasonCode__Sensor Fault      -1.103  0.688      0.216      0.084    0.300
+DurationLevel__Medium         -0.789 -0.508      0.206      0.085    0.291
+ReasonCode__Material Shortage  0.446 -1.445      0.022      0.235    0.258
+ReasonCode__Power Blip        -1.211  1.491      0.063      0.096    0.159
+ReasonCode__Operator Break     0.869 -1.469      0.027      0.077    0.105
+ReasonCode__Quality Check     -0.075 -1.527      0.000      0.035    0.035
+ReasonCode__Adjustment        -0.409 -0.932      0.005      0.024    0.028
+ReasonCode__Unplanned Stop     0.923  0.035      0.026      0.000    0.026
+Machine ID__M-201             -0.169  0.404      0.004      0.021    0.025
+Machine ID__M-101              0.136 -0.191      0.003      0.005    0.008
+Machine ID__M-202              0.011 -0.219      0.000      0.007    0.007
+Machine ID__M-303             -0.155  0.107      0.003      0.002    0.005
+Machine ID__M-102              0.085  0.070      0.001      0.001    0.002
+Machine ID__M-103              0.089 -0.029      0.001      0.000    0.001
+Machine ID__M-302             -0.010 -0.065      0.000      0.001    0.001
+Machine ID__M-301             -0.006 -0.032      0.000      0.000    0.000
+
+TOP 5 Machine ID + ReasonCode + DurationLevel COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  ReasonCode  DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  ----------  -------------  -----  -------------  ------------------  ----------
+1     M-202       Changeover  Critical          36         26,490            07:21:30        5.2%
+2     M-102       Changeover  Critical          34         23,664            06:34:24        4.7%
+3     M-301       Changeover  Critical          31         22,594            06:16:34        4.5%
+4     M-303       Changeover  Critical          30         20,947            05:49:07        4.1%
+5     M-302       Changeover  Critical          29         20,786            05:46:26        4.1%
+
+Most associated combination: Machine ID='M-202', ReasonCode='Changeover', DurationLevel='Critical' -> 26,490 sec (5.2% of total downtime, 36 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A                     Category B             Distance (smaller = more associated)
+----  -----------------------------  ---------------------  ------------------------------------
+1     ReasonCode: Sensor Fault       DurationLevel: Low                                    0.058
+2     ReasonCode: Jam                DurationLevel: Medium                                 0.193
+3     ReasonCode: Material Shortage  DurationLevel: High                                   0.340
+4     ReasonCode: Operator Break     DurationLevel: High                                   0.398
+5     ReasonCode: Adjustment         DurationLevel: Medium                                 0.569

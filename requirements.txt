@@ -1,0 +1,7 @@
+# scikit-learn must stay below 1.6: prince==0.14.0 relies on an internal
+# sklearn API (__sklearn_tags__) that newer scikit-learn versions removed.
+pandas>=2.0
+numpy
+scipy
+scikit-learn==1.5.2
+prince==0.14.0

@@ -1,0 +1,12 @@
+TOP 5 Machine ID + Product Code COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  ------------  -----  -------------  ------------------  ----------
+1     M-103       PRD-E            47         16,992            04:43:12        3.4%
+2     M-102       PRD-E            51         16,817            04:40:17        3.3%
+3     M-302       PRD-B            49         16,276            04:31:16        3.2%
+4     M-201       PRD-C            38         16,089            04:28:09        3.2%
+5     M-103       PRD-A            39         15,760            04:22:40        3.1%
+
+Most associated combination: Machine ID='M-103', Product Code='PRD-E' -> 16,992 sec (3.4% of total downtime, 47 events)

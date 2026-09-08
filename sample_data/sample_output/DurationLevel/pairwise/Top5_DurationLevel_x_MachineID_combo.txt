@@ -1,0 +1,12 @@
+TOP 5 DurationLevel + Machine ID COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  DurationLevel  Machine ID  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  ----------  -----  -------------  ------------------  ----------
+1     Critical       M-102          53         44,097            12:14:57        8.7%
+2     Critical       M-103          49         40,518            11:15:18        8.0%
+3     Critical       M-302          50         39,748            11:02:28        7.8%
+4     Critical       M-301          46         38,835            10:47:15        7.7%
+5     Critical       M-101          43         38,270            10:37:50        7.6%
+
+Most associated combination: DurationLevel='Critical', Machine ID='M-102' -> 44,097 sec (8.7% of total downtime, 53 events)

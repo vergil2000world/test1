@@ -1,0 +1,12 @@
+TOP 5 Machine Group + Product Code COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine Group  Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  ------------  -----  -------------  ------------------  ----------
+1     GroupA         PRD-E           137         47,749            13:15:49        9.4%
+2     GroupA         PRD-A           115         43,311            12:01:51        8.5%
+3     GroupC         PRD-E           113         39,521            10:58:41        7.8%
+4     GroupC         PRD-D           112         39,222            10:53:42        7.7%
+5     GroupA         PRD-D           111         39,042            10:50:42        7.7%
+
+Most associated combination: Machine Group='GroupA', Product Code='PRD-E' -> 47,749 sec (9.4% of total downtime, 137 events)

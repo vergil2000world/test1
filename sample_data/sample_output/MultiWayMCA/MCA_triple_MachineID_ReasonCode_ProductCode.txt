@@ -1,0 +1,60 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine ID x ReasonCode x Product Code
+======================================================================
+Variables: Machine ID, ReasonCode, Product Code   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.389         5.84%                      5.84%
+1              0.379         5.69%                     11.52%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                                dim0   dim1  cos2_dim0  cos2_dim1  quality
+Product Code__PRD-E            0.540  1.015      0.077      0.274    0.351
+Product Code__PRD-B            0.683 -0.758      0.125      0.154    0.279
+Machine ID__M-102              0.340  1.281      0.016      0.232    0.248
+Machine ID__M-101             -1.167  0.202      0.201      0.006    0.207
+ReasonCode__Adjustment         2.718  0.039      0.202      0.000    0.202
+Product Code__PRD-D           -0.797  0.054      0.155      0.001    0.156
+ReasonCode__PM-Scheduled      -1.117  1.059      0.072      0.065    0.137
+ReasonCode__Quality Check      0.711  2.901      0.008      0.125    0.133
+Machine ID__M-201             -0.586 -0.767      0.045      0.077    0.121
+Machine ID__M-302              0.863 -0.059      0.113      0.001    0.114
+Machine ID__M-103             -0.186  0.827      0.005      0.100    0.105
+ReasonCode__Sensor Fault      -0.614 -0.400      0.067      0.028    0.095
+Product Code__PRD-A           -0.546 -0.248      0.073      0.015    0.088
+ReasonCode__Changeover         0.512  0.019      0.088      0.000    0.088
+Machine ID__M-202              0.313 -0.673      0.014      0.066    0.080
+ReasonCode__Operator Break    -0.346  1.348      0.004      0.065    0.070
+ReasonCode__Jam                0.190 -0.302      0.015      0.038    0.053
+Machine ID__M-301              0.161 -0.564      0.004      0.044    0.047
+ReasonCode__Material Shortage -0.522 -0.212      0.031      0.005    0.036
+ReasonCode__Power Blip        -0.725  0.070      0.023      0.000    0.023
+Machine ID__M-303              0.211 -0.329      0.006      0.015    0.022
+ReasonCode__Unplanned Stop    -0.636  0.509      0.013      0.008    0.021
+Product Code__PRD-C            0.033 -0.079      0.000      0.001    0.002
+
+TOP 5 Machine ID + ReasonCode + Product Code COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  ReasonCode    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  ------------  ------------  -----  -------------  ------------------  ----------
+1     M-202       Changeover    PRD-B            15          9,856            02:44:16        1.9%
+2     M-303       Changeover    PRD-C            14          8,753            02:25:53        1.7%
+3     M-103       Changeover    PRD-E            16          8,276            02:17:56        1.6%
+4     M-103       Changeover    PRD-A            13          8,268            02:17:48        1.6%
+5     M-201       PM-Scheduled  PRD-C             7          7,663            02:07:43        1.5%
+
+Most associated combination: Machine ID='M-202', ReasonCode='Changeover', Product Code='PRD-B' -> 9,856 sec (1.9% of total downtime, 15 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A                     Category B           Distance (smaller = more associated)
+----  -----------------------------  -------------------  ------------------------------------
+1     Machine ID: M-303              ReasonCode: Jam                                     0.034
+2     ReasonCode: Material Shortage  Product Code: PRD-A                                 0.044
+3     ReasonCode: Power Blip         Product Code: PRD-D                                 0.073
+4     ReasonCode: Sensor Fault       Product Code: PRD-A                                 0.167
+5     Machine ID: M-301              ReasonCode: Jam                                     0.264

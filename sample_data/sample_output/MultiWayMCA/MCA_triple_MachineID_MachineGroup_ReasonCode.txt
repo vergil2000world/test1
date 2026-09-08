@@ -1,0 +1,58 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine ID x Machine Group x ReasonCode
+======================================================================
+Variables: Machine ID, Machine Group, ReasonCode   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.673        11.22%                     11.22%
+1              0.671        11.18%                     22.40%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                                dim0   dim1  cos2_dim0  cos2_dim1  quality
+Machine Group__GroupB         -0.249  1.747      0.020      0.974    0.994
+Machine Group__GroupC         -1.057 -0.720      0.677      0.314    0.992
+Machine Group__GroupA          1.206 -0.396      0.894      0.097    0.991
+Machine ID__M-202             -0.255  1.752      0.009      0.445    0.455
+Machine ID__M-201             -0.243  1.740      0.008      0.395    0.403
+Machine ID__M-302             -1.057 -0.730      0.170      0.081    0.251
+Machine ID__M-101              1.219 -0.389      0.219      0.022    0.242
+Machine ID__M-103              1.203 -0.392      0.212      0.023    0.235
+Machine ID__M-303             -1.052 -0.717      0.158      0.073    0.231
+Machine ID__M-102              1.197 -0.409      0.203      0.024    0.226
+Machine ID__M-301             -1.063 -0.712      0.155      0.070    0.225
+ReasonCode__Adjustment        -0.727 -0.533      0.014      0.008    0.022
+ReasonCode__Quality Check      0.693 -0.603      0.007      0.005    0.013
+ReasonCode__Unplanned Stop     0.443 -0.339      0.006      0.004    0.010
+ReasonCode__Sensor Fault       0.058  0.180      0.001      0.006    0.006
+ReasonCode__PM-Scheduled       0.260 -0.125      0.004      0.001    0.005
+ReasonCode__Operator Break     0.315  0.175      0.004      0.001    0.005
+ReasonCode__Changeover        -0.088  0.012      0.003      0.000    0.003
+ReasonCode__Power Blip         0.121 -0.134      0.001      0.001    0.001
+ReasonCode__Material Shortage -0.050  0.092      0.000      0.001    0.001
+ReasonCode__Jam               -0.054  0.000      0.001      0.000    0.001
+
+TOP 5 Machine ID + Machine Group + ReasonCode COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  Machine Group  ReasonCode  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  -------------  ----------  -----  -------------  ------------------  ----------
+1     M-202       GroupB         Changeover     54         33,325            09:15:25        6.6%
+2     M-303       GroupC         Changeover     51         30,290            08:24:50        6.0%
+3     M-302       GroupC         Changeover     50         29,442            08:10:42        5.8%
+4     M-102       GroupA         Changeover     48         29,422            08:10:22        5.8%
+5     M-301       GroupC         Changeover     47         29,290            08:08:10        5.8%
+
+Most associated combination: Machine ID='M-202', Machine Group='GroupB', ReasonCode='Changeover' -> 33,325 sec (6.6% of total downtime, 54 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A         Category B             Distance (smaller = more associated)
+----  -----------------  ---------------------  ------------------------------------
+1     Machine ID: M-303  Machine Group: GroupC                                 0.006
+2     Machine ID: M-103  Machine Group: GroupA                                 0.006
+3     Machine ID: M-202  Machine Group: GroupB                                 0.008
+4     Machine ID: M-201  Machine Group: GroupB                                 0.009
+5     Machine ID: M-301  Machine Group: GroupC                                 0.010

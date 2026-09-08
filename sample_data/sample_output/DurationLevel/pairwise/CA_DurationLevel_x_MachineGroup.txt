@@ -1,0 +1,46 @@
+CORRESPONDENCE ANALYSIS (CA) - DurationLevel  x  Machine Group
+======================================================================
+Contingency table: 4 x 3 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 12.09, dof = 6, p-value = 0.05997
+  Cramer's V = 0.063  -> negligible association
+  Not statistically significant (p>=0.05) association between DurationLevel and Machine Group.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.007        92.00%                     92.00%
+1              0.001         8.00%                    100.00%
+
+Top 5 most statistically associated DurationLevel x Machine Group cells (largest standardized residuals)
+----------------------------------------
+Rank  DurationLevel  Machine Group  Observed  Expected  Std.Resid  Direction        
+----  -------------  -------------  --------  --------  ---------  -----------------
+1     High           GroupA              167     142.8      +2.03  over-represented 
+2     High           GroupC              125     141.5      -1.39  under-represented
+3     Medium         GroupC              156     140.7      +1.29  over-represented 
+4     Medium         GroupA              127     142.0      -1.26  under-represented
+5     Low            GroupA              132     144.3      -1.02  under-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+DurationLevel coordinates (CA map)
+----------------------------------------
+                   0      1
+DurationLevel              
+Critical       0.016 -0.002
+High           0.134 -0.003
+Low           -0.063  0.038
+Medium        -0.087 -0.033
+
+Machine Group coordinates (CA map)
+----------------------------------------
+                   0      1
+Machine Group              
+GroupA         0.109 -0.004
+GroupB        -0.052  0.042
+GroupC        -0.077 -0.023

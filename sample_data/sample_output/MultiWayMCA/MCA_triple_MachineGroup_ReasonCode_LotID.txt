@@ -1,0 +1,90 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine Group x ReasonCode x Lot ID
+======================================================================
+Variables: Machine Group, ReasonCode, Lot ID   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.415         2.49%                      2.49%
+1              0.405         2.43%                      4.92%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                                dim0   dim1  cos2_dim0  cos2_dim1  quality
+Machine Group__GroupA          0.636 -0.306      0.248      0.058    0.306
+ReasonCode__Adjustment        -0.859  3.227      0.020      0.285    0.306
+Machine Group__GroupB         -0.756 -0.368      0.182      0.043    0.226
+ReasonCode__Sensor Fault      -0.733 -0.831      0.095      0.122    0.218
+Machine Group__GroupC         -0.157  0.545      0.015      0.180    0.195
+ReasonCode__Quality Check      2.614 -1.306      0.102      0.025    0.127
+ReasonCode__Unplanned Stop     1.822  0.663      0.103      0.014    0.116
+ReasonCode__PM-Scheduled       1.276  0.096      0.094      0.001    0.095
+Lot ID__LOT-0005              -0.007 -2.039      0.000      0.091    0.091
+Lot ID__LOT-0032               0.370  1.543      0.004      0.077    0.081
+Lot ID__LOT-0013              -1.444  0.279      0.056      0.002    0.058
+Lot ID__LOT-0029              -0.638 -1.097      0.013      0.038    0.051
+Lot ID__LOT-0001               1.482 -0.148      0.049      0.000    0.050
+Lot ID__LOT-0034               1.174  0.610      0.039      0.010    0.049
+ReasonCode__Power Blip         0.324  1.006      0.005      0.044    0.048
+Lot ID__LOT-0022               0.954 -1.102      0.020      0.027    0.048
+Lot ID__LOT-0016              -0.524 -0.949      0.009      0.030    0.040
+Lot ID__LOT-0035              -1.139 -0.116      0.039      0.000    0.040
+Lot ID__LOT-0030              -0.760  0.990      0.014      0.023    0.037
+ReasonCode__Operator Break    -0.323 -0.957      0.004      0.033    0.037
+Lot ID__LOT-0011               0.884 -0.764      0.020      0.015    0.035
+Lot ID__LOT-0003              -0.979  0.743      0.022      0.012    0.034
+ReasonCode__Changeover        -0.250  0.190      0.021      0.012    0.033
+Lot ID__LOT-0039               0.959 -0.722      0.020      0.011    0.031
+Lot ID__LOT-0037              -1.091  0.063      0.030      0.000    0.030
+Lot ID__LOT-0012               1.108 -0.402      0.026      0.003    0.029
+Lot ID__LOT-0015               0.682  1.018      0.009      0.020    0.029
+Lot ID__LOT-0010              -0.811  0.747      0.015      0.013    0.028
+Lot ID__LOT-0018               0.687  0.816      0.012      0.016    0.028
+Lot ID__LOT-0004              -0.661 -0.765      0.011      0.014    0.025
+Lot ID__LOT-0023               0.926  0.287      0.022      0.002    0.024
+Lot ID__LOT-0009              -0.476  0.632      0.008      0.014    0.022
+Lot ID__LOT-0026              -0.434  0.886      0.004      0.018    0.022
+Lot ID__LOT-0006              -0.840 -0.215      0.017      0.001    0.018
+Lot ID__LOT-0014              -0.747 -0.378      0.014      0.004    0.017
+Lot ID__LOT-0025              -0.156 -0.692      0.001      0.016    0.017
+Lot ID__LOT-0019               0.114  0.670      0.000      0.014    0.014
+Lot ID__LOT-0017               0.623  0.665      0.007      0.007    0.014
+Lot ID__LOT-0031               0.684  0.135      0.013      0.001    0.014
+Lot ID__LOT-0024               0.594  0.493      0.008      0.006    0.014
+Lot ID__LOT-0020              -0.166 -0.691      0.001      0.013    0.013
+Lot ID__LOT-0033               0.698  0.148      0.013      0.001    0.013
+Lot ID__LOT-0038               0.513  0.459      0.007      0.005    0.012
+ReasonCode__Jam                0.108 -0.132      0.005      0.007    0.012
+Lot ID__LOT-0008               0.473 -0.436      0.006      0.005    0.011
+Lot ID__LOT-0007              -0.190  0.517      0.001      0.008    0.009
+Lot ID__LOT-0002              -0.315 -0.555      0.002      0.006    0.008
+Lot ID__LOT-0028              -0.243 -0.538      0.001      0.007    0.008
+Lot ID__LOT-0027               0.354 -0.319      0.003      0.002    0.005
+Lot ID__LOT-0036              -0.407 -0.096      0.005      0.000    0.005
+ReasonCode__Material Shortage -0.009  0.161      0.000      0.003    0.003
+Lot ID__LOT-0021               0.080  0.286      0.000      0.002    0.003
+Lot ID__LOT-0040              -0.219 -0.107      0.001      0.000    0.001
+
+TOP 5 Machine Group + ReasonCode + Lot ID COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine Group  ReasonCode    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  ------------  --------  -----  -------------  ------------------  ----------
+1     GroupC         PM-Scheduled  LOT-0032      4          5,242            01:27:22        1.0%
+2     GroupC         Changeover    LOT-0014      7          4,648            01:17:28        0.9%
+3     GroupC         Changeover    LOT-0032      8          4,643            01:17:23        0.9%
+4     GroupA         PM-Scheduled  LOT-0012      3          4,562            01:16:02        0.9%
+5     GroupC         Changeover    LOT-0013      7          4,282            01:11:22        0.8%
+
+Most associated combination: Machine Group='GroupC', ReasonCode='PM-Scheduled', Lot ID='LOT-0032' -> 5,242 sec (1.0% of total downtime, 4 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A                     Category B        Distance (smaller = more associated)
+----  -----------------------------  ----------------  ------------------------------------
+1     Machine Group: GroupB          Lot ID: LOT-0014                                 0.014
+2     Machine Group: GroupC          Lot ID: LOT-0007                                 0.044
+3     ReasonCode: Sensor Fault       Lot ID: LOT-0004                                 0.097
+4     ReasonCode: Material Shortage  Lot ID: LOT-0021                                 0.154
+5     Machine Group: GroupB          Lot ID: LOT-0006                                 0.174

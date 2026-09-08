@@ -1,0 +1,362 @@
+TOP 5 Product Code PER Lot ID
+======================================================================
+
+Lot ID: LOT-0032  (total downtime 18,231 sec / 05:03:51)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E            14          6,337            01:45:37             34.8%
+    PRD-D            15          5,657            01:34:17             31.0%
+    PRD-A             8          2,340            00:39:00             12.8%
+    PRD-C             4          1,983            00:33:03             10.9%
+    PRD-B             6          1,914            00:31:54             10.5%
+
+Lot ID: LOT-0036  (total downtime 17,043 sec / 04:44:03)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-C            10          6,091            01:41:31             35.7%
+    PRD-E             8          2,892            00:48:12             17.0%
+    PRD-B            10          2,749            00:45:49             16.1%
+    PRD-D             7          2,670            00:44:30             15.7%
+    PRD-A             7          2,641            00:44:01             15.5%
+
+Lot ID: LOT-0013  (total downtime 16,945 sec / 04:42:25)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-C            13          5,472            01:31:12             32.3%
+    PRD-E             7          3,464            00:57:44             20.4%
+    PRD-D             5          2,919            00:48:39             17.2%
+    PRD-A             7          2,755            00:45:55             16.3%
+    PRD-B             7          2,335            00:38:55             13.8%
+
+Lot ID: LOT-0019  (total downtime 16,680 sec / 04:38:00)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            12          4,402            01:13:22             26.4%
+    PRD-C            11          3,605            01:00:05             21.6%
+    PRD-E             7          3,453            00:57:33             20.7%
+    PRD-A             9          3,092            00:51:32             18.5%
+    PRD-D             6          2,128            00:35:28             12.8%
+
+Lot ID: LOT-0034  (total downtime 16,342 sec / 04:32:22)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D            11          6,579            01:49:39             40.3%
+    PRD-C            10          2,904            00:48:24             17.8%
+    PRD-E             4          2,468            00:41:08             15.1%
+    PRD-B             9          2,218            00:36:58             13.6%
+    PRD-A             7          2,173            00:36:13             13.3%
+
+Lot ID: LOT-0021  (total downtime 16,208 sec / 04:30:08)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            10          4,314            01:11:54             26.6%
+    PRD-C             6          3,857            01:04:17             23.8%
+    PRD-E            10          2,976            00:49:36             18.4%
+    PRD-D            10          2,733            00:45:33             16.9%
+    PRD-A             8          2,328            00:38:48             14.4%
+
+Lot ID: LOT-0008  (total downtime 15,930 sec / 04:25:30)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E             9          5,762            01:36:02             36.2%
+    PRD-A            10          3,577            00:59:37             22.5%
+    PRD-B            10          2,438            00:40:38             15.3%
+    PRD-C             5          2,288            00:38:08             14.4%
+    PRD-D             5          1,865            00:31:05             11.7%
+
+Lot ID: LOT-0031  (total downtime 15,857 sec / 04:24:17)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            10          5,198            01:26:38             32.8%
+    PRD-C             8          3,432            00:57:12             21.6%
+    PRD-A            10          2,723            00:45:23             17.2%
+    PRD-D             6          2,542            00:42:22             16.0%
+    PRD-E             8          1,962            00:32:42             12.4%
+
+Lot ID: LOT-0024  (total downtime 15,451 sec / 04:17:31)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D             6          3,615            01:00:15             23.4%
+    PRD-E             7          3,444            00:57:24             22.3%
+    PRD-C             5          3,056            00:50:56             19.8%
+    PRD-B             8          2,980            00:49:40             19.3%
+    PRD-A             8          2,356            00:39:16             15.2%
+
+Lot ID: LOT-0016  (total downtime 15,280 sec / 04:14:40)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A            10          4,406            01:13:26             28.8%
+    PRD-E            10          3,833            01:03:53             25.1%
+    PRD-C            12          3,444            00:57:24             22.5%
+    PRD-B             9          2,087            00:34:47             13.7%
+    PRD-D             8          1,510            00:25:10              9.9%
+
+Lot ID: LOT-0009  (total downtime 14,347 sec / 03:59:07)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D            12          3,539            00:58:59             24.7%
+    PRD-B            10          3,207            00:53:27             22.4%
+    PRD-C             9          2,839            00:47:19             19.8%
+    PRD-E            10          2,787            00:46:27             19.4%
+    PRD-A            10          1,975            00:32:55             13.8%
+
+Lot ID: LOT-0012  (total downtime 14,298 sec / 03:58:18)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-C             5          4,587            01:16:27             32.1%
+    PRD-D             8          3,536            00:58:56             24.7%
+    PRD-B             7          2,181            00:36:21             15.3%
+    PRD-E             4          2,176            00:36:16             15.2%
+    PRD-A             7          1,818            00:30:18             12.7%
+
+Lot ID: LOT-0033  (total downtime 13,995 sec / 03:53:15)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A            11          4,862            01:21:02             34.7%
+    PRD-C             6          3,270            00:54:30             23.4%
+    PRD-B             7          2,118            00:35:18             15.1%
+    PRD-D             7          2,081            00:34:41             14.9%
+    PRD-E             7          1,664            00:27:44             11.9%
+
+Lot ID: LOT-0025  (total downtime 13,786 sec / 03:49:46)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D            18          4,967            01:22:47             36.0%
+    PRD-E             7          4,258            01:10:58             30.9%
+    PRD-A            12          3,561            00:59:21             25.8%
+    PRD-C             8            769            00:12:49              5.6%
+    PRD-B             3            231            00:03:51              1.7%
+
+Lot ID: LOT-0030  (total downtime 13,459 sec / 03:44:19)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A            13          5,097            01:24:57             37.9%
+    PRD-E             8          3,100            00:51:40             23.0%
+    PRD-C             6          2,782            00:46:22             20.7%
+    PRD-D             4          1,524            00:25:24             11.3%
+    PRD-B             4            956            00:15:56              7.1%
+
+Lot ID: LOT-0007  (total downtime 13,393 sec / 03:43:13)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E             9          3,550            00:59:10             26.5%
+    PRD-B            11          3,205            00:53:25             23.9%
+    PRD-A             8          2,676            00:44:36             20.0%
+    PRD-C             7          2,239            00:37:19             16.7%
+    PRD-D             6          1,723            00:28:43             12.9%
+
+Lot ID: LOT-0029  (total downtime 13,362 sec / 03:42:42)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D            14          5,018            01:23:38             37.6%
+    PRD-A             9          3,098            00:51:38             23.2%
+    PRD-E             9          2,361            00:39:21             17.7%
+    PRD-B             5          1,945            00:32:25             14.6%
+    PRD-C             9            940            00:15:40              7.0%
+
+Lot ID: LOT-0018  (total downtime 13,253 sec / 03:40:53)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E            12          5,266            01:27:46             39.7%
+    PRD-B             7          2,370            00:39:30             17.9%
+    PRD-D             8          2,301            00:38:21             17.4%
+    PRD-C             5          1,886            00:31:26             14.2%
+    PRD-A             4          1,430            00:23:50             10.8%
+
+Lot ID: LOT-0027  (total downtime 13,075 sec / 03:37:55)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A             6          4,158            01:09:18             31.8%
+    PRD-B             8          3,073            00:51:13             23.5%
+    PRD-E             8          2,379            00:39:39             18.2%
+    PRD-C             5          2,129            00:35:29             16.3%
+    PRD-D             6          1,336            00:22:16             10.2%
+
+Lot ID: LOT-0011  (total downtime 12,971 sec / 03:36:11)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D            14          5,054            01:24:14             39.0%
+    PRD-A             7          3,484            00:58:04             26.9%
+    PRD-E             7          2,656            00:44:16             20.5%
+    PRD-C             4          1,289            00:21:29              9.9%
+    PRD-B             5            488            00:08:08              3.8%
+
+Lot ID: LOT-0023  (total downtime 12,715 sec / 03:31:55)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D            13          5,581            01:33:01             43.9%
+    PRD-B             9          3,347            00:55:47             26.3%
+    PRD-E             9          2,071            00:34:31             16.3%
+    PRD-C             2            890            00:14:50              7.0%
+    PRD-A             4            826            00:13:46              6.5%
+
+Lot ID: LOT-0002  (total downtime 12,099 sec / 03:21:39)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-C             9          3,423            00:57:03             28.3%
+    PRD-B             8          2,850            00:47:30             23.6%
+    PRD-D             6          2,843            00:47:23             23.5%
+    PRD-A             6          2,442            00:40:42             20.2%
+    PRD-E             1            541            00:09:01              4.5%
+
+Lot ID: LOT-0035  (total downtime 12,080 sec / 03:21:20)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A             9          3,541            00:59:01             29.3%
+    PRD-C            12          3,379            00:56:19             28.0%
+    PRD-D             7          2,107            00:35:07             17.4%
+    PRD-E             7          1,720            00:28:40             14.2%
+    PRD-B             9          1,333            00:22:13             11.0%
+
+Lot ID: LOT-0022  (total downtime 11,720 sec / 03:15:20)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E             9          3,563            00:59:23             30.4%
+    PRD-B             7          2,681            00:44:41             22.9%
+    PRD-D             6          2,516            00:41:56             21.5%
+    PRD-A             6          2,282            00:38:02             19.5%
+    PRD-C             5            678            00:11:18              5.8%
+
+Lot ID: LOT-0006  (total downtime 11,435 sec / 03:10:35)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-D             9          3,929            01:05:29             34.4%
+    PRD-E            11          3,745            01:02:25             32.8%
+    PRD-C             6          1,636            00:27:16             14.3%
+    PRD-B             6          1,598            00:26:38             14.0%
+    PRD-A             3            527            00:08:47              4.6%
+
+Lot ID: LOT-0004  (total downtime 11,402 sec / 03:10:02)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-C             7          3,440            00:57:20             30.2%
+    PRD-A             8          2,580            00:43:00             22.6%
+    PRD-E             8          2,286            00:38:06             20.0%
+    PRD-B             8          1,806            00:30:06             15.8%
+    PRD-D             5          1,290            00:21:30             11.3%
+
+Lot ID: LOT-0003  (total downtime 10,984 sec / 03:03:04)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E             7          3,490            00:58:10             31.8%
+    PRD-C            10          2,288            00:38:08             20.8%
+    PRD-D             7          2,266            00:37:46             20.6%
+    PRD-A             4          1,528            00:25:28             13.9%
+    PRD-B             5          1,412            00:23:32             12.9%
+
+Lot ID: LOT-0028  (total downtime 10,884 sec / 03:01:24)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-C             9          3,549            00:59:09             32.6%
+    PRD-B             6          2,151            00:35:51             19.8%
+    PRD-E             6          1,964            00:32:44             18.0%
+    PRD-A             8          1,726            00:28:46             15.9%
+    PRD-D             5          1,494            00:24:54             13.7%
+
+Lot ID: LOT-0010  (total downtime 10,531 sec / 02:55:31)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-C            11          2,939            00:48:59             27.9%
+    PRD-A            10          2,856            00:47:36             27.1%
+    PRD-D             4          2,380            00:39:40             22.6%
+    PRD-B             6          1,435            00:23:55             13.6%
+    PRD-E             3            921            00:15:21              8.7%
+
+Lot ID: LOT-0020  (total downtime 10,367 sec / 02:52:47)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A            10          3,251            00:54:11             31.4%
+    PRD-D             7          2,434            00:40:34             23.5%
+    PRD-E             9          1,804            00:30:04             17.4%
+    PRD-B             8          1,480            00:24:40             14.3%
+    PRD-C             5          1,398            00:23:18             13.5%
+
+Lot ID: LOT-0026  (total downtime 10,304 sec / 02:51:44)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            10          3,982            01:06:22             38.6%
+    PRD-E            12          2,742            00:45:42             26.6%
+    PRD-A             5          2,247            00:37:27             21.8%
+    PRD-C             4          1,188            00:19:48             11.5%
+    PRD-D             2            145            00:02:25              1.4%
+
+Lot ID: LOT-0038  (total downtime 10,296 sec / 02:51:36)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            13          3,500            00:58:20             34.0%
+    PRD-A             6          2,405            00:40:05             23.4%
+    PRD-E            10          1,772            00:29:32             17.2%
+    PRD-C             6          1,485            00:24:45             14.4%
+    PRD-D             3          1,134            00:18:54             11.0%
+
+Lot ID: LOT-0014  (total downtime 9,900 sec / 02:45:00)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-E            10          3,616            01:00:16             36.5%
+    PRD-C             8          2,266            00:37:46             22.9%
+    PRD-B             9          2,201            00:36:41             22.2%
+    PRD-A             5          1,094            00:18:14             11.1%
+    PRD-D             4            723            00:12:03              7.3%
+
+Lot ID: LOT-0001  (total downtime 9,866 sec / 02:44:26)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A             7          2,585            00:43:05             26.2%
+    PRD-D             6          2,239            00:37:19             22.7%
+    PRD-C             6          2,220            00:37:00             22.5%
+    PRD-B             7          1,522            00:25:22             15.4%
+    PRD-E             7          1,300            00:21:40             13.2%
+
+Lot ID: LOT-0017  (total downtime 9,657 sec / 02:40:57)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            10          5,342            01:29:02             55.3%
+    PRD-C             3          2,389            00:39:49             24.7%
+    PRD-E             7          1,505            00:25:05             15.6%
+    PRD-A             3            339            00:05:39              3.5%
+    PRD-D             2             82            00:01:22              0.8%
+
+Lot ID: LOT-0040  (total downtime 9,632 sec / 02:40:32)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B            12          3,761            01:02:41             39.0%
+    PRD-A             5          2,010            00:33:30             20.9%
+    PRD-D             6          1,369            00:22:49             14.2%
+    PRD-C             7          1,316            00:21:56             13.7%
+    PRD-E             3          1,176            00:19:36             12.2%
+
+Lot ID: LOT-0005  (total downtime 8,884 sec / 02:28:04)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-B             8          3,956            01:05:56             44.5%
+    PRD-D             9          2,266            00:37:46             25.5%
+    PRD-E             8          1,776            00:29:36             20.0%
+    PRD-C             5            731            00:12:11              8.2%
+    PRD-A             2            155            00:02:35              1.7%
+
+Lot ID: LOT-0015  (total downtime 8,722 sec / 02:25:22)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A             7          3,114            00:51:54             35.7%
+    PRD-E             7          2,164            00:36:04             24.8%
+    PRD-D             7          2,041            00:34:01             23.4%
+    PRD-B             2            923            00:15:23             10.6%
+    PRD-C             5            480            00:08:00              5.5%
+
+Lot ID: LOT-0039  (total downtime 7,765 sec / 02:09:25)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-C             6          2,395            00:39:55             30.8%
+    PRD-E             7          2,153            00:35:53             27.7%
+    PRD-A            11          1,947            00:32:27             25.1%
+    PRD-B             5            889            00:14:49             11.4%
+    PRD-D             3            381            00:06:21              4.9%
+
+Lot ID: LOT-0037  (total downtime 7,451 sec / 02:04:11)
+    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ------------  -----  -------------  ------------------  ----------------
+    PRD-A             6          2,327            00:38:47             31.2%
+    PRD-B            11          1,628            00:27:08             21.8%
+    PRD-C             4          1,396            00:23:16             18.7%
+    PRD-E             9          1,260            00:21:00             16.9%
+    PRD-D             7            840            00:14:00             11.3%

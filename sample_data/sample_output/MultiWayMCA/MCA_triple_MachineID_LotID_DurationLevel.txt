@@ -1,0 +1,89 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine ID x Lot ID x DurationLevel
+======================================================================
+Variables: Machine ID, Lot ID, DurationLevel   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.425         2.60%                      2.60%
+1              0.406         2.49%                      5.09%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                          dim0   dim1  cos2_dim0  cos2_dim1  quality
+DurationLevel__High      1.087  0.093      0.394      0.003    0.397
+Machine ID__M-101        1.586 -0.013      0.371      0.000    0.372
+DurationLevel__Medium   -0.604  0.756      0.121      0.189    0.310
+Machine ID__M-102       -0.222  1.302      0.007      0.240    0.247
+Lot ID__LOT-0001        -1.179  2.356      0.031      0.125    0.156
+DurationLevel__Low      -0.268 -0.556      0.024      0.104    0.129
+Machine ID__M-103       -0.115 -0.818      0.002      0.098    0.100
+Machine ID__M-201       -0.591 -0.636      0.045      0.053    0.098
+Lot ID__LOT-0003        -0.713 -1.606      0.011      0.058    0.069
+Lot ID__LOT-0012        -1.525 -0.892      0.049      0.017    0.066
+Machine ID__M-303       -0.634  0.184      0.057      0.005    0.062
+Lot ID__LOT-0020         1.402  0.559      0.053      0.008    0.061
+Lot ID__LOT-0016         0.379  1.117      0.005      0.042    0.047
+DurationLevel__Critical -0.217 -0.285      0.016      0.027    0.042
+Lot ID__LOT-0010         0.091 -1.343      0.000      0.042    0.042
+Machine ID__M-301       -0.026 -0.543      0.000      0.040    0.041
+Lot ID__LOT-0034         1.132 -0.364      0.036      0.004    0.040
+Lot ID__LOT-0002        -0.094 -1.340      0.000      0.037    0.037
+Lot ID__LOT-0032        -0.821  0.654      0.022      0.014    0.036
+Lot ID__LOT-0039         0.443  1.137      0.004      0.028    0.032
+Lot ID__LOT-0005        -0.756 -0.888      0.012      0.017    0.030
+Lot ID__LOT-0033         0.874  0.588      0.020      0.009    0.029
+Lot ID__LOT-0035        -0.947  0.133      0.027      0.001    0.028
+Lot ID__LOT-0038         0.226  0.984      0.001      0.025    0.026
+Lot ID__LOT-0024        -0.503  0.893      0.006      0.019    0.024
+Lot ID__LOT-0007         0.488 -0.786      0.007      0.017    0.024
+Lot ID__LOT-0009         0.455  0.680      0.007      0.016    0.024
+Lot ID__LOT-0014        -0.754 -0.603      0.014      0.009    0.023
+Lot ID__LOT-0006        -0.210  0.928      0.001      0.021    0.022
+Lot ID__LOT-0011         0.274 -0.871      0.002      0.019    0.021
+Lot ID__LOT-0008         0.479 -0.728      0.006      0.014    0.020
+Lot ID__LOT-0022         0.929 -0.022      0.019      0.000    0.019
+Machine ID__M-302       -0.246  0.258      0.009      0.010    0.019
+Lot ID__LOT-0018         0.867  0.156      0.018      0.001    0.019
+Lot ID__LOT-0026        -0.167  0.901      0.001      0.018    0.019
+Lot ID__LOT-0030        -0.853  0.090      0.017      0.000    0.018
+Lot ID__LOT-0031         0.772 -0.036      0.017      0.000    0.017
+Lot ID__LOT-0036        -0.638 -0.344      0.012      0.003    0.015
+Machine ID__M-202        0.166  0.213      0.004      0.007    0.011
+Lot ID__LOT-0021        -0.259 -0.531      0.002      0.009    0.011
+Lot ID__LOT-0037        -0.529 -0.313      0.007      0.002    0.010
+Lot ID__LOT-0027        -0.542 -0.356      0.007      0.003    0.009
+Lot ID__LOT-0017         0.519 -0.400      0.005      0.003    0.007
+Lot ID__LOT-0029         0.329  0.336      0.003      0.004    0.007
+Lot ID__LOT-0028         0.217 -0.485      0.001      0.005    0.007
+Lot ID__LOT-0023         0.441 -0.139      0.005      0.000    0.005
+Lot ID__LOT-0013        -0.308 -0.282      0.003      0.002    0.005
+Lot ID__LOT-0019        -0.228 -0.088      0.002      0.000    0.002
+Lot ID__LOT-0015         0.254  0.075      0.001      0.000    0.001
+Lot ID__LOT-0004        -0.137 -0.132      0.000      0.000    0.001
+Lot ID__LOT-0040         0.157  0.122      0.001      0.000    0.001
+Lot ID__LOT-0025        -0.048 -0.113      0.000      0.000    0.000
+
+TOP 5 Machine ID + Lot ID + DurationLevel COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  Lot ID    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  --------  -------------  -----  -------------  ------------------  ----------
+1     M-302       LOT-0032  Critical           4          4,679            01:17:59        0.9%
+2     M-102       LOT-0024  Critical           4          3,947            01:05:47        0.8%
+3     M-202       LOT-0013  Critical           4          3,810            01:03:30        0.8%
+4     M-103       LOT-0012  Critical           3          3,742            01:02:22        0.7%
+5     M-103       LOT-0036  Critical           5          3,706            01:01:46        0.7%
+
+Most associated combination: Machine ID='M-302', Lot ID='LOT-0032', DurationLevel='Critical' -> 4,679 sec (0.9% of total downtime, 4 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A         Category B               Distance (smaller = more associated)
+----  -----------------  -----------------------  ------------------------------------
+1     Lot ID: LOT-0021   DurationLevel: Low                                      0.027
+2     Machine ID: M-202  Lot ID: LOT-0040                                        0.091
+3     Lot ID: LOT-0013   DurationLevel: Critical                                 0.092
+4     Machine ID: M-202  Lot ID: LOT-0015                                        0.163
+5     Machine ID: M-201  Lot ID: LOT-0014                                        0.167

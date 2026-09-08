@@ -1,0 +1,12 @@
+TOP 5 Lot ID + Product Code COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Lot ID    Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  --------  ------------  -----  -------------  ------------------  ----------
+1     LOT-0034  PRD-D            11          6,579            01:49:39        1.3%
+2     LOT-0032  PRD-E            14          6,337            01:45:37        1.3%
+3     LOT-0036  PRD-C            10          6,091            01:41:31        1.2%
+4     LOT-0008  PRD-E             9          5,762            01:36:02        1.1%
+5     LOT-0032  PRD-D            15          5,657            01:34:17        1.1%
+
+Most associated combination: Lot ID='LOT-0034', Product Code='PRD-D' -> 6,579 sec (1.3% of total downtime, 11 events)

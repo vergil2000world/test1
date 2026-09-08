@@ -1,0 +1,57 @@
+CORRESPONDENCE ANALYSIS (CA) - Machine ID  x  ReasonCode
+======================================================================
+Contingency table: 8 x 10 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 54.18, dof = 63, p-value = 0.7779
+  Cramer's V = 0.072  -> negligible association
+  Not statistically significant (p>=0.05) association between Machine ID and ReasonCode.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.013        37.13%                     37.13%
+1              0.010        27.38%                     64.51%
+
+Top 5 most statistically associated Machine ID x ReasonCode cells (largest standardized residuals)
+----------------------------------------
+Rank  Machine ID  ReasonCode      Observed  Expected  Std.Resid  Direction        
+----  ----------  --------------  --------  --------  ---------  -----------------
+1     M-302       Adjustment            10       5.3      +2.05  over-represented 
+2     M-202       PM-Scheduled           4      10.4      -1.98  under-represented
+3     M-101       Changeover            36      48.4      -1.78  under-represented
+4     M-101       Unplanned Stop        10       5.8      +1.75  over-represented 
+5     M-102       Sensor Fault          19      28.0      -1.70  under-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+Machine ID coordinates (CA map)
+----------------------------------------
+                0      1
+Machine ID              
+M-101       0.228  0.038
+M-102       0.031 -0.117
+M-103       0.038  0.047
+M-201       0.100  0.032
+M-202      -0.130  0.200
+M-301      -0.117 -0.006
+M-302      -0.090 -0.121
+M-303      -0.058 -0.071
+
+ReasonCode coordinates (CA map)
+----------------------------------------
+                       0      1
+ReasonCode                     
+Adjustment        -0.332 -0.298
+Changeover        -0.101  0.008
+Jam               -0.022 -0.018
+Material Shortage -0.009  0.046
+Operator Break    -0.025  0.199
+PM-Scheduled       0.264 -0.142
+Power Blip         0.149 -0.169
+Quality Check      0.173 -0.267
+Sensor Fault       0.085  0.128
+Unplanned Stop     0.223 -0.030

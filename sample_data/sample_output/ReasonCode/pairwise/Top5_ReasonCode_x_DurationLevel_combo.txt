@@ -1,0 +1,12 @@
+TOP 5 DurationLevel + ReasonCode COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  DurationLevel  ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  -----------------  -----  -------------  ------------------  ----------
+1     Critical       Changeover           237        168,078            46:41:18       33.2%
+2     Critical       PM-Scheduled          82        104,366            28:59:26       20.6%
+3     High           Changeover           139         57,675            16:01:15       11.4%
+4     High           Material Shortage    101         37,337            10:22:17        7.4%
+5     Medium         Jam                  240         30,971            08:36:11        6.1%
+
+Most associated combination: DurationLevel='Critical', ReasonCode='Changeover' -> 168,078 sec (33.2% of total downtime, 237 events)

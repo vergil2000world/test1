@@ -1,0 +1,95 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine ID x ReasonCode x Lot ID
+======================================================================
+Variables: Machine ID, ReasonCode, Lot ID   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.416         2.27%                      2.27%
+1              0.414         2.26%                      4.53%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                                dim0   dim1  cos2_dim0  cos2_dim1  quality
+Machine ID__M-201             -0.954  1.215      0.119      0.193    0.311
+ReasonCode__PM-Scheduled       0.672  1.647      0.026      0.157    0.183
+Machine ID__M-202             -0.578 -0.958      0.048      0.133    0.182
+ReasonCode__Unplanned Stop     2.213 -0.845      0.151      0.022    0.174
+Machine ID__M-102              1.027 -0.081      0.149      0.001    0.150
+ReasonCode__Power Blip         0.085  1.695      0.000      0.124    0.124
+Lot ID__LOT-0029              -0.126 -1.907      0.000      0.115    0.116
+ReasonCode__Quality Check      2.561  0.138      0.098      0.000    0.098
+ReasonCode__Sensor Fault      -0.646 -0.355      0.074      0.022    0.096
+ReasonCode__Operator Break    -0.315 -1.589      0.004      0.091    0.094
+Lot ID__LOT-0001               1.885 -0.112      0.080      0.000    0.080
+Lot ID__LOT-0033               1.701 -0.168      0.075      0.001    0.076
+Lot ID__LOT-0017               1.362 -1.538      0.031      0.040    0.072
+Lot ID__LOT-0002              -0.721  1.627      0.011      0.054    0.065
+Lot ID__LOT-0020              -0.587 -1.418      0.009      0.054    0.063
+Lot ID__LOT-0037              -1.330 -0.438      0.045      0.005    0.050
+Lot ID__LOT-0004              -1.357  0.233      0.045      0.001    0.047
+Lot ID__LOT-0003              -1.063  0.943      0.025      0.020    0.045
+Machine ID__M-103              0.552  0.042      0.045      0.000    0.045
+Lot ID__LOT-0016              -1.139 -0.093      0.044      0.000    0.044
+ReasonCode__Jam               -0.303 -0.084      0.038      0.003    0.041
+Lot ID__LOT-0014              -1.205 -0.432      0.036      0.005    0.040
+Lot ID__LOT-0034               0.912  0.746      0.023      0.016    0.039
+Lot ID__LOT-0005              -0.177 -1.268      0.001      0.035    0.036
+Lot ID__LOT-0012               0.433  1.121      0.004      0.027    0.030
+Lot ID__LOT-0024               0.944  0.643      0.021      0.010    0.030
+Lot ID__LOT-0025              -0.486  0.797      0.008      0.021    0.029
+Machine ID__M-301             -0.156 -0.385      0.003      0.020    0.024
+Lot ID__LOT-0028              -0.325  0.933      0.002      0.020    0.023
+Lot ID__LOT-0013              -0.884  0.109      0.021      0.000    0.021
+Lot ID__LOT-0009              -0.079 -0.740      0.000      0.019    0.019
+Lot ID__LOT-0035              -0.407 -0.647      0.005      0.013    0.018
+Lot ID__LOT-0015               0.959  0.073      0.018      0.000    0.018
+Lot ID__LOT-0032               0.347  0.644      0.004      0.013    0.017
+ReasonCode__Adjustment         0.775  0.015      0.016      0.000    0.016
+Lot ID__LOT-0039               0.324 -0.790      0.002      0.014    0.016
+Lot ID__LOT-0008               0.653 -0.393      0.011      0.004    0.015
+Lot ID__LOT-0019              -0.533  0.460      0.009      0.007    0.015
+Lot ID__LOT-0018               0.313 -0.698      0.002      0.012    0.014
+Lot ID__LOT-0023               0.178  0.732      0.001      0.014    0.014
+Lot ID__LOT-0038              -0.009  0.568      0.000      0.008    0.008
+Lot ID__LOT-0031               0.395  0.363      0.004      0.004    0.008
+Lot ID__LOT-0011               0.529  0.205      0.007      0.001    0.008
+ReasonCode__Material Shortage  0.248  0.075      0.007      0.001    0.008
+Lot ID__LOT-0007               0.446  0.042      0.006      0.000    0.006
+Lot ID__LOT-0026              -0.048  0.495      0.000      0.006    0.006
+Lot ID__LOT-0021               0.146  0.359      0.001      0.004    0.005
+Machine ID__M-302              0.005  0.155      0.000      0.004    0.004
+Lot ID__LOT-0010               0.106 -0.379      0.000      0.003    0.004
+Lot ID__LOT-0022               0.267 -0.235      0.002      0.001    0.003
+Lot ID__LOT-0027              -0.206  0.237      0.001      0.001    0.002
+Machine ID__M-303             -0.038  0.109      0.000      0.002    0.002
+Lot ID__LOT-0040              -0.252 -0.115      0.001      0.000    0.002
+Lot ID__LOT-0006               0.154  0.198      0.001      0.001    0.002
+ReasonCode__Changeover         0.031 -0.046      0.000      0.001    0.001
+Machine ID__M-101              0.064 -0.014      0.001      0.000    0.001
+Lot ID__LOT-0036              -0.016  0.066      0.000      0.000    0.000
+Lot ID__LOT-0030               0.040 -0.023      0.000      0.000    0.000
+
+TOP 5 Machine ID + ReasonCode + Lot ID COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  ReasonCode    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  ------------  --------  -----  -------------  ------------------  ----------
+1     M-302       PM-Scheduled  LOT-0032      3          4,026            01:07:06        0.8%
+2     M-202       Changeover    LOT-0029      5          3,179            00:52:59        0.6%
+3     M-201       PM-Scheduled  LOT-0034      2          2,971            00:49:31        0.6%
+4     M-102       PM-Scheduled  LOT-0021      2          2,924            00:48:44        0.6%
+5     M-103       PM-Scheduled  LOT-0012      2          2,863            00:47:43        0.6%
+
+Most associated combination: Machine ID='M-302', ReasonCode='PM-Scheduled', Lot ID='LOT-0032' -> 4,026 sec (0.8% of total downtime, 3 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A              Category B              Distance (smaller = more associated)
+----  ----------------------  ----------------------  ------------------------------------
+1     ReasonCode: Changeover  Lot ID: LOT-0030                                       0.025
+2     Machine ID: M-101       Lot ID: LOT-0030                                       0.025
+3     Machine ID: M-101       ReasonCode: Changeover                                 0.046
+4     Machine ID: M-303       Lot ID: LOT-0036                                       0.048
+5     ReasonCode: Jam         Lot ID: LOT-0040                                       0.060

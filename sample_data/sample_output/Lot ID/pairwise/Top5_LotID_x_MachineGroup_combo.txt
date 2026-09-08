@@ -1,0 +1,12 @@
+TOP 5 Lot ID + Machine Group COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Lot ID    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  --------  -------------  -----  -------------  ------------------  ----------
+1     LOT-0032  GroupC            23         12,701            03:31:41        2.5%
+2     LOT-0008  GroupA            19          8,719            02:25:19        1.7%
+3     LOT-0019  GroupC            19          8,381            02:19:41        1.7%
+4     LOT-0036  GroupA            17          8,146            02:15:46        1.6%
+5     LOT-0024  GroupA            12          7,757            02:09:17        1.5%
+
+Most associated combination: Lot ID='LOT-0032', Machine Group='GroupC' -> 12,701 sec (2.5% of total downtime, 23 events)

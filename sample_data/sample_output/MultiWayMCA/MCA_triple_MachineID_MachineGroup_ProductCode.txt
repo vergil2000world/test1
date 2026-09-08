@@ -1,0 +1,53 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine ID x Machine Group x Product Code
+======================================================================
+Variables: Machine ID, Machine Group, Product Code   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.671        15.48%                     15.48%
+1              0.667        15.39%                     30.86%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                        dim0   dim1  cos2_dim0  cos2_dim1  quality
+Machine Group__GroupC  0.396 -1.222      0.095      0.904    0.999
+Machine Group__GroupB  1.267  1.232      0.512      0.485    0.997
+Machine Group__GroupA -1.198  0.428      0.882      0.112    0.995
+Machine ID__M-202      1.269  1.233      0.234      0.221    0.454
+Machine ID__M-201      1.264  1.231      0.208      0.197    0.406
+Machine ID__M-302      0.398 -1.222      0.024      0.227    0.251
+Machine ID__M-103     -1.205  0.427      0.213      0.027    0.240
+Machine ID__M-101     -1.187  0.428      0.208      0.027    0.235
+Machine ID__M-303      0.392 -1.222      0.022      0.213    0.235
+Machine ID__M-102     -1.203  0.428      0.205      0.026    0.231
+Machine ID__M-301      0.398 -1.221      0.022      0.205    0.226
+Product Code__PRD-B    0.243  0.006      0.016      0.000    0.016
+Product Code__PRD-E   -0.233  0.004      0.014      0.000    0.014
+Product Code__PRD-A   -0.028  0.015      0.000      0.000    0.000
+Product Code__PRD-C    0.007 -0.015      0.000      0.000    0.000
+Product Code__PRD-D    0.009 -0.013      0.000      0.000    0.000
+
+TOP 5 Machine ID + Machine Group + Product Code COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  Machine Group  Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  -------------  ------------  -----  -------------  ------------------  ----------
+1     M-103       GroupA         PRD-E            47         16,992            04:43:12        3.4%
+2     M-102       GroupA         PRD-E            51         16,817            04:40:17        3.3%
+3     M-302       GroupC         PRD-B            49         16,276            04:31:16        3.2%
+4     M-201       GroupB         PRD-C            38         16,089            04:28:09        3.2%
+5     M-103       GroupA         PRD-A            39         15,760            04:22:40        3.1%
+
+Most associated combination: Machine ID='M-103', Machine Group='GroupA', Product Code='PRD-E' -> 16,992 sec (3.4% of total downtime, 47 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A         Category B             Distance (smaller = more associated)
+----  -----------------  ---------------------  ------------------------------------
+1     Machine ID: M-302  Machine Group: GroupC                                 0.002
+2     Machine ID: M-301  Machine Group: GroupC                                 0.002
+3     Machine ID: M-202  Machine Group: GroupB                                 0.003
+4     Machine ID: M-201  Machine Group: GroupB                                 0.003
+5     Machine ID: M-303  Machine Group: GroupC                                 0.004

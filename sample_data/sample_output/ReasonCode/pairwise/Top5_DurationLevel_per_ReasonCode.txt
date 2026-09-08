@@ -1,0 +1,67 @@
+TOP 5 DurationLevel PER ReasonCode
+======================================================================
+
+ReasonCode: Changeover  (total downtime 225,753 sec / 62:42:33)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical         237        168,078            46:41:18             74.5%
+    High             139         57,675            16:01:15             25.5%
+
+ReasonCode: PM-Scheduled  (total downtime 104,366 sec / 28:59:26)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          82        104,366            28:59:26            100.0%
+
+ReasonCode: Material Shortage  (total downtime 52,000 sec / 14:26:40)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    High             101         37,337            10:22:17             71.8%
+    Critical          19         10,647            02:57:27             20.5%
+    Medium            30          3,870            01:04:30              7.4%
+    Low                2            146            00:02:26              0.3%
+
+ReasonCode: Jam  (total downtime 50,171 sec / 13:56:11)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Medium           240         30,971            08:36:11             61.7%
+    High              53         11,336            03:08:56             22.6%
+    Low              150          7,864            02:11:04             15.7%
+
+ReasonCode: Unplanned Stop  (total downtime 24,289 sec / 06:44:49)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Critical          24         18,703            05:11:43             77.0%
+    High              16          4,955            01:22:35             20.4%
+    Medium             4            570            00:09:30              2.3%
+    Low                1             61            00:01:01              0.3%
+
+ReasonCode: Operator Break  (total downtime 23,593 sec / 06:33:13)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    High              41         17,445            04:50:45             73.9%
+    Critical          11          6,148            01:42:28             26.1%
+
+ReasonCode: Sensor Fault  (total downtime 14,552 sec / 04:02:32)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Low              155          7,458            02:04:18             51.3%
+    Medium            71          7,094            01:58:14             48.7%
+
+ReasonCode: Adjustment  (total downtime 5,848 sec / 01:37:28)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    High              14          2,851            00:47:31             48.8%
+    Medium            18          2,585            00:43:05             44.2%
+    Low                8            412            00:06:52              7.0%
+
+ReasonCode: Quality Check  (total downtime 4,028 sec / 01:07:08)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    High              11          2,751            00:45:51             68.3%
+    Medium            10          1,199            00:19:59             29.8%
+    Low                1             78            00:01:18              1.9%
+
+ReasonCode: Power Blip  (total downtime 2,000 sec / 00:33:20)
+    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    Low               62          2,000            00:33:20            100.0%

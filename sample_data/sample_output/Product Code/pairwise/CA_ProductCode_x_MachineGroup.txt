@@ -1,0 +1,47 @@
+CORRESPONDENCE ANALYSIS (CA) - Machine Group  x  Product Code
+======================================================================
+Contingency table: 3 x 5 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 9.29, dof = 8, p-value = 0.3182
+  Cramer's V = 0.056  -> negligible association
+  Not statistically significant (p>=0.05) association between Machine Group and Product Code.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.006        99.47%                     99.47%
+1              0.000         0.53%                    100.00%
+
+Top 5 most statistically associated Machine Group x Product Code cells (largest standardized residuals)
+----------------------------------------
+Rank  Machine Group  Product Code  Observed  Expected  Std.Resid  Direction        
+----  -------------  ------------  --------  --------  ---------  -----------------
+1     GroupA         PRD-B              103     120.7      -1.61  under-represented
+2     GroupA         PRD-E              137     119.9      +1.56  over-represented 
+3     GroupB         PRD-B               89      76.7      +1.40  over-represented 
+4     GroupB         PRD-E               65      76.2      -1.29  under-represented
+5     GroupC         PRD-E              113     118.9      -0.54  under-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+Machine Group coordinates (CA map)
+----------------------------------------
+                   0      1
+Machine Group              
+GroupA         0.094 -0.002
+GroupB        -0.100 -0.007
+GroupC        -0.031  0.007
+
+Product Code coordinates (CA map)
+----------------------------------------
+                  0      1
+Product Code              
+PRD-A         0.014 -0.008
+PRD-B        -0.123 -0.003
+PRD-C        -0.004  0.007
+PRD-D        -0.005  0.006
+PRD-E         0.118 -0.002

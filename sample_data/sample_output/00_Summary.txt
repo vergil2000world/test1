@@ -1,0 +1,24 @@
+DOWNTIME CA / MCA ANALYSIS SUMMARY
+======================================================================
+Input file           : /home/user/test1/sample_data/sample_downtime.csv
+Total events (rows)  : 1500
+Total downtime       : 506,600 sec (8,443.3 min / 140.72 hr) = 140:43:20
+Average per event    : 337.7 sec
+
+DurationLevel : quantile bins (q=4) on Duration (sec) -> ['Low', 'Medium', 'High', 'Critical']
+Bin edges (sec): [5.0, 83.0, 171.0, 526.0, 1760.0]
+
+Unique Machine ID    : 8
+Unique Machine Group : 3
+Unique ReasonCode    : 10
+Unique Product Code  : 5
+Unique Lot ID        : 40
+Unique DurationLevel : 4
+
+Variables analyzed: Machine ID, Machine Group, ReasonCode, Product Code, Lot ID, DurationLevel
+
+Output layout:
+  <Variable>/                 descriptive CA + pairwise CA/top-N vs every other variable
+  MultiWayMCA/                3-way MCA for every combination + all-6 MCA
+                              (highlighted: Machine Group + ReasonCode + DurationLevel)
+  pivots/                     duration-sum pivot CSVs for every pair

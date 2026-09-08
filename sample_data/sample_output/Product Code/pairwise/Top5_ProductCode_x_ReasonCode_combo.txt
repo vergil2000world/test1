@@ -1,0 +1,12 @@
+TOP 5 Product Code + ReasonCode COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Product Code  ReasonCode  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ------------  ----------  -----  -------------  ------------------  ----------
+1     PRD-B         Changeover     85         50,140            13:55:40        9.9%
+2     PRD-E         Changeover     81         47,580            13:13:00        9.4%
+3     PRD-C         Changeover     75         46,362            12:52:42        9.2%
+4     PRD-A         Changeover     69         40,837            11:20:37        8.1%
+5     PRD-D         Changeover     66         40,834            11:20:34        8.1%
+
+Most associated combination: Product Code='PRD-B', ReasonCode='Changeover' -> 50,140 sec (9.9% of total downtime, 85 events)

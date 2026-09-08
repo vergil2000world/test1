@@ -1,0 +1,84 @@
+CORRESPONDENCE ANALYSIS (CA) - Lot ID  x  Product Code
+======================================================================
+Contingency table: 40 x 5 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 171.74, dof = 156, p-value = 0.184
+  Cramer's V = 0.169  -> weak association
+  Not statistically significant (p>=0.05) association between Lot ID and Product Code.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.044        38.79%                     38.79%
+1              0.037        32.60%                     71.40%
+
+Top 5 most statistically associated Lot ID x Product Code cells (largest standardized residuals)
+----------------------------------------
+Rank  Lot ID    Product Code  Observed  Expected  Std.Resid  Direction        
+----  --------  ------------  --------  --------  ---------  -----------------
+1     LOT-0025  PRD-D               18       9.4      +2.80  over-represented 
+2     LOT-0011  PRD-D               14       7.3      +2.51  over-represented 
+3     LOT-0030  PRD-A               13       6.9      +2.32  over-represented 
+4     LOT-0025  PRD-B                3      10.1      -2.24  under-represented
+5     LOT-0013  PRD-C               13       7.2      +2.15  over-represented 
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+Lot ID coordinates (CA map)
+----------------------------------------
+              0      1
+Lot ID                
+LOT-0001 -0.027 -0.003
+LOT-0002 -0.179 -0.305
+LOT-0003  0.010 -0.128
+LOT-0004 -0.127  0.006
+LOT-0005  0.189  0.232
+LOT-0006  0.215  0.199
+LOT-0007 -0.130  0.101
+LOT-0008 -0.132  0.099
+LOT-0009  0.091 -0.031
+LOT-0010 -0.278 -0.425
+LOT-0011  0.468 -0.049
+LOT-0012  0.095 -0.101
+LOT-0013 -0.218 -0.212
+LOT-0014 -0.192  0.157
+LOT-0015  0.231 -0.147
+LOT-0016 -0.086 -0.104
+LOT-0017 -0.301  0.459
+LOT-0018  0.153  0.269
+LOT-0019 -0.229 -0.070
+LOT-0020  0.011  0.035
+LOT-0021  0.091  0.103
+LOT-0022  0.019  0.138
+LOT-0023  0.395  0.277
+LOT-0024 -0.038  0.033
+LOT-0025  0.456 -0.303
+LOT-0026 -0.236  0.439
+LOT-0027 -0.016  0.131
+LOT-0028 -0.140 -0.196
+LOT-0029  0.285 -0.159
+LOT-0030 -0.090 -0.205
+LOT-0031 -0.142 -0.030
+LOT-0032  0.414  0.140
+LOT-0033 -0.004 -0.113
+LOT-0034  0.059 -0.195
+LOT-0035 -0.146 -0.172
+LOT-0036 -0.119 -0.023
+LOT-0037 -0.013  0.255
+LOT-0038 -0.294  0.298
+LOT-0039 -0.175 -0.163
+LOT-0040 -0.206  0.020
+
+Product Code coordinates (CA map)
+----------------------------------------
+                  0      1
+Product Code              
+PRD-A        -0.057 -0.189
+PRD-B        -0.199  0.191
+PRD-C        -0.174 -0.233
+PRD-D         0.387 -0.051
+PRD-E         0.046  0.239

@@ -1,0 +1,282 @@
+TOP 5 Machine Group PER Lot ID
+======================================================================
+
+Lot ID: LOT-0032  (total downtime 18,231 sec / 05:03:51)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            23         12,701            03:31:41             69.7%
+    GroupA            16          4,418            01:13:38             24.2%
+    GroupB             8          1,112            00:18:32              6.1%
+
+Lot ID: LOT-0036  (total downtime 17,043 sec / 04:44:03)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            17          8,146            02:15:46             47.8%
+    GroupB            11          4,715            01:18:35             27.7%
+    GroupC            14          4,182            01:09:42             24.5%
+
+Lot ID: LOT-0013  (total downtime 16,945 sec / 04:42:25)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupB            14          7,044            01:57:24             41.6%
+    GroupC            16          5,207            01:26:47             30.7%
+    GroupA             9          4,694            01:18:14             27.7%
+
+Lot ID: LOT-0019  (total downtime 16,680 sec / 04:38:00)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            19          8,381            02:19:41             50.2%
+    GroupA            14          6,061            01:41:01             36.3%
+    GroupB            12          2,238            00:37:18             13.4%
+
+Lot ID: LOT-0034  (total downtime 16,342 sec / 04:32:22)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            17          5,765            01:36:05             35.3%
+    GroupB             8          5,432            01:30:32             33.2%
+    GroupC            16          5,145            01:25:45             31.5%
+
+Lot ID: LOT-0021  (total downtime 16,208 sec / 04:30:08)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            21          7,301            02:01:41             45.0%
+    GroupA            15          6,012            01:40:12             37.1%
+    GroupB             8          2,895            00:48:15             17.9%
+
+Lot ID: LOT-0008  (total downtime 15,930 sec / 04:25:30)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            19          8,719            02:25:19             54.7%
+    GroupC            11          3,665            01:01:05             23.0%
+    GroupB             9          3,546            00:59:06             22.3%
+
+Lot ID: LOT-0031  (total downtime 15,857 sec / 04:24:17)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            18          7,151            01:59:11             45.1%
+    GroupA            16          6,207            01:43:27             39.1%
+    GroupB             8          2,499            00:41:39             15.8%
+
+Lot ID: LOT-0024  (total downtime 15,451 sec / 04:17:31)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            12          7,757            02:09:17             50.2%
+    GroupC            14          4,719            01:18:39             30.5%
+    GroupB             8          2,975            00:49:35             19.3%
+
+Lot ID: LOT-0016  (total downtime 15,280 sec / 04:14:40)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            16          7,429            02:03:49             48.6%
+    GroupB            17          5,355            01:29:15             35.0%
+    GroupA            16          2,496            00:41:36             16.3%
+
+Lot ID: LOT-0009  (total downtime 14,347 sec / 03:59:07)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            20          6,326            01:45:26             44.1%
+    GroupC            19          5,162            01:26:02             36.0%
+    GroupB            12          2,859            00:47:39             19.9%
+
+Lot ID: LOT-0012  (total downtime 14,298 sec / 03:58:18)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            14          7,659            02:07:39             53.6%
+    GroupB             7          4,897            01:21:37             34.2%
+    GroupC            10          1,742            00:29:02             12.2%
+
+Lot ID: LOT-0033  (total downtime 13,995 sec / 03:53:15)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            19          7,501            02:05:01             53.6%
+    GroupC            11          4,074            01:07:54             29.1%
+    GroupB             8          2,420            00:40:20             17.3%
+
+Lot ID: LOT-0025  (total downtime 13,786 sec / 03:49:46)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            18          6,090            01:41:30             44.2%
+    GroupC            17          3,934            01:05:34             28.5%
+    GroupB            13          3,762            01:02:42             27.3%
+
+Lot ID: LOT-0030  (total downtime 13,459 sec / 03:44:19)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            15          6,779            01:52:59             50.4%
+    GroupA             9          3,527            00:58:47             26.2%
+    GroupB            11          3,153            00:52:33             23.4%
+
+Lot ID: LOT-0007  (total downtime 13,393 sec / 03:43:13)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            19          6,438            01:47:18             48.1%
+    GroupC            12          3,967            01:06:07             29.6%
+    GroupB            10          2,988            00:49:48             22.3%
+
+Lot ID: LOT-0029  (total downtime 13,362 sec / 03:42:42)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            19          5,658            01:34:18             42.3%
+    GroupB            10          4,323            01:12:03             32.4%
+    GroupA            17          3,381            00:56:21             25.3%
+
+Lot ID: LOT-0018  (total downtime 13,253 sec / 03:40:53)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            13          6,220            01:43:40             46.9%
+    GroupC            16          5,453            01:30:53             41.1%
+    GroupB             7          1,580            00:26:20             11.9%
+
+Lot ID: LOT-0027  (total downtime 13,075 sec / 03:37:55)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            12          7,204            02:00:04             55.1%
+    GroupC            13          3,204            00:53:24             24.5%
+    GroupB             8          2,667            00:44:27             20.4%
+
+Lot ID: LOT-0011  (total downtime 12,971 sec / 03:36:11)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            15          5,946            01:39:06             45.8%
+    GroupA            17          5,942            01:39:02             45.8%
+    GroupB             5          1,083            00:18:03              8.3%
+
+Lot ID: LOT-0023  (total downtime 12,715 sec / 03:31:55)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            17          6,094            01:41:34             47.9%
+    GroupC            13          4,018            01:06:58             31.6%
+    GroupB             7          2,603            00:43:23             20.5%
+
+Lot ID: LOT-0002  (total downtime 12,099 sec / 03:21:39)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            10          5,094            01:24:54             42.1%
+    GroupC             9          3,573            00:59:33             29.5%
+    GroupB            11          3,432            00:57:12             28.4%
+
+Lot ID: LOT-0035  (total downtime 12,080 sec / 03:21:20)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            20          6,139            01:42:19             50.8%
+    GroupB            13          3,837            01:03:57             31.8%
+    GroupA            11          2,104            00:35:04             17.4%
+
+Lot ID: LOT-0022  (total downtime 11,720 sec / 03:15:20)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            16          7,723            02:08:43             65.9%
+    GroupB             8          2,688            00:44:48             22.9%
+    GroupC             9          1,309            00:21:49             11.2%
+
+Lot ID: LOT-0006  (total downtime 11,435 sec / 03:10:35)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            15          4,934            01:22:14             43.1%
+    GroupC             9          3,890            01:04:50             34.0%
+    GroupB            11          2,611            00:43:31             22.8%
+
+Lot ID: LOT-0004  (total downtime 11,402 sec / 03:10:02)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupB            14          4,949            01:22:29             43.4%
+    GroupA            12          3,818            01:03:38             33.5%
+    GroupC            10          2,635            00:43:55             23.1%
+
+Lot ID: LOT-0003  (total downtime 10,984 sec / 03:03:04)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            14          5,461            01:31:01             49.7%
+    GroupA             9          2,911            00:48:31             26.5%
+    GroupB            10          2,612            00:43:32             23.8%
+
+Lot ID: LOT-0028  (total downtime 10,884 sec / 03:01:24)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            13          4,505            01:15:05             41.4%
+    GroupB            10          3,994            01:06:34             36.7%
+    GroupA            11          2,385            00:39:45             21.9%
+
+Lot ID: LOT-0010  (total downtime 10,531 sec / 02:55:31)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            10          5,062            01:24:22             48.1%
+    GroupC            19          4,139            01:08:59             39.3%
+    GroupB             5          1,330            00:22:10             12.6%
+
+Lot ID: LOT-0020  (total downtime 10,367 sec / 02:52:47)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            16          4,125            01:08:45             39.8%
+    GroupB             9          3,189            00:53:09             30.8%
+    GroupC            14          3,053            00:50:53             29.4%
+
+Lot ID: LOT-0026  (total downtime 10,304 sec / 02:51:44)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            15          4,377            01:12:57             42.5%
+    GroupB             9          3,251            00:54:11             31.6%
+    GroupC             9          2,676            00:44:36             26.0%
+
+Lot ID: LOT-0038  (total downtime 10,296 sec / 02:51:36)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            13          4,453            01:14:13             43.2%
+    GroupA            16          4,315            01:11:55             41.9%
+    GroupB             9          1,528            00:25:28             14.8%
+
+Lot ID: LOT-0014  (total downtime 9,900 sec / 02:45:00)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            16          5,484            01:31:24             55.4%
+    GroupA            10          2,908            00:48:28             29.4%
+    GroupB            10          1,508            00:25:08             15.2%
+
+Lot ID: LOT-0001  (total downtime 9,866 sec / 02:44:26)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            16          4,483            01:14:43             45.4%
+    GroupC            14          4,031            01:07:11             40.9%
+    GroupB             3          1,352            00:22:32             13.7%
+
+Lot ID: LOT-0017  (total downtime 9,657 sec / 02:40:57)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA             9          4,257            01:10:57             44.1%
+    GroupC             9          3,764            01:02:44             39.0%
+    GroupB             7          1,636            00:27:16             16.9%
+
+Lot ID: LOT-0040  (total downtime 9,632 sec / 02:40:32)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            14          3,947            01:05:47             41.0%
+    GroupA            13          3,123            00:52:03             32.4%
+    GroupB             6          2,562            00:42:42             26.6%
+
+Lot ID: LOT-0005  (total downtime 8,884 sec / 02:28:04)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            10          4,001            01:06:41             45.0%
+    GroupA            16          3,340            00:55:40             37.6%
+    GroupB             6          1,543            00:25:43             17.4%
+
+Lot ID: LOT-0015  (total downtime 8,722 sec / 02:25:22)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            14          4,147            01:09:07             47.5%
+    GroupC            10          3,008            00:50:08             34.5%
+    GroupB             4          1,567            00:26:07             18.0%
+
+Lot ID: LOT-0039  (total downtime 7,765 sec / 02:09:25)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupA            16          3,599            00:59:59             46.3%
+    GroupC             9          2,123            00:35:23             27.3%
+    GroupB             7          2,043            00:34:03             26.3%
+
+Lot ID: LOT-0037  (total downtime 7,451 sec / 02:04:11)
+    Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -------------  -----  -------------  ------------------  ----------------
+    GroupC            17          3,967            01:06:07             53.2%
+    GroupA            10          1,945            00:32:25             26.1%
+    GroupB            10          1,539            00:25:39             20.7%

@@ -1,0 +1,107 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine ID x Machine Group x ReasonCode x Product Code x Lot ID x DurationLevel
+======================================================================
+Variables: Machine ID, Machine Group, ReasonCode, Product Code, Lot ID, DurationLevel   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.354         3.32%                      3.32%
+1              0.343         3.21%                      6.53%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                                dim0   dim1  cos2_dim0  cos2_dim1  quality
+Machine Group__GroupB         -0.850  1.476      0.230      0.696    0.926
+Machine Group__GroupC         -0.606 -1.077      0.222      0.704    0.926
+Machine Group__GroupA          1.140  0.129      0.799      0.010    0.810
+Machine ID__M-202             -0.794  1.471      0.091      0.314    0.405
+Machine ID__M-201             -0.911  1.482      0.108      0.286    0.395
+Machine ID__M-302             -0.587 -1.087      0.052      0.180    0.232
+Machine ID__M-303             -0.640 -1.083      0.058      0.167    0.225
+Machine ID__M-101              1.162  0.178      0.199      0.005    0.204
+Machine ID__M-301             -0.590 -1.061      0.048      0.155    0.202
+Machine ID__M-103              1.136  0.115      0.189      0.002    0.191
+Machine ID__M-102              1.123  0.094      0.179      0.001    0.180
+DurationLevel__Low            -0.488  0.075      0.080      0.002    0.082
+DurationLevel__High            0.452  0.045      0.068      0.001    0.069
+DurationLevel__Critical        0.451  0.012      0.067      0.000    0.067
+DurationLevel__Medium         -0.410 -0.134      0.056      0.006    0.061
+ReasonCode__Jam               -0.353 -0.053      0.052      0.001    0.054
+ReasonCode__Sensor Fault      -0.474  0.198      0.040      0.007    0.047
+ReasonCode__Changeover         0.335  0.010      0.037      0.000    0.037
+ReasonCode__PM-Scheduled       0.695  0.004      0.028      0.000    0.028
+ReasonCode__Adjustment        -0.488 -0.828      0.007      0.019    0.025
+ReasonCode__Unplanned Stop     0.843 -0.160      0.022      0.001    0.023
+ReasonCode__Operator Break     0.612  0.305      0.013      0.003    0.017
+Product Code__PRD-B           -0.237  0.051      0.015      0.001    0.016
+ReasonCode__Quality Check      0.901 -0.374      0.012      0.002    0.014
+Product Code__PRD-E            0.209 -0.061      0.012      0.001    0.013
+Lot ID__LOT-0010              -0.346 -0.642      0.003      0.010    0.012
+Lot ID__LOT-0037              -0.670 -0.096      0.011      0.000    0.012
+Lot ID__LOT-0035              -0.610 -0.043      0.011      0.000    0.011
+Lot ID__LOT-0004              -0.268  0.617      0.002      0.009    0.011
+Lot ID__LOT-0001               0.416 -0.535      0.004      0.006    0.010
+Lot ID__LOT-0033               0.599  0.106      0.009      0.000    0.010
+Lot ID__LOT-0008               0.530  0.208      0.008      0.001    0.009
+Lot ID__LOT-0016              -0.300  0.375      0.003      0.005    0.008
+Lot ID__LOT-0032              -0.077 -0.482      0.000      0.008    0.008
+Lot ID__LOT-0011               0.431 -0.330      0.005      0.003    0.007
+Lot ID__LOT-0002              -0.184  0.539      0.001      0.006    0.007
+Lot ID__LOT-0014              -0.494 -0.025      0.006      0.000    0.006
+Lot ID__LOT-0013              -0.387  0.230      0.004      0.001    0.005
+Lot ID__LOT-0006               0.104  0.462      0.000      0.005    0.005
+Lot ID__LOT-0022               0.396  0.267      0.004      0.002    0.005
+ReasonCode__Material Shortage  0.197  0.055      0.004      0.000    0.005
+Lot ID__LOT-0021              -0.116 -0.375      0.000      0.004    0.005
+Lot ID__LOT-0034               0.353 -0.198      0.004      0.001    0.005
+Lot ID__LOT-0015               0.390 -0.268      0.003      0.001    0.004
+ReasonCode__Power Blip        -0.307 -0.014      0.004      0.000    0.004
+Lot ID__LOT-0003              -0.395  0.065      0.004      0.000    0.004
+Lot ID__LOT-0007               0.294  0.190      0.002      0.001    0.003
+Lot ID__LOT-0031               0.201 -0.240      0.001      0.002    0.003
+Lot ID__LOT-0018               0.102 -0.297      0.000      0.002    0.002
+Lot ID__LOT-0039               0.257  0.168      0.001      0.001    0.002
+Lot ID__LOT-0025              -0.166  0.163      0.001      0.001    0.002
+Lot ID__LOT-0026               0.095  0.255      0.000      0.001    0.002
+Lot ID__LOT-0005               0.254  0.054      0.001      0.000    0.001
+Lot ID__LOT-0040              -0.129 -0.219      0.000      0.001    0.001
+Lot ID__LOT-0019              -0.212 -0.040      0.001      0.000    0.001
+Lot ID__LOT-0023               0.222 -0.084      0.001      0.000    0.001
+Lot ID__LOT-0030              -0.236  0.033      0.001      0.000    0.001
+Lot ID__LOT-0036               0.139  0.165      0.001      0.001    0.001
+Lot ID__LOT-0028              -0.203  0.116      0.001      0.000    0.001
+Lot ID__LOT-0012               0.208  0.066      0.001      0.000    0.001
+Product Code__PRD-A            0.056  0.028      0.001      0.000    0.001
+Lot ID__LOT-0024               0.119 -0.126      0.000      0.000    0.001
+Product Code__PRD-C           -0.045  0.001      0.000      0.000    0.000
+Lot ID__LOT-0020               0.102  0.070      0.000      0.000    0.000
+Lot ID__LOT-0017               0.100  0.094      0.000      0.000    0.000
+Lot ID__LOT-0029              -0.017 -0.094      0.000      0.000    0.000
+Product Code__PRD-D            0.018 -0.019      0.000      0.000    0.000
+Lot ID__LOT-0027              -0.078 -0.017      0.000      0.000    0.000
+Lot ID__LOT-0038              -0.044  0.020      0.000      0.000    0.000
+Lot ID__LOT-0009               0.001 -0.022      0.000      0.000    0.000
+
+TOP 5 Machine ID + Machine Group + ReasonCode + Product Code + Lot ID + DurationLevel COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  Machine Group  ReasonCode    Product Code  Lot ID    DurationLevel  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  -------------  ------------  ------------  --------  -------------  -----  -------------  ------------------  ----------
+1     M-201       GroupB         PM-Scheduled  PRD-D         LOT-0034  Critical           2          2,971            00:49:31        0.6%
+2     M-201       GroupB         PM-Scheduled  PRD-C         LOT-0012  Critical           2          2,711            00:45:11        0.5%
+3     M-302       GroupC         PM-Scheduled  PRD-E         LOT-0032  Critical           2          2,371            00:39:31        0.5%
+4     M-201       GroupB         PM-Scheduled  PRD-C         LOT-0002  Critical           2          2,255            00:37:35        0.4%
+5     M-201       GroupB         PM-Scheduled  PRD-C         LOT-0004  Critical           2          2,005            00:33:25        0.4%
+
+Most associated combination: Machine ID='M-201', Machine Group='GroupB', ReasonCode='PM-Scheduled', Product Code='PRD-D', Lot ID='LOT-0034', DurationLevel='Critical' -> 2,971 sec (0.6% of total downtime, 2 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A                     Category B             Distance (smaller = more associated)
+----  -----------------------------  ---------------------  ------------------------------------
+1     Machine ID: M-103              Machine Group: GroupA                                 0.015
+2     ReasonCode: Material Shortage  Lot ID: LOT-0012                                      0.016
+3     Product Code: PRD-D            Lot ID: LOT-0009                                      0.017
+4     Product Code: PRD-B            Lot ID: LOT-0030                                      0.017
+5     Product Code: PRD-C            Lot ID: LOT-0038                                      0.019

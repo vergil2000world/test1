@@ -1,0 +1,52 @@
+CORRESPONDENCE ANALYSIS (CA) - Machine ID  x  Product Code
+======================================================================
+Contingency table: 8 x 5 categories, N = 1500 events
+
+Chi-square test of association
+----------------------------------------
+  chi2 = 24.82, dof = 28, p-value = 0.6378
+  Cramer's V = 0.064  -> negligible association
+  Not statistically significant (p>=0.05) association between Machine ID and Product Code.
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.008        47.41%                     47.41%
+1              0.005        30.98%                     78.39%
+
+Top 5 most statistically associated Machine ID x Product Code cells (largest standardized residuals)
+----------------------------------------
+Rank  Machine ID  Product Code  Observed  Expected  Std.Resid  Direction        
+----  ----------  ------------  --------  --------  ---------  -----------------
+1     M-102       PRD-E               51      39.1      +1.91  over-represented 
+2     M-202       PRD-B               51      40.2      +1.71  over-represented 
+3     M-103       PRD-B               30      40.6      -1.66  under-represented
+4     M-201       PRD-E               29      36.3      -1.22  under-represented
+5     M-302       PRD-A               32      39.1      -1.13  under-represented
+
+(A large positive standardized residual means that combination occurs far more often
+ than chance would predict -> the two categories are strongly associated.)
+
+Machine ID coordinates (CA map)
+----------------------------------------
+                0      1
+Machine ID              
+M-101       0.001 -0.045
+M-102       0.123  0.101
+M-103       0.148 -0.036
+M-201      -0.062 -0.091
+M-202      -0.128  0.083
+M-301      -0.065 -0.035
+M-302      -0.032  0.081
+M-303       0.009 -0.068
+
+Product Code coordinates (CA map)
+----------------------------------------
+                  0      1
+Product Code              
+PRD-A        -0.008 -0.031
+PRD-B        -0.134  0.075
+PRD-C         0.044 -0.082
+PRD-D        -0.028 -0.067
+PRD-E         0.130  0.088

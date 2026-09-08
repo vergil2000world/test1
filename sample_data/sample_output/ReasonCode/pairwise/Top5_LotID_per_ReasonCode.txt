@@ -1,0 +1,92 @@
+TOP 5 Lot ID PER ReasonCode
+======================================================================
+
+ReasonCode: Changeover  (total downtime 225,753 sec / 62:42:33)
+    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------  -----  -------------  ------------------  ----------------
+    LOT-0013     17         11,563            03:12:43              5.1%
+    LOT-0008     15          9,066            02:31:06              4.0%
+    LOT-0007     14          8,601            02:23:21              3.8%
+    LOT-0036     14          8,491            02:21:31              3.8%
+    LOT-0003     11          7,603            02:06:43              3.4%
+
+ReasonCode: PM-Scheduled  (total downtime 104,366 sec / 28:59:26)
+    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------  -----  -------------  ------------------  ----------------
+    LOT-0012      5          7,273            02:01:13              7.0%
+    LOT-0032      5          6,227            01:43:47              6.0%
+    LOT-0034      5          5,880            01:38:00              5.6%
+    LOT-0019      4          5,671            01:34:31              5.4%
+    LOT-0024      5          5,426            01:30:26              5.2%
+
+ReasonCode: Material Shortage  (total downtime 52,000 sec / 14:26:40)
+    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------  -----  -------------  ------------------  ----------------
+    LOT-0031      8          2,489            00:41:29              4.8%
+    LOT-0028      6          2,354            00:39:14              4.5%
+    LOT-0021      5          2,303            00:38:23              4.4%
+    LOT-0033      6          2,247            00:37:27              4.3%
+    LOT-0006      7          2,158            00:35:58              4.2%
+
+ReasonCode: Jam  (total downtime 50,171 sec / 13:56:11)
+    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------  -----  -------------  ------------------  ----------------
+    LOT-0016     22          2,749            00:45:49              5.5%
+    LOT-0038     14          2,096            00:34:56              4.2%
+    LOT-0023     15          1,890            00:31:30              3.8%
+    LOT-0018     13          1,883            00:31:23              3.8%
+    LOT-0020     13          1,802            00:30:02              3.6%
+
+ReasonCode: Unplanned Stop  (total downtime 24,289 sec / 06:44:49)
+    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------  -----  -------------  ------------------  ----------------
+    LOT-0017      3          1,734            00:28:54              7.1%
+    LOT-0033      3          1,605            00:26:45              6.6%
+    LOT-0021      1          1,573            00:26:13              6.5%
+    LOT-0018      3          1,536            00:25:36              6.3%
+    LOT-0009      3          1,523            00:25:23              6.3%
+
+ReasonCode: Operator Break  (total downtime 23,593 sec / 06:33:13)
+    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------  -----  -------------  ------------------  ----------------
+    LOT-0029      5          2,321            00:38:41              9.8%
+    LOT-0005      3          1,649            00:27:29              7.0%
+    LOT-0003      3          1,472            00:24:32              6.2%
+    LOT-0019      3          1,208            00:20:08              5.1%
+    LOT-0009      3          1,171            00:19:31              5.0%
+
+ReasonCode: Sensor Fault  (total downtime 14,552 sec / 04:02:32)
+    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------  -----  -------------  ------------------  ----------------
+    LOT-0025     13          1,006            00:16:46              6.9%
+    LOT-0035     11            791            00:13:11              5.4%
+    LOT-0029     12            725            00:12:05              5.0%
+    LOT-0037      9            645            00:10:45              4.4%
+    LOT-0005      8            592            00:09:52              4.1%
+
+ReasonCode: Adjustment  (total downtime 5,848 sec / 01:37:28)
+    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------  -----  -------------  ------------------  ----------------
+    LOT-0009      3            595            00:09:55             10.2%
+    LOT-0026      3            509            00:08:29              8.7%
+    LOT-0010      3            467            00:07:47              8.0%
+    LOT-0013      2            407            00:06:47              7.0%
+    LOT-0038      2            372            00:06:12              6.4%
+
+ReasonCode: Quality Check  (total downtime 4,028 sec / 01:07:08)
+    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------  -----  -------------  ------------------  ----------------
+    LOT-0034      3            685            00:11:25             17.0%
+    LOT-0011      3            513            00:08:33             12.7%
+    LOT-0031      2            328            00:05:28              8.1%
+    LOT-0016      1            285            00:04:45              7.1%
+    LOT-0033      1            277            00:04:37              6.9%
+
+ReasonCode: Power Blip  (total downtime 2,000 sec / 00:33:20)
+    Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    --------  -----  -------------  ------------------  ----------------
+    LOT-0021      4            182            00:03:02              9.1%
+    LOT-0003      4            168            00:02:48              8.4%
+    LOT-0032      5            152            00:02:32              7.6%
+    LOT-0025      5            134            00:02:14              6.7%
+    LOT-0007      3            113            00:01:53              5.7%

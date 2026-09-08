@@ -1,0 +1,12 @@
+TOP 5 DurationLevel + Lot ID COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  DurationLevel  Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  --------  -----  -------------  ------------------  ----------
+1     Critical       LOT-0032     14         13,041            03:37:21        2.6%
+2     Critical       LOT-0013     16         12,547            03:29:07        2.5%
+3     Critical       LOT-0024     15         12,493            03:28:13        2.5%
+4     Critical       LOT-0008     15         11,897            03:18:17        2.3%
+5     Critical       LOT-0036     14         11,826            03:17:06        2.3%
+
+Most associated combination: DurationLevel='Critical', Lot ID='LOT-0032' -> 13,041 sec (2.6% of total downtime, 14 events)

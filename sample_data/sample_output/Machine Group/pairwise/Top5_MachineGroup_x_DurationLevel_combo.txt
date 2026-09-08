@@ -1,0 +1,12 @@
+TOP 5 DurationLevel + Machine Group COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  DurationLevel  Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  -------------  -----  -------------  ------------------  ----------
+1     Critical       GroupA           145        122,885            34:08:05       24.3%
+2     Critical       GroupC           139        113,244            31:27:24       22.4%
+3     Critical       GroupB            89         71,813            19:56:53       14.2%
+4     High           GroupA           167         56,358            15:39:18       11.1%
+5     High           GroupC           125         48,267            13:24:27        9.5%
+
+Most associated combination: DurationLevel='Critical', Machine Group='GroupA' -> 122,885 sec (24.3% of total downtime, 145 events)

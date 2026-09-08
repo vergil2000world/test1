@@ -1,0 +1,88 @@
+MULTIPLE CORRESPONDENCE ANALYSIS (MCA) - Machine ID x Machine Group x Lot ID
+======================================================================
+Variables: Machine ID, Machine Group, Lot ID   N = 1500 events
+
+Eigenvalues / explained inertia
+----------------------------------------
+          eigenvalue % of variance % of variance (cumulative)
+component                                                    
+0              0.683         4.27%                      4.27%
+1              0.679         4.25%                      8.51%
+
+Category coordinates & quality of representation (cos2), best-represented first
+----------------------------------------
+                        dim0   dim1  cos2_dim0  cos2_dim1  quality
+Machine Group__GroupC  0.476 -1.181      0.137      0.845    0.982
+Machine Group__GroupB  1.170  1.305      0.437      0.544    0.981
+Machine Group__GroupA -1.215  0.341      0.908      0.071    0.979
+Machine ID__M-202      1.138  1.301      0.188      0.245    0.433
+Machine ID__M-201      1.205  1.311      0.189      0.224    0.413
+Machine ID__M-302      0.479 -1.180      0.035      0.212    0.247
+Machine ID__M-103     -1.221  0.326      0.219      0.016    0.235
+Machine ID__M-303      0.480 -1.189      0.033      0.201    0.234
+Machine ID__M-102     -1.229  0.339      0.214      0.016    0.230
+Machine ID__M-101     -1.195  0.357      0.211      0.019    0.230
+Machine ID__M-301      0.467 -1.174      0.030      0.189    0.219
+Lot ID__LOT-0010       0.153 -0.710      0.001      0.012    0.012
+Lot ID__LOT-0013       0.642  0.122      0.011      0.000    0.011
+Lot ID__LOT-0004       0.349  0.566      0.003      0.008    0.011
+Lot ID__LOT-0001      -0.537 -0.422      0.006      0.004    0.011
+Lot ID__LOT-0035       0.488 -0.127      0.007      0.000    0.008
+Lot ID__LOT-0016       0.316  0.346      0.003      0.004    0.007
+Lot ID__LOT-0032       0.033 -0.462      0.000      0.007    0.007
+Lot ID__LOT-0002       0.323  0.457      0.002      0.004    0.006
+Lot ID__LOT-0011      -0.394 -0.282      0.004      0.002    0.006
+Lot ID__LOT-0030       0.493 -0.016      0.006      0.000    0.006
+Lot ID__LOT-0033      -0.428  0.198      0.005      0.001    0.006
+Lot ID__LOT-0006      -0.061  0.487      0.000      0.006    0.006
+Lot ID__LOT-0015      -0.518 -0.124      0.005      0.000    0.005
+Lot ID__LOT-0008      -0.361  0.258      0.003      0.002    0.005
+Lot ID__LOT-0021       0.048 -0.406      0.000      0.005    0.005
+Lot ID__LOT-0039      -0.415  0.241      0.004      0.001    0.005
+Lot ID__LOT-0005      -0.461  0.088      0.005      0.000    0.005
+Lot ID__LOT-0037       0.392 -0.187      0.004      0.001    0.005
+Lot ID__LOT-0022      -0.333  0.311      0.002      0.002    0.005
+Lot ID__LOT-0003       0.436 -0.022      0.004      0.000    0.004
+Lot ID__LOT-0014       0.384 -0.129      0.004      0.000    0.004
+Lot ID__LOT-0026      -0.200  0.363      0.001      0.003    0.004
+Lot ID__LOT-0007      -0.265  0.250      0.002      0.002    0.004
+Lot ID__LOT-0023      -0.322 -0.020      0.003      0.000    0.003
+Lot ID__LOT-0019       0.262 -0.084      0.002      0.000    0.002
+Lot ID__LOT-0018      -0.001 -0.286      0.000      0.002    0.002
+Lot ID__LOT-0031      -0.068 -0.246      0.000      0.002    0.002
+Lot ID__LOT-0040      -0.120 -0.247      0.000      0.001    0.002
+Lot ID__LOT-0028       0.257  0.084      0.002      0.000    0.002
+Lot ID__LOT-0012      -0.249  0.124      0.001      0.000    0.002
+Lot ID__LOT-0034      -0.170 -0.124      0.001      0.000    0.001
+Lot ID__LOT-0036      -0.056  0.163      0.000      0.001    0.001
+Lot ID__LOT-0029      -0.003 -0.152      0.000      0.001    0.001
+Lot ID__LOT-0038      -0.135  0.096      0.000      0.000    0.001
+Lot ID__LOT-0025       0.057  0.121      0.000      0.000    0.001
+Lot ID__LOT-0017       0.112  0.123      0.000      0.000    0.000
+Lot ID__LOT-0024       0.079 -0.115      0.000      0.000    0.000
+Lot ID__LOT-0020      -0.116  0.034      0.000      0.000    0.000
+Lot ID__LOT-0027       0.057 -0.050      0.000      0.000    0.000
+Lot ID__LOT-0009      -0.048  0.002      0.000      0.000    0.000
+
+TOP 5 Machine ID + Machine Group + Lot ID COMBINATIONS (by total downtime)
+======================================================================
+
+Rank  Machine ID  Machine Group  Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  -------------  --------  -----  -------------  ------------------  ----------
+1     M-302       GroupC         LOT-0032      9          6,021            01:40:21        1.2%
+2     M-103       GroupA         LOT-0012     10          5,103            01:25:03        1.0%
+3     M-103       GroupA         LOT-0036      9          4,630            01:17:10        0.9%
+4     M-201       GroupB         LOT-0012      5          4,042            01:07:22        0.8%
+5     M-102       GroupA         LOT-0024      5          4,038            01:07:18        0.8%
+
+Most associated combination: Machine ID='M-302', Machine Group='GroupC', Lot ID='LOT-0032' -> 6,021 sec (1.2% of total downtime, 9 events)
+
+Top 5 closest cross-variable category pairs in the MCA map (most associated)
+----------------------------------------
+Rank  Category A         Category B             Distance (smaller = more associated)
+----  -----------------  ---------------------  ------------------------------------
+1     Machine ID: M-302  Machine Group: GroupC                                 0.004
+2     Machine ID: M-303  Machine Group: GroupC                                 0.009
+3     Machine ID: M-301  Machine Group: GroupC                                 0.011
+4     Machine ID: M-102  Machine Group: GroupA                                 0.014
+5     Machine ID: M-103  Machine Group: GroupA                                 0.016
