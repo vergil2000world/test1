@@ -42,6 +42,24 @@ Rank  Machine ID  Machine Group  Product Code  Count  Duration(sec)  Duration(hh
 
 Most associated combination: Machine ID='M-103', Machine Group='GroupA', Product Code='PRD-E' -> 16,992 sec (3.4% of total downtime, 47 events)
 
+LIFT ANALYSIS - Machine ID + Machine Group + Product Code (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Machine ID  Machine Group  Product Code  Count  Support %  Expected Count   Lift
+----  ----------  -------------  ------------  -----  ---------  --------------  -----
+1     M-202       GroupB         PRD-B            51      3.40%             9.7  5.25x
+2     M-201       GroupB         PRD-C            38      2.53%             7.8  4.90x
+3     M-201       GroupB         PRD-D            37      2.47%             8.2  4.51x
+4     M-202       GroupB         PRD-A            40      2.67%             9.1  4.41x
+5     M-201       GroupB         PRD-B            38      2.53%             8.8  4.29x
+
+Strongest lift: Machine ID='M-202', Machine Group='GroupB', Product Code='PRD-B' -> occurs 5.25x more often than chance would predict (51 events observed vs ~9.7 expected).
+
 Top 5 closest cross-variable category pairs in the MCA map (most associated)
 ----------------------------------------
 Rank  Category A         Category B             Distance (smaller = more associated)

@@ -1,0 +1,17 @@
+LIFT ANALYSIS - Machine Group + Product Code (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Machine Group  Product Code  Count  Support %  Expected Count   Lift
+----  -------------  ------------  -----  ---------  --------------  -----
+1     GroupB         PRD-B            89      5.93%            76.7  1.16x
+2     GroupA         PRD-E           137      9.13%           119.9  1.14x
+3     GroupC         PRD-B           125      8.33%           119.6  1.05x
+4     GroupA         PRD-A           115      7.67%           112.7  1.02x
+5     GroupC         PRD-C           106      7.07%           104.9  1.01x
+
+Strongest lift: Machine Group='GroupB', Product Code='PRD-B' -> occurs 1.16x more often than chance would predict (89 events observed vs ~76.7 expected).

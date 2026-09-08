@@ -1,0 +1,17 @@
+LIFT ANALYSIS - Lot ID + Product Code (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Lot ID    Product Code  Count  Support %  Expected Count   Lift
+----  --------  ------------  -----  ---------  --------------  -----
+1     LOT-0011  PRD-D            14      0.93%             7.3  1.93x
+2     LOT-0025  PRD-D            18      1.20%             9.4  1.91x
+3     LOT-0017  PRD-B            10      0.67%             5.3  1.89x
+4     LOT-0030  PRD-A            13      0.87%             6.9  1.88x
+5     LOT-0013  PRD-C            13      0.87%             7.2  1.80x
+
+Strongest lift: Lot ID='LOT-0011', Product Code='PRD-D' -> occurs 1.93x more often than chance would predict (14 events observed vs ~7.3 expected).

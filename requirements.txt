@@ -3,5 +3,6 @@
 pandas>=2.0
 numpy
 scipy
+matplotlib
 scikit-learn==1.5.2
 prince==0.14.0

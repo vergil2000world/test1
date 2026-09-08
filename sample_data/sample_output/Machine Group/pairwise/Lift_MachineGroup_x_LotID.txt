@@ -1,0 +1,17 @@
+LIFT ANALYSIS - Lot ID + Machine Group (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Lot ID    Machine Group  Count  Support %  Expected Count   Lift
+----  --------  -------------  -----  ---------  --------------  -----
+1     LOT-0004  GroupB            14      0.93%             8.7  1.61x
+2     LOT-0002  GroupB            11      0.73%             7.3  1.52x
+3     LOT-0013  GroupB            14      0.93%             9.4  1.48x
+4     LOT-0010  GroupC            19      1.27%            12.8  1.48x
+5     LOT-0016  GroupB            17      1.13%            11.9  1.43x
+
+Strongest lift: Lot ID='LOT-0004', Machine Group='GroupB' -> occurs 1.61x more often than chance would predict (14 events observed vs ~8.7 expected).

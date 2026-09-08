@@ -1,0 +1,17 @@
+LIFT ANALYSIS - DurationLevel + Product Code (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  DurationLevel  Product Code  Count  Support %  Expected Count   Lift
+----  -------------  ------------  -----  ---------  --------------  -----
+1     High           PRD-A            88      5.87%            74.0  1.19x
+2     Medium         PRD-B            86      5.73%            78.8  1.09x
+3     Critical       PRD-C            74      4.93%            69.1  1.07x
+4     Medium         PRD-E            82      5.47%            78.3  1.05x
+5     Critical       PRD-D            76      5.07%            73.1  1.04x
+
+Strongest lift: DurationLevel='High', Product Code='PRD-A' -> occurs 1.19x more often than chance would predict (88 events observed vs ~74.0 expected).

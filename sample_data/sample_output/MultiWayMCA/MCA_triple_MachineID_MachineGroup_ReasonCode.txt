@@ -47,6 +47,24 @@ Rank  Machine ID  Machine Group  ReasonCode  Count  Duration(sec)  Duration(hh:m
 
 Most associated combination: Machine ID='M-202', Machine Group='GroupB', ReasonCode='Changeover' -> 33,325 sec (6.6% of total downtime, 54 events)
 
+LIFT ANALYSIS - Machine ID + Machine Group + ReasonCode (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Machine ID  Machine Group  ReasonCode      Count  Support %  Expected Count   Lift
+----  ----------  -------------  --------------  -----  ---------  --------------  -----
+1     M-202       GroupB         Operator Break     10      0.67%             1.6  6.27x
+2     M-201       GroupB         PM-Scheduled       13      0.87%             2.3  5.68x
+3     M-201       GroupB         Power Blip          9      0.60%             1.7  5.20x
+4     M-201       GroupB         Sensor Fault       32      2.13%             6.3  5.07x
+5     M-302       GroupC         Adjustment         10      0.67%             2.0  5.02x
+
+Strongest lift: Machine ID='M-202', Machine Group='GroupB', ReasonCode='Operator Break' -> occurs 6.27x more often than chance would predict (10 events observed vs ~1.6 expected).
+
 Top 5 closest cross-variable category pairs in the MCA map (most associated)
 ----------------------------------------
 Rank  Category A         Category B             Distance (smaller = more associated)

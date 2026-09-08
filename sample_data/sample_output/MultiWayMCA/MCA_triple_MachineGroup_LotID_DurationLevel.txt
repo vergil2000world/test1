@@ -73,6 +73,24 @@ Rank  Machine Group  Lot ID    DurationLevel  Count  Duration(sec)  Duration(hh:
 
 Most associated combination: Machine Group='GroupC', Lot ID='LOT-0032', DurationLevel='Critical' -> 9,947 sec (2.0% of total downtime, 10 events)
 
+LIFT ANALYSIS - Machine Group + Lot ID + DurationLevel (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Machine Group  Lot ID    DurationLevel  Count  Support %  Expected Count   Lift
+----  -------------  --------  -------------  -----  ---------  --------------  -----
+1     GroupB         LOT-0013  Critical           7      0.47%             2.3  2.98x
+2     GroupC         LOT-0010  Low                9      0.60%             3.2  2.78x
+3     GroupA         LOT-0022  High               8      0.53%             3.1  2.55x
+4     GroupA         LOT-0024  Critical           8      0.53%             3.2  2.49x
+5     GroupB         LOT-0027  Low                5      0.33%             2.0  2.48x
+
+Strongest lift: Machine Group='GroupB', Lot ID='LOT-0013', DurationLevel='Critical' -> occurs 2.98x more often than chance would predict (7 events observed vs ~2.3 expected).
+
 Top 5 closest cross-variable category pairs in the MCA map (most associated)
 ----------------------------------------
 Rank  Category A             Category B          Distance (smaller = more associated)

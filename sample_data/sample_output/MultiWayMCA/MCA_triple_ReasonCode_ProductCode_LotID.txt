@@ -81,6 +81,24 @@ Rank  ReasonCode    Product Code  Lot ID    Count  Duration(sec)  Duration(hh:mm
 
 Most associated combination: ReasonCode='PM-Scheduled', Product Code='PRD-E', Lot ID='LOT-0032' -> 4,572 sec (0.9% of total downtime, 4 events)
 
+LIFT ANALYSIS - ReasonCode + Product Code + Lot ID (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  ReasonCode    Product Code  Lot ID    Count  Support %  Expected Count   Lift
+----  ------------  ------------  --------  -----  ---------  --------------  -----
+1     Sensor Fault  PRD-C         LOT-0010      5      0.33%             0.9  5.27x
+2     Sensor Fault  PRD-D         LOT-0025      6      0.40%             1.4  4.23x
+3     Changeover    PRD-C         LOT-0013      7      0.47%             1.8  3.86x
+4     Jam           PRD-A         LOT-0039      7      0.47%             1.9  3.75x
+5     Jam           PRD-C         LOT-0028      6      0.40%             1.9  3.22x
+
+Strongest lift: ReasonCode='Sensor Fault', Product Code='PRD-C', Lot ID='LOT-0010' -> occurs 5.27x more often than chance would predict (5 events observed vs ~0.9 expected).
+
 Top 5 closest cross-variable category pairs in the MCA map (most associated)
 ----------------------------------------
 Rank  Category A                  Category B        Distance (smaller = more associated)

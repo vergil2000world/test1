@@ -1,0 +1,17 @@
+LIFT ANALYSIS - Lot ID + ReasonCode (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Lot ID    ReasonCode      Count  Support %  Expected Count   Lift
+----  --------  --------------  -----  ---------  --------------  -----
+1     LOT-0029  Operator Break      5      0.33%             1.6  3.14x
+2     LOT-0012  PM-Scheduled        5      0.33%             1.7  2.95x
+3     LOT-0024  PM-Scheduled        5      0.33%             1.9  2.69x
+4     LOT-0032  Power Blip          5      0.33%             1.9  2.57x
+5     LOT-0025  Power Blip          5      0.33%             2.0  2.52x
+
+Strongest lift: Lot ID='LOT-0029', ReasonCode='Operator Break' -> occurs 3.14x more often than chance would predict (5 events observed vs ~1.6 expected).

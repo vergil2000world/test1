@@ -48,6 +48,24 @@ Rank  Machine ID  ReasonCode  DurationLevel  Count  Duration(sec)  Duration(hh:m
 
 Most associated combination: Machine ID='M-202', ReasonCode='Changeover', DurationLevel='Critical' -> 26,490 sec (5.2% of total downtime, 36 events)
 
+LIFT ANALYSIS - Machine ID + ReasonCode + DurationLevel (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Machine ID  ReasonCode    DurationLevel  Count  Support %  Expected Count   Lift
+----  ----------  ------------  -------------  -----  ---------  --------------  -----
+1     M-101       PM-Scheduled  Critical          15      1.00%             2.6  5.72x
+2     M-201       PM-Scheduled  Critical          13      0.87%             2.4  5.53x
+3     M-302       Adjustment    High               7      0.47%             1.3  5.30x
+4     M-102       Power Blip    Low               10      0.67%             1.9  5.15x
+5     M-301       Adjustment    Medium             6      0.40%             1.2  5.00x
+
+Strongest lift: Machine ID='M-101', ReasonCode='PM-Scheduled', DurationLevel='Critical' -> occurs 5.72x more often than chance would predict (15 events observed vs ~2.6 expected).
+
 Top 5 closest cross-variable category pairs in the MCA map (most associated)
 ----------------------------------------
 Rank  Category A                     Category B             Distance (smaller = more associated)

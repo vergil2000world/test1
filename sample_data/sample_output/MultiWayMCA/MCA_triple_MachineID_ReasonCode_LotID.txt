@@ -84,6 +84,24 @@ Rank  Machine ID  ReasonCode    Lot ID    Count  Duration(sec)  Duration(hh:mm:s
 
 Most associated combination: Machine ID='M-302', ReasonCode='PM-Scheduled', Lot ID='LOT-0032' -> 4,026 sec (0.8% of total downtime, 3 events)
 
+LIFT ANALYSIS - Machine ID + ReasonCode + Lot ID (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Machine ID  ReasonCode  Lot ID    Count  Support %  Expected Count   Lift
+----  ----------  ----------  --------  -----  ---------  --------------  -----
+1     M-102       Jam         LOT-0001      6      0.40%             1.2  4.96x
+2     M-102       Jam         LOT-0026      5      0.33%             1.2  4.14x
+3     M-201       Jam         LOT-0016      6      0.40%             1.7  3.59x
+4     M-202       Changeover  LOT-0029      5      0.33%             1.5  3.42x
+5     M-303       Changeover  LOT-0032      5      0.33%             1.5  3.40x
+
+Strongest lift: Machine ID='M-102', ReasonCode='Jam', Lot ID='LOT-0001' -> occurs 4.96x more often than chance would predict (6 events observed vs ~1.2 expected).
+
 Top 5 closest cross-variable category pairs in the MCA map (most associated)
 ----------------------------------------
 Rank  Category A              Category B              Distance (smaller = more associated)

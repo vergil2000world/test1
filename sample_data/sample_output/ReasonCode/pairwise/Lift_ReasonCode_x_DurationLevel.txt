@@ -1,0 +1,17 @@
+LIFT ANALYSIS - DurationLevel + ReasonCode (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  DurationLevel  ReasonCode         Count  Support %  Expected Count   Lift
+----  -------------  -----------------  -----  ---------  --------------  -----
+1     Critical       PM-Scheduled          82      5.47%            20.4  4.02x
+2     Low            Power Blip            62      4.13%            15.7  3.96x
+3     High           Operator Break        41      2.73%            13.0  3.15x
+4     Low            Sensor Fault         155     10.33%            57.1  2.71x
+5     High           Material Shortage    101      6.73%            38.0  2.66x
+
+Strongest lift: DurationLevel='Critical', ReasonCode='PM-Scheduled' -> occurs 4.02x more often than chance would predict (82 events observed vs ~20.4 expected).

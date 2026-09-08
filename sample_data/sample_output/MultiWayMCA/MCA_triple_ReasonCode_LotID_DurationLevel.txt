@@ -80,6 +80,24 @@ Rank  ReasonCode    Lot ID    DurationLevel  Count  Duration(sec)  Duration(hh:m
 
 Most associated combination: ReasonCode='Changeover', Lot ID='LOT-0013', DurationLevel='Critical' -> 10,322 sec (2.0% of total downtime, 14 events)
 
+LIFT ANALYSIS - ReasonCode + Lot ID + DurationLevel (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  ReasonCode    Lot ID    DurationLevel  Count  Support %  Expected Count    Lift
+----  ------------  --------  -------------  -----  ---------  --------------  ------
+1     PM-Scheduled  LOT-0012  Critical           5      0.33%             0.4  11.87x
+2     PM-Scheduled  LOT-0024  Critical           5      0.33%             0.5  10.82x
+3     Power Blip    LOT-0032  Low                5      0.33%             0.5  10.19x
+4     Power Blip    LOT-0025  Low                5      0.33%             0.5   9.97x
+5     PM-Scheduled  LOT-0034  Critical           5      0.33%             0.6   8.97x
+
+Strongest lift: ReasonCode='PM-Scheduled', Lot ID='LOT-0012', DurationLevel='Critical' -> occurs 11.87x more often than chance would predict (5 events observed vs ~0.4 expected).
+
 Top 5 closest cross-variable category pairs in the MCA map (most associated)
 ----------------------------------------
 Rank  Category A                  Category B             Distance (smaller = more associated)

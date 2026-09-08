@@ -1,0 +1,17 @@
+LIFT ANALYSIS - Product Code + ReasonCode (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Product Code  ReasonCode         Count  Support %  Expected Count   Lift
+----  ------------  -----------------  -----  ---------  --------------  -----
+1     PRD-E         Adjustment            13      0.87%             8.4  1.55x
+2     PRD-E         Quality Check          7      0.47%             4.6  1.52x
+3     PRD-A         Operator Break        14      0.93%            10.3  1.36x
+4     PRD-A         Material Shortage     40      2.67%            30.0  1.33x
+5     PRD-D         Power Blip            16      1.07%            12.2  1.32x
+
+Strongest lift: Product Code='PRD-E', ReasonCode='Adjustment' -> occurs 1.55x more often than chance would predict (13 events observed vs ~8.4 expected).

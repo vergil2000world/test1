@@ -1,0 +1,17 @@
+LIFT ANALYSIS - DurationLevel + Machine Group (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  DurationLevel  Machine Group  Count  Support %  Expected Count   Lift
+----  -------------  -------------  -----  ---------  --------------  -----
+1     High           GroupA           167     11.13%           142.8  1.17x
+2     Medium         GroupC           156     10.40%           140.7  1.11x
+3     Low            GroupB           101      6.73%            91.7  1.10x
+4     Critical       GroupA           145      9.67%           142.0  1.02x
+5     Low            GroupC           146      9.73%           143.0  1.02x
+
+Strongest lift: DurationLevel='High', Machine Group='GroupA' -> occurs 1.17x more often than chance would predict (167 events observed vs ~142.8 expected).

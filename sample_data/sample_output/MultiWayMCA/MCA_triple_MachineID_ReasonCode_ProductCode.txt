@@ -49,6 +49,24 @@ Rank  Machine ID  ReasonCode    Product Code  Count  Duration(sec)  Duration(hh:
 
 Most associated combination: Machine ID='M-202', ReasonCode='Changeover', Product Code='PRD-B' -> 9,856 sec (1.9% of total downtime, 15 events)
 
+LIFT ANALYSIS - Machine ID + ReasonCode + Product Code (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Machine ID  ReasonCode         Product Code  Count  Support %  Expected Count   Lift
+----  ----------  -----------------  ------------  -----  ---------  --------------  -----
+1     M-101       Unplanned Stop     PRD-D             5      0.33%             1.1  4.41x
+2     M-301       Operator Break     PRD-A             5      0.33%             1.2  4.04x
+3     M-201       PM-Scheduled       PRD-C             7      0.47%             1.8  3.99x
+4     M-101       PM-Scheduled       PRD-E             5      0.33%             2.2  2.26x
+5     M-301       Material Shortage  PRD-A             8      0.53%             3.6  2.21x
+
+Strongest lift: Machine ID='M-101', ReasonCode='Unplanned Stop', Product Code='PRD-D' -> occurs 4.41x more often than chance would predict (5 events observed vs ~1.1 expected).
+
 Top 5 closest cross-variable category pairs in the MCA map (most associated)
 ----------------------------------------
 Rank  Category A                     Category B           Distance (smaller = more associated)

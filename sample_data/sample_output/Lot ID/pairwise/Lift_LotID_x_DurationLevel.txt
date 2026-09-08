@@ -1,0 +1,17 @@
+LIFT ANALYSIS - DurationLevel + Lot ID (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  DurationLevel  Lot ID    Count  Support %  Expected Count   Lift
+----  -------------  --------  -----  ---------  --------------  -----
+1     Critical       LOT-0024     15      1.00%             8.5  1.77x
+2     High           LOT-0034     18      1.20%            10.2  1.76x
+3     Critical       LOT-0013     16      1.07%             9.7  1.65x
+4     Medium         LOT-0016     20      1.33%            12.2  1.64x
+5     High           LOT-0020     16      1.07%             9.8  1.64x
+
+Strongest lift: DurationLevel='Critical', Lot ID='LOT-0024' -> occurs 1.77x more often than chance would predict (15 events observed vs ~8.5 expected).

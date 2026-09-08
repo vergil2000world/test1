@@ -1,0 +1,17 @@
+LIFT ANALYSIS - Machine Group + ReasonCode (top 5 by lift, min count = 5)
+======================================================================
+Lift = observed proportion of the combination / expected proportion under independence.
+  Lift > 1x -> occurs MORE often than random chance predicts (positive association).
+  Lift < 1x -> occurs LESS often than random chance predicts (negative association).
+  Lift = 1x -> no association (independent).
+Combinations with fewer than 5 events are excluded (too rare to trust the ratio).
+
+Rank  Machine Group  ReasonCode      Count  Support %  Expected Count   Lift
+----  -------------  --------------  -----  ---------  --------------  -----
+1     GroupC         Adjustment         24      1.60%            15.1  1.59x
+2     GroupA         Quality Check      13      0.87%             8.4  1.55x
+3     GroupA         Unplanned Stop     23      1.53%            17.1  1.34x
+4     GroupA         PM-Scheduled       37      2.47%            31.2  1.19x
+5     GroupA         Operator Break     23      1.53%            19.8  1.16x
+
+Strongest lift: Machine Group='GroupC', ReasonCode='Adjustment' -> occurs 1.59x more often than chance would predict (24 events observed vs ~15.1 expected).

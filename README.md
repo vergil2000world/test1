@@ -27,13 +27,26 @@ Correspondence Analysis (CA) and Multiple Correspondence Analysis (MCA):
 - **MCA** — for every 3-way combination of variables (all 20), for all 6
   variables at once, and specifically for **Machine Group + ReasonCode +
   DurationLevel** (highlighted): eigenvalues, category coordinates/cos2,
-  top-N raw combinations by downtime, and the top-N closest cross-variable
-  category pairs in the MCA map (most "associated").
+  top-N raw combinations by downtime, a lift table, and the top-N closest
+  cross-variable category pairs in the MCA map (most "associated").
+- **Lift analysis** — for every pair and every MCA combination: lift =
+  observed proportion ÷ expected proportion under independence (the
+  classic market-basket "association rule" metric). Lift > 1x means the
+  combination co-occurs more than chance predicts. Combinations below
+  `--min-count` events are excluded as too rare to trust.
+- **Plots** — a Pareto chart (bars + cumulative-% line) per variable, a CA
+  biplot per pair, and an MCA category map per multi-way combination, all
+  saved as PNGs next to their corresponding text report.
+- **`INTERPRETATION.md`** — an auto-generated, plain-language takeaways
+  file at the top of `--outdir`: top single-cause contributors, strongest
+  significant pairwise associations, strongest lift combinations, the
+  highlighted MCA triple's headline findings, and a few notes/caveats
+  (e.g. flagging trivially-strong associations from hierarchical columns).
 - Output is organized **variable by variable**, one subfolder per variable
   under `--outdir`, each holding that variable's own Pareto detail plus its
-  CA/top-N reports against every other variable; multi-way MCA reports live
-  in `MultiWayMCA/`, and duration-sum pivot CSVs for every pair live in
-  `pivots/`. See the script's docstring for the full layout.
+  CA/Lift/top-N reports (and plots) against every other variable; multi-way
+  MCA reports live in `MultiWayMCA/`, and duration-sum pivot CSVs for every
+  pair live in `pivots/`. See the script's docstring for the full layout.
 
 Both scripts default to a file named **`cleaned_file.csv` placed next to the
 script itself** (`scripts/cleaned_file.csv`), so on a local setup you can
@@ -44,7 +57,7 @@ pip install -r requirements.txt
 cd scripts
 python3 analyze_ca_mca.py                       # reads ./cleaned_file.csv, writes ./output/
 # or explicitly:
-python3 analyze_ca_mca.py path/to/other.csv --outdir output --top 5 --quantiles 4
+python3 analyze_ca_mca.py path/to/other.csv --outdir output --top 5 --quantiles 4 --min-count 5
 ```
 
 A synthetic example input/output is checked in under
