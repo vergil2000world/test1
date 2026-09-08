@@ -42,6 +42,12 @@ Correspondence Analysis (CA) and Multiple Correspondence Analysis (MCA):
   significant pairwise associations, strongest lift combinations, the
   highlighted MCA triple's headline findings, and a few notes/caveats
   (e.g. flagging trivially-strong associations from hierarchical columns).
+- **`report_data.json`** — every table, stat and image path the dashboard
+  uses, written to disk first (same as the `.txt`/`.csv` files) and then
+  *read back* to build the HTML — so `report.html` is built strictly from
+  files sitting in `--outdir`, never from anything kept only in memory
+  during the analysis. Open it in any text/JSON viewer to check the raw
+  numbers behind the dashboard.
 - **`report.html`** — a single, self-contained, offline HTML dashboard (no
   server, no external network calls — every chart is embedded as base64):
   a tab per variable with its Pareto table+chart, a "Compare with" sub-tab
@@ -51,7 +57,9 @@ Correspondence Analysis (CA) and Multiple Correspondence Analysis (MCA):
   highlighted triple + all 20 triples + all 6 variables at once (each with
   its category map and tables), and an Interpretation tab mirroring
   `INTERPRETATION.md` with colored strength/significance/lift badges. Just
-  open it in a browser.
+  open it in a browser. Run with `--rebuild-html-only` to regenerate just
+  `report.html` from an existing `report_data.json` — no CSV, no re-run of
+  the analysis.
 - Output is organized **variable by variable**, one subfolder per variable
   under `--outdir`, each holding that variable's own Pareto detail plus its
   CA/Lift/top-N reports (and plots) against every other variable; multi-way
@@ -68,6 +76,8 @@ cd scripts
 python3 analyze_ca_mca.py                       # reads ./cleaned_file.csv, writes ./output/
 # or explicitly:
 python3 analyze_ca_mca.py path/to/other.csv --outdir output --top 5 --quantiles 4 --min-count 5
+# rebuild only the dashboard from an existing run's report_data.json (no CSV needed):
+python3 analyze_ca_mca.py --outdir output --rebuild-html-only
 ```
 
 A synthetic example input/output is checked in under

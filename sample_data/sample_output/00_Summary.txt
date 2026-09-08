@@ -20,6 +20,7 @@ Variables analyzed: Machine ID, Machine Group, ReasonCode, Product Code, Lot ID,
 
 Output layout:
   INTERPRETATION.md          auto-generated takeaways and notes
+  report_data.json            everything report.html is built from (rebuild with --rebuild-html-only)
   report.html                 interactive HTML dashboard (tabs, tables, maps)
   <Variable>/                 descriptive CA + pairwise CA/lift/top-N vs every other variable
   MultiWayMCA/                3-way MCA for every combination + all-6 MCA

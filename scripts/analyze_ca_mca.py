@@ -54,20 +54,29 @@ What it does (the full, one-script process)
    (MCA) highlights, and a few auto-generated recommendations, all
    derived from the tables above.
 
-9. HTML dashboard -> report.html at the top of --outdir: a single,
-   self-contained (all images embedded as base64, no external network
-   calls) modern HTML page with one tab per variable (a table + Pareto
-   chart), a "compare with" sub-tab per other variable inside each
+9. HTML dashboard -> report_data.json + report.html at the top of
+   --outdir. report_data.json is a plain JSON file holding every table,
+   stat and image path used by the dashboard - it is written to disk
+   first, same as the .txt/.csv reports, and then read back to build
+   report.html, so the dashboard is built strictly from files in this
+   folder, not from anything kept only in memory. report.html is a
+   single, self-contained (all images embedded as base64, no external
+   network calls) modern HTML page with one tab per variable (a table +
+   Pareto chart), a "compare with" sub-tab per other variable inside each
    (CA stats, CA biplot map highlighting the two variables' categories,
    lift table, top-N combination table), a Multi-Cause tab (dropdown
    over the highlighted triple + all 20 triples + all 6 variables, each
    with its category map and tables), and an Interpretation tab mirroring
    INTERPRETATION.md. Open it directly in a browser - no server needed.
+   Pass --rebuild-html-only to regenerate report.html purely by reading
+   an existing report_data.json back from --outdir, with no CSV, no
+   re-run of the analysis, and no network access.
 
 10. Output layout (under --outdir, default "output"):
      output/
        00_Summary.txt
        INTERPRETATION.md                  auto-generated takeaways (step 8)
+       report_data.json                   everything report.html is built from
        report.html                        interactive dashboard (step 9)
        <Variable>/                        one folder per variable (6)
          00_CA_univariate_<Variable>.txt    full Pareto detail
@@ -96,11 +105,16 @@ Usage:
 
     INPUT.csv defaults to "cleaned_file.csv" next to this script, so with a
     file placed there you can just run: python3 analyze_ca_mca.py
+
+    python3 analyze_ca_mca.py --outdir output --rebuild-html-only
+        Rebuild output/report.html from output/report_data.json alone -
+        no CSV read, no analysis re-run.
 """
 
 import argparse
 import base64
 import html
+import json
 import os
 import shutil
 from datetime import datetime, timezone
@@ -242,6 +256,30 @@ def write(path, text):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         f.write(text)
+
+
+class NpEncoder(json.JSONEncoder):
+    """Lets json.dump handle numpy scalar types that leak in from pandas records."""
+
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        if isinstance(obj, np.floating):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return super().default(obj)
+
+
+def save_report_data(path, data):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, cls=NpEncoder, indent=2)
+
+
+def load_report_data(path):
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def safe(name):
@@ -1275,7 +1313,20 @@ def main():
     parser.add_argument("--quantiles", type=int, default=4, help="Number of quantile bins for DurationLevel (default: 4)")
     parser.add_argument("--min-count", type=int, default=5, dest="min_count",
                          help="Minimum event count for a combination to appear in lift tables (default: 5)")
+    parser.add_argument("--rebuild-html-only", action="store_true", dest="rebuild_html_only",
+                         help="Skip re-running the analysis entirely; just rebuild report.html by reading back "
+                              "<outdir>/report_data.json and the already-saved PNGs from a previous run.")
     args = parser.parse_args()
+
+    if args.rebuild_html_only:
+        json_path = os.path.join(args.outdir, "report_data.json")
+        if not os.path.isfile(json_path):
+            raise SystemExit(f"ERROR: {json_path} not found - run the script normally first to produce it.")
+        data = load_report_data(json_path)
+        html_path = os.path.join(args.outdir, "report.html")
+        build_html_report(html_path, data["meta"], data["variables"], data["mca"], data["interpretation"], data["top_n"])
+        print(f"Rebuilt {html_path} by reading {json_path} (no analysis re-run, no CSV touched).")
+        return
 
     if not os.path.isfile(args.csv_path):
         raise SystemExit(f"ERROR: CSV file not found: {args.csv_path}")
@@ -1317,6 +1368,7 @@ def main():
     summary.append("")
     summary.append("Output layout:")
     summary.append("  INTERPRETATION.md          auto-generated takeaways and notes")
+    summary.append("  report_data.json            everything report.html is built from (rebuild with --rebuild-html-only)")
     summary.append("  report.html                 interactive HTML dashboard (tabs, tables, maps)")
     summary.append("  <Variable>/                 descriptive CA + pairwise CA/lift/top-N vs every other variable")
     summary.append("  MultiWayMCA/                3-way MCA for every combination + all-6 MCA")
@@ -1441,13 +1493,26 @@ def main():
     write(os.path.join(outdir, "INTERPRETATION.md"), interpretation)
 
     # ---------------- HTML dashboard ----------------
+    # Every number/table the HTML needs is written to report_data.json (a plain
+    # file in --outdir, next to the txt/csv reports) and then read back from
+    # disk before rendering - report.html is built strictly from what is on
+    # disk in this folder, the same as the .txt/.csv files, not from anything
+    # kept only in memory during the analysis run.
     meta = {"csv_name": os.path.basename(args.csv_path), "total_events": total_events,
             "total_duration": total_duration, "int_flag_col": int_flag_col, "int_dropped": int_dropped}
     interpretation_ctx = dict(csv_path=args.csv_path, int_flag_col=int_flag_col, int_dropped=int_dropped,
                               total_duration=total_duration, total_events=total_events, level_labels=level_labels,
                               univariate_stats=univariate_stats, summary=summary_stats,
                               mca_highlight_stats=highlight_stats, top_n=top_n, min_count=min_count)
-    build_html_report(os.path.join(outdir, "report.html"), meta, variables_ctx, mca_ctx, interpretation_ctx, top_n)
+
+    report_data_path = os.path.join(outdir, "report_data.json")
+    save_report_data(report_data_path, {
+        "meta": meta, "variables": variables_ctx, "mca": mca_ctx,
+        "interpretation": interpretation_ctx, "top_n": top_n,
+    })
+    data = load_report_data(report_data_path)
+    build_html_report(os.path.join(outdir, "report.html"), data["meta"], data["variables"], data["mca"],
+                       data["interpretation"], data["top_n"])
 
     n_pairs = len(list(combinations(VARIABLES, 2)))
     n_triples = len(list(combinations(VARIABLES, 3)))
@@ -1455,6 +1520,8 @@ def main():
     print(f"  - {len(VARIABLES)} per-variable folders (univariate + {n_pairs} pairwise CA/Lift reports + plots)")
     print(f"  - {n_triples} 3-way MCA reports (incl. highlighted {HIGHLIGHT_TRIPLE}) + 1 all-variables MCA (+ maps)")
     print(f"  - {n_pairs} pivot CSVs")
+    print("  - report_data.json  (the file report.html is built from - inspect it, or re-run with")
+    print("                       --rebuild-html-only to regenerate report.html from it without recomputing)")
     print("  - INTERPRETATION.md")
     print(f"  - report.html  <- open this in a browser")
 
