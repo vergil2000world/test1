@@ -4,13 +4,19 @@ mon premier test
 ## Downtime CA / MCA analyzers
 
 Both scripts analyze a machine-downtime CSV with columns `Machine ID`,
-`Duration (sec)`, `ReasonCode`, `Lot ID`, `Product Code`, `Machine Group`.
+`Duration (sec)`, `ReasonCode`, `Lot ID`, `Product Code`, `Machine Group`,
+and optionally an **`Int`** flag column (0/1: 1 = the row is a counted
+interruption, 0 = not counted).
 
-### `scripts/analyze_ca_mca.py` — statistical CA/MCA (recommended)
+### `scripts/analyze_ca_mca.py` — the full one-script process (recommended)
 
 Uses [`prince`](https://github.com/MaxHalford/prince) 0.14.0 to run real
 Correspondence Analysis (CA) and Multiple Correspondence Analysis (MCA):
 
+- If an `Int` column is present, **filters to only rows where `Int == 1`**
+  first — every table below is built from that filtered data only (rows
+  with `Int == 0` are dropped as not-counted). If no such column is found,
+  all rows are used and the summary says so.
 - Adds a derived **DurationLevel** feature (`Low`/`Medium`/`High`/`Critical`)
   by cutting `Duration (sec)` into quantile bins (`pandas.qcut`, `q=4` by
   default), and analyzes it alongside the 5 original columns.

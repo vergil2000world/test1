@@ -3,24 +3,29 @@
 Statistical CA / MCA downtime analyzer (uses the `prince` library, 0.14.0).
 
 Input CSV columns: Machine ID, Duration (sec), ReasonCode, Lot ID,
-Product Code, Machine Group.
+Product Code, Machine Group, and optionally an Int flag column
+(0/1 - 1 = counted as an interruption, 0 = not counted).
 
-What it does
-------------
-1. Adds a derived categorical feature `DurationLevel` (Low/Medium/High/
+What it does (the full, one-script process)
+--------------------------------------------
+1. Loads the CSV and, if an Int/Interruption flag column is present,
+   filters to only the rows where it equals 1 (an interruption actually
+   occurred) - every table below is built from that filtered data only.
+
+2. Adds a derived categorical feature `DurationLevel` (Low/Medium/High/
    Critical) by cutting `Duration (sec)` into quantile bins (pandas.qcut,
    q=4 by default -> quartiles).
 
-2. Treats these 6 columns as the analysis variables:
+3. Treats these 6 columns as the analysis variables:
    Machine ID, Machine Group, ReasonCode, Product Code, Lot ID, DurationLevel
 
-3. CA  (Correspondence Analysis)          -> for EVERY pair of variables
+4. CA  (Correspondence Analysis)          -> for EVERY pair of variables
    (all C(6,2)=15 combinations): builds the contingency table, runs
    prince.CA, reports the chi-square test / Cramer's V, eigenvalues
    (explained inertia), row/column coordinates, and the top-N
    statistically most-associated cells (largest standardized residuals).
 
-4. MCA (Multiple Correspondence Analysis) -> for every 3-way combination
+5. MCA (Multiple Correspondence Analysis) -> for every 3-way combination
    of variables (all C(6,3)=20), for the specific combination the user
    asked for (Machine Group + ReasonCode + DurationLevel), and for all 6
    variables at once: runs prince.MCA, reports eigenvalues, category
@@ -28,7 +33,7 @@ What it does
    the top-N closest cross-variable category pairs in the MCA map (the
    categories that "travel together" most).
 
-5. Output layout (under --outdir, default "output"):
+6. Output layout (under --outdir, default "output"):
      output/
        00_Summary.txt
        <Variable>/                       one folder per variable (6)
@@ -77,6 +82,10 @@ COLUMN_ALIASES = {
     "Machine Group": ["machinegroup", "group"],
 }
 
+# Optional binary flag column: 1 = counted as an interruption/downtime event,
+# 0 = not counted. When present, only rows with value 1 feed every table.
+INT_FLAG_ALIASES = ["int", "interruption", "isinterruption", "interruptionflag", "interrupt"]
+
 VARIABLES = ["Machine ID", "Machine Group", "ReasonCode", "Product Code", "Lot ID", "DurationLevel"]
 HIGHLIGHT_TRIPLE = ("Machine Group", "ReasonCode", "DurationLevel")
 
@@ -103,10 +112,22 @@ def resolve_columns(columns):
     return resolved
 
 
+def find_int_flag_column(columns):
+    normalized = {_normalize(c): c for c in columns}
+    for cand in INT_FLAG_ALIASES:
+        if _normalize(cand) in normalized:
+            return normalized[_normalize(cand)]
+    return None
+
+
 def load_data(csv_path):
     raw = pd.read_csv(csv_path, encoding="utf-8-sig")
     colmap = resolve_columns(raw.columns)
+
+    int_flag_col = find_int_flag_column(raw.columns)
     df = raw.rename(columns={v: k for k, v in colmap.items()})[list(COLUMN_ALIASES.keys())].copy()
+    if int_flag_col is not None:
+        df["Int"] = pd.to_numeric(raw[int_flag_col], errors="coerce")
 
     n_before = len(df)
     df["Duration (sec)"] = pd.to_numeric(
@@ -115,10 +136,17 @@ def load_data(csv_path):
     df = df.dropna(subset=["Duration (sec)"]).copy()
     bad_rows = n_before - len(df)
 
+    int_dropped = 0
+    if int_flag_col is not None:
+        n_before_flag = len(df)
+        df = df[df["Int"] == 1].copy()
+        int_dropped = n_before_flag - len(df)
+        df = df.drop(columns=["Int"])
+
     for col in ["Machine ID", "ReasonCode", "Lot ID", "Product Code", "Machine Group"]:
         df[col] = df[col].fillna("(blank)").astype(str).str.strip().replace("", "(blank)")
 
-    return df, bad_rows
+    return df, bad_rows, int_flag_col, int_dropped
 
 
 def add_duration_level(df, q=4):
@@ -417,7 +445,7 @@ def main():
     if not os.path.isfile(args.csv_path):
         raise SystemExit(f"ERROR: CSV file not found: {args.csv_path}")
 
-    df, bad_rows = load_data(args.csv_path)
+    df, bad_rows, int_flag_col, int_dropped = load_data(args.csv_path)
     if df.empty:
         raise SystemExit("ERROR: no valid data rows found in the CSV.")
 
@@ -430,8 +458,13 @@ def main():
 
     # ---------------- Summary ----------------
     summary = ["DOWNTIME CA / MCA ANALYSIS SUMMARY", "=" * 70,
-               f"Input file           : {os.path.abspath(args.csv_path)}",
-               f"Total events (rows)  : {total_events}"]
+               f"Input file           : {os.path.abspath(args.csv_path)}"]
+    if int_flag_col is not None:
+        summary.append(f"Int flag column      : '{int_flag_col}' found -> kept only rows where {int_flag_col}=1 "
+                        f"(interruption counted); dropped {int_dropped} row(s) where it was 0.")
+    else:
+        summary.append("Int flag column      : none found - using all rows (no interruption filter applied).")
+    summary.append(f"Total events (rows)  : {total_events}  (after Int filter and duration cleanup)")
     if bad_rows:
         summary.append(f"Rows skipped (bad/missing duration): {bad_rows}")
     summary.append(f"Total downtime       : {total_duration:,.0f} sec "

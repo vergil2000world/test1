@@ -1,7 +1,8 @@
 DOWNTIME CA / MCA ANALYSIS SUMMARY
 ======================================================================
 Input file           : /home/user/test1/sample_data/sample_downtime.csv
-Total events (rows)  : 1500
+Int flag column      : none found - using all rows (no interruption filter applied).
+Total events (rows)  : 1500  (after Int filter and duration cleanup)
 Total downtime       : 506,600 sec (8,443.3 min / 140.72 hr) = 140:43:20
 Average per event    : 337.7 sec
 
