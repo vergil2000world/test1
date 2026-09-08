@@ -1,0 +1,10 @@
+Slide 5: What is Multiple Correspondence Analysis (MCA)?
+
+- Extends the same logic to 3+ factors at once (e.g. Machine Group x
+  Reason Code x Interruption Duration Class).
+
+- Finds the compound conditions that explain the most variation in
+  interruptions - the ones no single-variable RCA view can show.
+
+- Directly delivers on the Context slide's goal: capture all possible
+  patterns, not just the ones found one variable at a time.

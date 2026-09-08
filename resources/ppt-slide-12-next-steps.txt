@@ -1,0 +1,10 @@
+Slide 12: Next Steps / Ask
+
+- Adopt this analysis as a standing input to the MTBI review, run each
+  reporting period.
+
+- Pilot on [specific line / machine group] first; measure MTBI movement
+  after acting on the findings.
+
+- Ask: sign-off to make this the standard step before RCA / action-plan
+  meetings.

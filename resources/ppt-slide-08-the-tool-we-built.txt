@@ -1,0 +1,12 @@
+Slide 8: The Tool We Built
+
+- One script, one interruption export -> full analysis: per-variable
+  ranking, every pairwise CA, every 3-way MCA combination, lift tables,
+  and plain-language takeaways.
+
+- Output is an interactive HTML dashboard - opens in any browser, no
+  software install required, easy to share with the team.
+
+- Fully traceable: every number in the dashboard is backed by a data
+  file in the same output folder - nothing is generated from memory or
+  guesswork.

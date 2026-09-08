@@ -1,0 +1,16 @@
+Slide 6: Business Benefits
+
+- Faster root cause: minutes instead of days of manual cross-tabbing
+  across steps, lines, and packages.
+
+- Finds hidden, compounding interruption drivers that single-variable
+  RCA misses.
+
+- Statistically defensible: every finding comes with a significance
+  test, not an opinion.
+
+- Repeatable: re-run every reporting period on new interruption data -
+  grows our MTBI maturity instead of being a one-off analysis.
+
+- Prioritizes action: ranks combinations by confidence and impact, so
+  the team fixes the highest-payoff root cause first.

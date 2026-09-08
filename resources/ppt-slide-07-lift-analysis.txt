@@ -1,0 +1,10 @@
+Slide 7: Lift Analysis - What to Investigate First
+
+- A complementary metric borrowed from association-rule analysis: "this
+  combination happens N times more often than chance would predict."
+
+- Easy to communicate to any audience - a single number that flags where
+  to look first.
+
+- Filters out one-off coincidences with a minimum occurrence count, so
+  only trustworthy patterns surface.

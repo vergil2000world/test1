@@ -1,0 +1,10 @@
+Slide 11: Effort & Cost
+
+- Built entirely on open-source tools (Python, pandas, prince) - no
+  licensing cost.
+
+- Runs in seconds to minutes per interruption export; reusable on every
+  future data pull with no rebuild.
+
+- Minimal ongoing maintenance: one script, one input file convention
+  (cleaned_file.csv).
