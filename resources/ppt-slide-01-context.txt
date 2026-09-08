@@ -1,0 +1,20 @@
+Slide 1: Context
+
+- What MTBI is: MTBI (Mean Time Between Interruptions) measures machine
+  interruptions across process steps, packages, and lines.
+
+- How we use it today: Root Cause Analysis (RCA) identifies why a step or
+  line falls out of MTBI target - based on Equipment Change State - and
+  drives the resulting action plan.
+
+- The gap: All this data is collected, but not fully analyzed. We're not
+  turning data into information - which is holding back our MTBI maturity.
+
+- Why that matters: RCA alone doesn't capture every pattern. To make the
+  analysis process robust, we need to capture all possible patterns, not
+  just the ones RCA finds one variable at a time.
+
+Notes:
+- Suggested visual treatment: highlight the last bullet ("RCA alone isn't
+  enough...") as a callout box - it's the thesis statement for the deck
+  and sets up the next slide (CA/MCA as the fix).
