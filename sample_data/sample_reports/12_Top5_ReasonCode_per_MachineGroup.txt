@@ -1,0 +1,29 @@
+TOP 5 ReasonCode PER Machine Group
+======================================================================
+
+Machine Group: GroupA  (total downtime 201,307 sec / 55:55:07)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover           135         79,967            22:12:47             39.7%
+    PM-Scheduled          37         49,433            13:43:53             24.6%
+    Jam                  163         21,893            06:04:53             10.9%
+    Material Shortage     55         18,586            05:09:46              9.2%
+    Unplanned Stop        23         10,763            02:59:23              5.3%
+
+Machine Group: GroupC  (total downtime 187,976 sec / 52:12:56)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover           148         89,022            24:43:42             47.4%
+    PM-Scheduled          28         33,455            09:17:35             17.8%
+    Material Shortage     57         20,337            05:38:57             10.8%
+    Jam                  172         17,282            04:48:02              9.2%
+    Unplanned Stop        15         10,776            02:59:36              5.7%
+
+Machine Group: GroupB  (total downtime 117,317 sec / 32:35:17)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            93         56,764            15:46:04             48.4%
+    PM-Scheduled          17         21,478            05:57:58             18.3%
+    Material Shortage     40         13,077            03:37:57             11.1%
+    Jam                  108         10,996            03:03:16              9.4%
+    Operator Break        14          6,556            01:49:16              5.6%

@@ -1,0 +1,398 @@
+DOWNTIME ANALYSIS SUMMARY
+======================================================================
+Input file           : /home/user/test1/sample_data/sample_downtime.csv
+Total events (rows)  : 1500
+Total downtime       : 506,600 sec (8,443.3 min / 140.72 hr) = 140:43:20
+Average per event    : 337.7 sec
+Unique ReasonCode    : 10
+Unique Machine ID    : 8
+Unique Machine Group : 3
+Unique Product Code  : 5
+Unique Lot ID        : 40
+
+Contents of this report set:
+  CA  (Cause Analysis)          -> full Pareto detail per dimension
+  MCA (Multiple Cause Analysis) -> top 5 most associated pair combinations
+  Top-N per group reports       -> e.g. top 5 ReasonCodes for each Machine
+  Pivot CSVs                    -> matrices for Excel / further analysis
+
+
+CAUSE ANALYSIS (CA) - by ReasonCode
+======================================================================
+Total events   : 1500
+Total downtime : 506,600 sec (140:43:20)
+Unique ReasonCode values: 10
+
+Rank  ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % Total   Cum %
+----  -----------------  -----  -------------  ------------------  -------  ------
+1     Changeover           376        225,753            62:42:33    44.6%   44.6%
+2     PM-Scheduled          82        104,366            28:59:26    20.6%   65.2%
+3     Material Shortage    152         52,000            14:26:40    10.3%   75.4%
+4     Jam                  443         50,171            13:56:11     9.9%   85.3%
+5     Unplanned Stop        45         24,289            06:44:49     4.8%   90.1%
+6     Operator Break        52         23,593            06:33:13     4.7%   94.8%
+7     Sensor Fault         226         14,552            04:02:32     2.9%   97.7%
+8     Adjustment            40          5,848            01:37:28     1.2%   98.8%
+9     Quality Check         22          4,028            01:07:08     0.8%   99.6%
+10    Power Blip            62          2,000            00:33:20     0.4%  100.0%
+
+Top contributor: 'Changeover' -> 225,753 sec (44.6% of total downtime, 376 events)
+Pareto (80/20): top 4 of 10 ReasonCode value(s) account for ~80% of total downtime.
+
+
+CAUSE ANALYSIS (CA) - by Machine ID
+======================================================================
+Total events   : 1500
+Total downtime : 506,600 sec (140:43:20)
+Unique Machine ID values: 8
+
+Rank  Machine ID  Count  Duration(sec)  Duration(hh:mm:ss)  % Total   Cum %
+----  ----------  -----  -------------  ------------------  -------  ------
+1     M-101         193         67,770            18:49:30    13.4%   13.4%
+2     M-103         192         66,921            18:35:21    13.2%   26.6%
+3     M-102         186         66,616            18:30:16    13.1%   39.7%
+4     M-302         198         65,124            18:05:24    12.9%   52.6%
+5     M-301         181         63,193            17:33:13    12.5%   65.1%
+6     M-202         190         61,457            17:04:17    12.1%   77.2%
+7     M-303         187         59,659            16:34:19    11.8%   89.0%
+8     M-201         173         55,860            15:31:00    11.0%  100.0%
+
+Top contributor: 'M-101' -> 67,770 sec (13.4% of total downtime, 193 events)
+Pareto (80/20): top 7 of 8 Machine ID value(s) account for ~80% of total downtime.
+
+
+CAUSE ANALYSIS (CA) - by Machine Group
+======================================================================
+Total events   : 1500
+Total downtime : 506,600 sec (140:43:20)
+Unique Machine Group values: 3
+
+Rank  Machine Group  Count  Duration(sec)  Duration(hh:mm:ss)  % Total   Cum %
+----  -------------  -----  -------------  ------------------  -------  ------
+1     GroupA           571        201,307            55:55:07    39.7%   39.7%
+2     GroupC           566        187,976            52:12:56    37.1%   76.8%
+3     GroupB           363        117,317            32:35:17    23.2%  100.0%
+
+Top contributor: 'GroupA' -> 201,307 sec (39.7% of total downtime, 571 events)
+Pareto (80/20): top 3 of 3 Machine Group value(s) account for ~80% of total downtime.
+
+
+CAUSE ANALYSIS (CA) - by Product Code
+======================================================================
+Total events   : 1500
+Total downtime : 506,600 sec (140:43:20)
+Unique Product Code values: 5
+
+Rank  Product Code  Count  Duration(sec)  Duration(hh:mm:ss)  % Total   Cum %
+----  ------------  -----  -------------  ------------------  -------  ------
+1     PRD-E           315        108,357            30:05:57    21.4%   21.4%
+2     PRD-D           294        101,357            28:09:17    20.0%   41.4%
+3     PRD-A           296        100,332            27:52:12    19.8%   61.2%
+4     PRD-C           278         98,348            27:19:08    19.4%   80.6%
+5     PRD-B           317         98,206            27:16:46    19.4%  100.0%
+
+Top contributor: 'PRD-E' -> 108,357 sec (21.4% of total downtime, 315 events)
+Pareto (80/20): top 4 of 5 Product Code value(s) account for ~80% of total downtime.
+
+
+CAUSE ANALYSIS (CA) - by Lot ID
+======================================================================
+Total events   : 1500
+Total downtime : 506,600 sec (140:43:20)
+Unique Lot ID values: 40
+
+Rank  Lot ID    Count  Duration(sec)  Duration(hh:mm:ss)  % Total   Cum %
+----  --------  -----  -------------  ------------------  -------  ------
+1     LOT-0032     47         18,231            05:03:51     3.6%    3.6%
+2     LOT-0036     42         17,043            04:44:03     3.4%    7.0%
+3     LOT-0013     39         16,945            04:42:25     3.3%   10.3%
+4     LOT-0019     45         16,680            04:38:00     3.3%   13.6%
+5     LOT-0034     41         16,342            04:32:22     3.2%   16.8%
+6     LOT-0021     44         16,208            04:30:08     3.2%   20.0%
+7     LOT-0008     39         15,930            04:25:30     3.1%   23.2%
+8     LOT-0031     42         15,857            04:24:17     3.1%   26.3%
+9     LOT-0024     34         15,451            04:17:31     3.0%   29.3%
+10    LOT-0016     49         15,280            04:14:40     3.0%   32.4%
+11    LOT-0009     51         14,347            03:59:07     2.8%   35.2%
+12    LOT-0012     31         14,298            03:58:18     2.8%   38.0%
+13    LOT-0033     38         13,995            03:53:15     2.8%   40.8%
+14    LOT-0025     48         13,786            03:49:46     2.7%   43.5%
+15    LOT-0030     35         13,459            03:44:19     2.7%   46.2%
+16    LOT-0007     41         13,393            03:43:13     2.6%   48.8%
+17    LOT-0029     46         13,362            03:42:42     2.6%   51.4%
+18    LOT-0018     36         13,253            03:40:53     2.6%   54.1%
+19    LOT-0027     33         13,075            03:37:55     2.6%   56.6%
+20    LOT-0011     37         12,971            03:36:11     2.6%   59.2%
+21    LOT-0023     37         12,715            03:31:55     2.5%   61.7%
+22    LOT-0002     30         12,099            03:21:39     2.4%   64.1%
+23    LOT-0035     44         12,080            03:21:20     2.4%   66.5%
+24    LOT-0022     33         11,720            03:15:20     2.3%   68.8%
+25    LOT-0006     35         11,435            03:10:35     2.3%   71.1%
+26    LOT-0004     36         11,402            03:10:02     2.3%   73.3%
+27    LOT-0003     33         10,984            03:03:04     2.2%   75.5%
+28    LOT-0028     34         10,884            03:01:24     2.1%   77.6%
+29    LOT-0010     34         10,531            02:55:31     2.1%   79.7%
+30    LOT-0020     39         10,367            02:52:47     2.0%   81.7%
+31    LOT-0026     33         10,304            02:51:44     2.0%   83.8%
+32    LOT-0038     38         10,296            02:51:36     2.0%   85.8%
+33    LOT-0014     36          9,900            02:45:00     2.0%   87.8%
+34    LOT-0001     33          9,866            02:44:26     1.9%   89.7%
+35    LOT-0017     25          9,657            02:40:57     1.9%   91.6%
+36    LOT-0040     33          9,632            02:40:32     1.9%   93.5%
+37    LOT-0005     32          8,884            02:28:04     1.8%   95.3%
+38    LOT-0015     28          8,722            02:25:22     1.7%   97.0%
+39    LOT-0039     32          7,765            02:09:25     1.5%   98.5%
+40    LOT-0037     37          7,451            02:04:11     1.5%  100.0%
+
+Top contributor: 'LOT-0032' -> 18,231 sec (3.6% of total downtime, 47 events)
+Pareto (80/20): top 30 of 40 Lot ID value(s) account for ~80% of total downtime.
+
+
+MULTIPLE CAUSE ANALYSIS (MCA) - Top 5 Machine ID + ReasonCode combinations
+======================================================================
+
+Rank  Machine ID  ReasonCode  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ----------  ----------  -----  -------------  ------------------  ----------
+1     M-202       Changeover     54         33,325            09:15:25        6.6%
+2     M-303       Changeover     51         30,290            08:24:50        6.0%
+3     M-302       Changeover     50         29,442            08:10:42        5.8%
+4     M-102       Changeover     48         29,422            08:10:22        5.8%
+5     M-301       Changeover     47         29,290            08:08:10        5.8%
+
+Most associated pair: Machine ID='M-202' + ReasonCode='Changeover' -> 33,325 sec (6.6% of total downtime, 54 events)
+
+
+MULTIPLE CAUSE ANALYSIS (MCA) - Top 5 Machine Group + ReasonCode combinations
+======================================================================
+
+Rank  Machine Group  ReasonCode    Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  ------------  -----  -------------  ------------------  ----------
+1     GroupC         Changeover      148         89,022            24:43:42       17.6%
+2     GroupA         Changeover      135         79,967            22:12:47       15.8%
+3     GroupB         Changeover       93         56,764            15:46:04       11.2%
+4     GroupA         PM-Scheduled     37         49,433            13:43:53        9.8%
+5     GroupC         PM-Scheduled     28         33,455            09:17:35        6.6%
+
+Most associated pair: Machine Group='GroupC' + ReasonCode='Changeover' -> 89,022 sec (17.6% of total downtime, 148 events)
+
+
+MULTIPLE CAUSE ANALYSIS (MCA) - Top 5 Product Code + ReasonCode combinations
+======================================================================
+
+Rank  Product Code  ReasonCode  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  ------------  ----------  -----  -------------  ------------------  ----------
+1     PRD-B         Changeover     85         50,140            13:55:40        9.9%
+2     PRD-E         Changeover     81         47,580            13:13:00        9.4%
+3     PRD-C         Changeover     75         46,362            12:52:42        9.2%
+4     PRD-A         Changeover     69         40,837            11:20:37        8.1%
+5     PRD-D         Changeover     66         40,834            11:20:34        8.1%
+
+Most associated pair: Product Code='PRD-B' + ReasonCode='Changeover' -> 50,140 sec (9.9% of total downtime, 85 events)
+
+
+MULTIPLE CAUSE ANALYSIS (MCA) - Top 5 Lot ID + ReasonCode combinations
+======================================================================
+
+Rank  Lot ID    ReasonCode  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  --------  ----------  -----  -------------  ------------------  ----------
+1     LOT-0013  Changeover     17         11,563            03:12:43        2.3%
+2     LOT-0008  Changeover     15          9,066            02:31:06        1.8%
+3     LOT-0007  Changeover     14          8,601            02:23:21        1.7%
+4     LOT-0036  Changeover     14          8,491            02:21:31        1.7%
+5     LOT-0003  Changeover     11          7,603            02:06:43        1.5%
+
+Most associated pair: Lot ID='LOT-0013' + ReasonCode='Changeover' -> 11,563 sec (2.3% of total downtime, 17 events)
+
+
+MULTIPLE CAUSE ANALYSIS (MCA) - Top 5 Machine Group + Machine ID combinations
+======================================================================
+
+Rank  Machine Group  Machine ID  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  ----------  -----  -------------  ------------------  ----------
+1     GroupA         M-101         193         67,770            18:49:30       13.4%
+2     GroupA         M-103         192         66,921            18:35:21       13.2%
+3     GroupA         M-102         186         66,616            18:30:16       13.1%
+4     GroupC         M-302         198         65,124            18:05:24       12.9%
+5     GroupC         M-301         181         63,193            17:33:13       12.5%
+
+Most associated pair: Machine Group='GroupA' + Machine ID='M-101' -> 67,770 sec (13.4% of total downtime, 193 events)
+
+
+TOP 5 ReasonCode PER Machine ID
+======================================================================
+
+Machine ID: M-101  (total downtime 67,770 sec / 18:49:30)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            36         21,350            05:55:50             31.5%
+    PM-Scheduled          15         18,512            05:08:32             27.3%
+    Jam                   56          9,952            02:45:52             14.7%
+    Material Shortage     20          6,502            01:48:22              9.6%
+    Unplanned Stop        10          4,525            01:15:25              6.7%
+
+Machine ID: M-103  (total downtime 66,921 sec / 18:35:21)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            51         29,195            08:06:35             43.6%
+    PM-Scheduled          10         14,501            04:01:41             21.7%
+    Material Shortage     18          6,784            01:53:04             10.1%
+    Jam                   49          5,549            01:32:29              8.3%
+    Operator Break         9          3,815            01:03:35              5.7%
+
+Machine ID: M-102  (total downtime 66,616 sec / 18:30:16)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            48         29,422            08:10:22             44.2%
+    PM-Scheduled          12         16,420            04:33:40             24.6%
+    Jam                   58          6,392            01:46:32              9.6%
+    Material Shortage     17          5,300            01:28:20              8.0%
+    Operator Break         7          3,343            00:55:43              5.0%
+
+Machine ID: M-302  (total downtime 65,124 sec / 18:05:24)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            50         29,442            08:10:42             45.2%
+    PM-Scheduled          11         12,602            03:30:02             19.4%
+    Material Shortage     20          6,770            01:52:50             10.4%
+    Jam                   60          6,225            01:43:45              9.6%
+    Unplanned Stop         6          3,327            00:55:27              5.1%
+
+Machine ID: M-301  (total downtime 63,193 sec / 17:33:13)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            47         29,290            08:08:10             46.4%
+    PM-Scheduled           8         10,012            02:46:52             15.8%
+    Material Shortage     20          8,081            02:14:41             12.8%
+    Jam                   54          5,280            01:28:00              8.4%
+    Unplanned Stop         5          4,847            01:20:47              7.7%
+
+Machine ID: M-202  (total downtime 61,457 sec / 17:04:17)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            54         33,325            09:15:25             54.2%
+    Material Shortage     21          6,697            01:51:37             10.9%
+    Jam                   58          6,148            01:42:28             10.0%
+    PM-Scheduled           4          5,857            01:37:37              9.5%
+    Operator Break        10          4,731            01:18:51              7.7%
+
+Machine ID: M-303  (total downtime 59,659 sec / 16:34:19)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            51         30,290            08:24:50             50.8%
+    PM-Scheduled           9         10,841            03:00:41             18.2%
+    Jam                   58          5,777            01:36:17              9.7%
+    Material Shortage     17          5,486            01:31:26              9.2%
+    Unplanned Stop         4          2,602            00:43:22              4.4%
+
+Machine ID: M-201  (total downtime 55,860 sec / 15:31:00)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            39         23,439            06:30:39             42.0%
+    PM-Scheduled          13         15,621            04:20:21             28.0%
+    Material Shortage     19          6,380            01:46:20             11.4%
+    Jam                   50          4,848            01:20:48              8.7%
+    Sensor Fault          32          1,941            00:32:21              3.5%
+
+
+TOP 5 ReasonCode PER Machine Group
+======================================================================
+
+Machine Group: GroupA  (total downtime 201,307 sec / 55:55:07)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover           135         79,967            22:12:47             39.7%
+    PM-Scheduled          37         49,433            13:43:53             24.6%
+    Jam                  163         21,893            06:04:53             10.9%
+    Material Shortage     55         18,586            05:09:46              9.2%
+    Unplanned Stop        23         10,763            02:59:23              5.3%
+
+Machine Group: GroupC  (total downtime 187,976 sec / 52:12:56)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover           148         89,022            24:43:42             47.4%
+    PM-Scheduled          28         33,455            09:17:35             17.8%
+    Material Shortage     57         20,337            05:38:57             10.8%
+    Jam                  172         17,282            04:48:02              9.2%
+    Unplanned Stop        15         10,776            02:59:36              5.7%
+
+Machine Group: GroupB  (total downtime 117,317 sec / 32:35:17)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            93         56,764            15:46:04             48.4%
+    PM-Scheduled          17         21,478            05:57:58             18.3%
+    Material Shortage     40         13,077            03:37:57             11.1%
+    Jam                  108         10,996            03:03:16              9.4%
+    Operator Break        14          6,556            01:49:16              5.6%
+
+
+TOP 5 Machine ID PER Machine Group
+======================================================================
+
+Machine Group: GroupA  (total downtime 201,307 sec / 55:55:07)
+    Machine ID  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ----------  -----  -------------  ------------------  ----------------
+    M-101         193         67,770            18:49:30             33.7%
+    M-103         192         66,921            18:35:21             33.2%
+    M-102         186         66,616            18:30:16             33.1%
+
+Machine Group: GroupC  (total downtime 187,976 sec / 52:12:56)
+    Machine ID  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ----------  -----  -------------  ------------------  ----------------
+    M-302         198         65,124            18:05:24             34.6%
+    M-301         181         63,193            17:33:13             33.6%
+    M-303         187         59,659            16:34:19             31.7%
+
+Machine Group: GroupB  (total downtime 117,317 sec / 32:35:17)
+    Machine ID  Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    ----------  -----  -------------  ------------------  ----------------
+    M-202         190         61,457            17:04:17             52.4%
+    M-201         173         55,860            15:31:00             47.6%
+
+
+TOP 5 ReasonCode PER Product Code
+======================================================================
+
+Product Code: PRD-E  (total downtime 108,357 sec / 30:05:57)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            81         47,580            13:13:00             43.9%
+    PM-Scheduled          17         22,138            06:08:58             20.4%
+    Jam                   90         10,803            03:00:03             10.0%
+    Material Shortage     28         10,393            02:53:13              9.6%
+    Operator Break        14          6,567            01:49:27              6.1%
+
+Product Code: PRD-D  (total downtime 101,357 sec / 28:09:17)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            66         40,834            11:20:34             40.3%
+    PM-Scheduled          19         24,747            06:52:27             24.4%
+    Material Shortage     30          9,875            02:44:35              9.7%
+    Jam                   84          9,813            02:43:33              9.7%
+    Unplanned Stop        11          5,973            01:39:33              5.9%
+
+Product Code: PRD-A  (total downtime 100,332 sec / 27:52:12)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            69         40,837            11:20:37             40.7%
+    PM-Scheduled          16         20,913            05:48:33             20.8%
+    Material Shortage     40         15,095            04:11:35             15.0%
+    Jam                   85          9,590            02:39:50              9.6%
+    Operator Break        14          6,152            01:42:32              6.1%
+
+Product Code: PRD-C  (total downtime 98,348 sec / 27:19:08)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            75         46,362            12:52:42             47.1%
+    PM-Scheduled          18         21,677            06:01:17             22.0%
+    Jam                   82          9,206            02:33:26              9.4%
+    Material Shortage     29          8,444            02:20:44              8.6%
+    Unplanned Stop         7          5,008            01:23:28              5.1%
+
+Product Code: PRD-B  (total downtime 98,206 sec / 27:16:46)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            85         50,140            13:55:40             51.1%
+    PM-Scheduled          12         14,891            04:08:11             15.2%
+    Jam                  102         10,759            02:59:19             11.0%
+    Material Shortage     25          8,193            02:16:33              8.3%
+    Unplanned Stop        11          5,005            01:23:25              5.1%

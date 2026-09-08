@@ -1,0 +1,74 @@
+TOP 5 ReasonCode PER Machine ID
+======================================================================
+
+Machine ID: M-101  (total downtime 67,770 sec / 18:49:30)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            36         21,350            05:55:50             31.5%
+    PM-Scheduled          15         18,512            05:08:32             27.3%
+    Jam                   56          9,952            02:45:52             14.7%
+    Material Shortage     20          6,502            01:48:22              9.6%
+    Unplanned Stop        10          4,525            01:15:25              6.7%
+
+Machine ID: M-103  (total downtime 66,921 sec / 18:35:21)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            51         29,195            08:06:35             43.6%
+    PM-Scheduled          10         14,501            04:01:41             21.7%
+    Material Shortage     18          6,784            01:53:04             10.1%
+    Jam                   49          5,549            01:32:29              8.3%
+    Operator Break         9          3,815            01:03:35              5.7%
+
+Machine ID: M-102  (total downtime 66,616 sec / 18:30:16)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            48         29,422            08:10:22             44.2%
+    PM-Scheduled          12         16,420            04:33:40             24.6%
+    Jam                   58          6,392            01:46:32              9.6%
+    Material Shortage     17          5,300            01:28:20              8.0%
+    Operator Break         7          3,343            00:55:43              5.0%
+
+Machine ID: M-302  (total downtime 65,124 sec / 18:05:24)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            50         29,442            08:10:42             45.2%
+    PM-Scheduled          11         12,602            03:30:02             19.4%
+    Material Shortage     20          6,770            01:52:50             10.4%
+    Jam                   60          6,225            01:43:45              9.6%
+    Unplanned Stop         6          3,327            00:55:27              5.1%
+
+Machine ID: M-301  (total downtime 63,193 sec / 17:33:13)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            47         29,290            08:08:10             46.4%
+    PM-Scheduled           8         10,012            02:46:52             15.8%
+    Material Shortage     20          8,081            02:14:41             12.8%
+    Jam                   54          5,280            01:28:00              8.4%
+    Unplanned Stop         5          4,847            01:20:47              7.7%
+
+Machine ID: M-202  (total downtime 61,457 sec / 17:04:17)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            54         33,325            09:15:25             54.2%
+    Material Shortage     21          6,697            01:51:37             10.9%
+    Jam                   58          6,148            01:42:28             10.0%
+    PM-Scheduled           4          5,857            01:37:37              9.5%
+    Operator Break        10          4,731            01:18:51              7.7%
+
+Machine ID: M-303  (total downtime 59,659 sec / 16:34:19)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            51         30,290            08:24:50             50.8%
+    PM-Scheduled           9         10,841            03:00:41             18.2%
+    Jam                   58          5,777            01:36:17              9.7%
+    Material Shortage     17          5,486            01:31:26              9.2%
+    Unplanned Stop         4          2,602            00:43:22              4.4%
+
+Machine ID: M-201  (total downtime 55,860 sec / 15:31:00)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            39         23,439            06:30:39             42.0%
+    PM-Scheduled          13         15,621            04:20:21             28.0%
+    Material Shortage     19          6,380            01:46:20             11.4%
+    Jam                   50          4,848            01:20:48              8.7%
+    Sensor Fault          32          1,941            00:32:21              3.5%

@@ -1,0 +1,12 @@
+MULTIPLE CAUSE ANALYSIS (MCA) - Top 5 Lot ID + ReasonCode combinations
+======================================================================
+
+Rank  Lot ID    ReasonCode  Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  --------  ----------  -----  -------------  ------------------  ----------
+1     LOT-0013  Changeover     17         11,563            03:12:43        2.3%
+2     LOT-0008  Changeover     15          9,066            02:31:06        1.8%
+3     LOT-0007  Changeover     14          8,601            02:23:21        1.7%
+4     LOT-0036  Changeover     14          8,491            02:21:31        1.7%
+5     LOT-0003  Changeover     11          7,603            02:06:43        1.5%
+
+Most associated pair: Lot ID='LOT-0013' + ReasonCode='Changeover' -> 11,563 sec (2.3% of total downtime, 17 events)

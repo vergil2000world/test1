@@ -1,0 +1,47 @@
+TOP 5 ReasonCode PER Product Code
+======================================================================
+
+Product Code: PRD-E  (total downtime 108,357 sec / 30:05:57)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            81         47,580            13:13:00             43.9%
+    PM-Scheduled          17         22,138            06:08:58             20.4%
+    Jam                   90         10,803            03:00:03             10.0%
+    Material Shortage     28         10,393            02:53:13              9.6%
+    Operator Break        14          6,567            01:49:27              6.1%
+
+Product Code: PRD-D  (total downtime 101,357 sec / 28:09:17)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            66         40,834            11:20:34             40.3%
+    PM-Scheduled          19         24,747            06:52:27             24.4%
+    Material Shortage     30          9,875            02:44:35              9.7%
+    Jam                   84          9,813            02:43:33              9.7%
+    Unplanned Stop        11          5,973            01:39:33              5.9%
+
+Product Code: PRD-A  (total downtime 100,332 sec / 27:52:12)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            69         40,837            11:20:37             40.7%
+    PM-Scheduled          16         20,913            05:48:33             20.8%
+    Material Shortage     40         15,095            04:11:35             15.0%
+    Jam                   85          9,590            02:39:50              9.6%
+    Operator Break        14          6,152            01:42:32              6.1%
+
+Product Code: PRD-C  (total downtime 98,348 sec / 27:19:08)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            75         46,362            12:52:42             47.1%
+    PM-Scheduled          18         21,677            06:01:17             22.0%
+    Jam                   82          9,206            02:33:26              9.4%
+    Material Shortage     29          8,444            02:20:44              8.6%
+    Unplanned Stop         7          5,008            01:23:28              5.1%
+
+Product Code: PRD-B  (total downtime 98,206 sec / 27:16:46)
+    ReasonCode         Count  Duration(sec)  Duration(hh:mm:ss)  % of group total
+    -----------------  -----  -------------  ------------------  ----------------
+    Changeover            85         50,140            13:55:40             51.1%
+    PM-Scheduled          12         14,891            04:08:11             15.2%
+    Jam                  102         10,759            02:59:19             11.0%
+    Material Shortage     25          8,193            02:16:33              8.3%
+    Unplanned Stop        11          5,005            01:23:25              5.1%

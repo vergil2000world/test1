@@ -1,0 +1,12 @@
+MULTIPLE CAUSE ANALYSIS (MCA) - Top 5 Machine Group + ReasonCode combinations
+======================================================================
+
+Rank  Machine Group  ReasonCode    Count  Duration(sec)  Duration(hh:mm:ss)  % of Total
+----  -------------  ------------  -----  -------------  ------------------  ----------
+1     GroupC         Changeover      148         89,022            24:43:42       17.6%
+2     GroupA         Changeover      135         79,967            22:12:47       15.8%
+3     GroupB         Changeover       93         56,764            15:46:04       11.2%
+4     GroupA         PM-Scheduled     37         49,433            13:43:53        9.8%
+5     GroupC         PM-Scheduled     28         33,455            09:17:35        6.6%
+
+Most associated pair: Machine Group='GroupC' + ReasonCode='Changeover' -> 89,022 sec (17.6% of total downtime, 148 events)
