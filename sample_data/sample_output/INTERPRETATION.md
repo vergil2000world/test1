@@ -52,5 +52,5 @@
 - Prioritize fixes in this order: the single biggest contributor above, then the strongest significant pairwise association, then the strongest lift combination - each is progressively more specific (and rarer) but often points to a more precise, fixable root cause.
 - Associations built on fewer than 5 events were dropped from the lift tables to avoid over-reacting to one-off coincidences; lower `--min-count` to see rarer combinations (with less statistical confidence).
 - `DurationLevel` thresholds are quantile-based (relative to this dataset) - they will shift if the dataset changes substantially, so re-run this script rather than hand-copying the bin edges.
-- See the `<Variable>/` folders for full detail and PNG plots (Pareto charts, CA biplots, MCA category maps) behind every number in this summary.
+- See the `<Variable>/` folders (or report.html) for full detail and plots behind every number in this summary.
 - A pair with Cramer's V near 1.0 (e.g. Machine ID x Machine Group) can simply reflect a structural/hierarchical relationship already known by construction (each machine belongs to exactly one group) rather than a new finding - treat those as expected, not actionable.

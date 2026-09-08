@@ -42,6 +42,16 @@ Correspondence Analysis (CA) and Multiple Correspondence Analysis (MCA):
   significant pairwise associations, strongest lift combinations, the
   highlighted MCA triple's headline findings, and a few notes/caveats
   (e.g. flagging trivially-strong associations from hierarchical columns).
+- **`report.html`** — a single, self-contained, offline HTML dashboard (no
+  server, no external network calls — every chart is embedded as base64):
+  a tab per variable with its Pareto table+chart, a "Compare with" sub-tab
+  strip inside each variable to switch between every other variable (CA
+  stats + biplot map highlighting both variables' categories, a lift table,
+  a top-N combination table), a Multi-Cause tab with a dropdown over the
+  highlighted triple + all 20 triples + all 6 variables at once (each with
+  its category map and tables), and an Interpretation tab mirroring
+  `INTERPRETATION.md` with colored strength/significance/lift badges. Just
+  open it in a browser.
 - Output is organized **variable by variable**, one subfolder per variable
   under `--outdir`, each holding that variable's own Pareto detail plus its
   CA/Lift/top-N reports (and plots) against every other variable; multi-way
