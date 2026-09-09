@@ -16,7 +16,9 @@ Unique Product Code  : 5
 Unique Lot ID        : 40
 Unique DurationLevel : 4
 
-Variables analyzed: Machine ID, Machine Group, ReasonCode, Product Code, Lot ID, DurationLevel
+Skipped from CA/MCA: none - every variable has >=2 distinct values.
+
+Variables analyzed (CA/MCA): Machine ID, Machine Group, ReasonCode, Product Code, Lot ID, DurationLevel
 
 Output layout:
   INTERPRETATION.md          auto-generated takeaways and notes

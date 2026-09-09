@@ -20,6 +20,22 @@ Correspondence Analysis (CA) and Multiple Correspondence Analysis (MCA):
 - Adds a derived **DurationLevel** feature (`Low`/`Medium`/`High`/`Critical`)
   by cutting `Duration (sec)` into quantile bins (`pandas.qcut`, `q=4` by
   default), and analyzes it alongside the 5 original columns.
+- **Skips variables that can't be used for CA/MCA instead of crashing.** A
+  contingency table needs at least 2 rows and 2 columns — a variable with
+  only 1 distinct value (or no data at all) after filtering gives a
+  degenerate 1-row/1-column table with zero usable components, which is
+  exactly what makes `prince`/`scikit-learn` raise an
+  `n_components must be between 0 and ...` crash. The script checks every
+  variable's distinct-value count up front, drops any that fail from all
+  CA/MCA pairing (its univariate Pareto report is still generated — only
+  the pairwise/multi-way statistical analysis is skipped), and reports
+  *which* variables were skipped and *why* in `00_Summary.txt`, in
+  `report.html`'s Overview tab, and on that variable's own tab. If the
+  highlighted triple (Machine Group + ReasonCode + DurationLevel) includes
+  a skipped variable, a substitute 3-way combination is picked from the
+  remaining usable variables and the substitution is noted in the summary.
+  If fewer than 2 variables are usable at all, the script exits with a
+  clear error instead of producing an empty/broken report.
 - **CA** — for *every* pair of the 6 variables (all 15 combinations):
   contingency table, chi-square test, Cramer's V, eigenvalues/explained
   inertia, row/column coordinates, and the top-N statistically most

@@ -237,6 +237,33 @@ def add_duration_level(df, q=4):
     return df, used_labels, bin_edges
 
 
+def check_variable_usability(df, variables):
+    """CA needs a contingency table with >=2 rows and >=2 columns, and MCA
+    needs every one-hot column to carry some variance - a variable with
+    only 1 distinct value gives a degenerate 1-row/1-column table with zero
+    inertia, which is exactly what makes prince/sklearn raise the
+    "n_components must be between 0 and ..." crash. Filtering those
+    variables out up front avoids ever hitting that error.
+
+    Returns (usable, skipped): usable is the list of variables with >=2
+    distinct values; skipped is a list of {"var", "nunique", "reason"}
+    dicts for the rest, to report in the summary/interpretation."""
+    usable, skipped = [], []
+    for v in variables:
+        nunique = int(df[v].nunique())
+        if nunique >= 2:
+            usable.append(v)
+            continue
+        if nunique == 1:
+            only = df[v].iloc[0]
+            reason = (f"only 1 unique value ('{only}') after filtering - no variation, so any contingency "
+                      "table against it would have a single row/column (0 usable components)")
+        else:
+            reason = "no data at all after filtering"
+        skipped.append({"var": v, "nunique": nunique, "reason": reason})
+    return usable, skipped
+
+
 # ---------------------------------------------------------------------------
 # Formatting helpers
 # ---------------------------------------------------------------------------
@@ -806,7 +833,8 @@ def compute_interpretation_summary(univariate_stats, ca_stats_all, lift_stats_al
 
 
 def build_interpretation_md(csv_path, int_flag_col, int_dropped, total_duration, total_events,
-                             level_labels, univariate_stats, summary, mca_highlight_stats, top_n, min_count):
+                             level_labels, univariate_stats, summary, mca_highlight_stats, top_n, min_count,
+                             highlight_vars=HIGHLIGHT_TRIPLE):
     biggest, sig_sorted, lift_sorted = summary["biggest"], summary["sig_sorted"], summary["lift_sorted"]
     lines = ["# Downtime CA / MCA - Interpretation", "",
              f"*Auto-generated from `{os.path.basename(csv_path)}` - {total_events} events, "
@@ -868,7 +896,7 @@ def build_interpretation_md(csv_path, int_flag_col, int_dropped, total_duration,
         lines.append(f"No pair had a combination reaching the minimum count of {min_count}.")
     lines.append("")
 
-    lines.append(f"## Multi-cause highlight: {' + '.join(HIGHLIGHT_TRIPLE)}")
+    lines.append(f"## Multi-cause highlight: {' + '.join(highlight_vars)}")
     lines.append("")
     tc = mca_highlight_stats.get("top_combo")
     tl = mca_highlight_stats.get("top_lift")
@@ -1178,6 +1206,11 @@ def render_variable_panel(var, uni_stats, pareto_png, pairwise, top_n):
     parts.append('<div class="card"><h2>Compare with</h2>')
     group_id = f"cmp-{safe(var)}"
     others = list(pairwise.keys())
+    if not others:
+        parts.append('<p class="meta-line">This variable was skipped from CA/MCA (fewer than 2 distinct values '
+                      'after filtering) - no pairwise comparisons are available. See Overview for the reason.</p>')
+        parts.append("</div></div>")
+        return "".join(parts)
     parts.append('<div class="subtabs">')
     for i, other in enumerate(others):
         active = " active" if i == 0 else ""
@@ -1272,7 +1305,8 @@ def render_top3way_lift_table(lift_pool, limit=5):
 
 
 def render_interpretation_panel(csv_path, int_flag_col, int_dropped, total_duration, total_events,
-                                 level_labels, univariate_stats, summary, mca_highlight_stats, top_n, min_count):
+                                 level_labels, univariate_stats, summary, mca_highlight_stats, top_n, min_count,
+                                 highlight_vars=HIGHLIGHT_TRIPLE):
     biggest, sig_sorted, lift_sorted = summary["biggest"], summary["sig_sorted"], summary["lift_sorted"]
     parts = ['<div id="panel-interpretation" class="panel"><h1>Interpretation</h1>']
     parts.append(f'<p class="meta-line">Auto-generated from <code>{esc(os.path.basename(csv_path))}</code> - '
@@ -1313,7 +1347,7 @@ def render_interpretation_panel(csv_path, int_flag_col, int_dropped, total_durat
         parts.append(f'<p class="muted">No pair had a combination reaching the minimum count of {min_count}.</p>')
     parts.append("</div>")
 
-    parts.append(f'<div class="card"><h2>Multi-cause highlight: {esc(" + ".join(HIGHLIGHT_TRIPLE))}</h2><ul class="notes">')
+    parts.append(f'<div class="card"><h2>Multi-cause highlight: {esc(" + ".join(highlight_vars))}</h2><ul class="notes">')
     tc, tl, tp = mca_highlight_stats.get("top_combo"), mca_highlight_stats.get("top_lift"), mca_highlight_stats.get("top_closest_pair")
     if tc:
         combo_str = ", ".join(f"{c}='{v}'" for c, v in tc["values"].items())
@@ -1365,10 +1399,21 @@ def build_html_report(path, meta, variables_ctx, mca_ctx, interpretation_ctx, to
     overview.append(kpi("Total events", f'{meta["total_events"]:,}'))
     overview.append(kpi("Total downtime", f'{meta["total_duration"]/3600:,.1f} hr'))
     overview.append(kpi("Avg per event", f'{meta["total_duration"]/meta["total_events"]:,.0f} sec'))
-    overview.append(kpi("Variables analyzed", str(len(VARIABLES))))
+    usable_vars = meta.get("usable_vars", VARIABLES)
+    skipped_vars = meta.get("skipped_vars", [])
+    overview.append(kpi("Variables analyzed (CA/MCA)", str(len(usable_vars))))
     if meta["int_flag_col"]:
         overview.append(kpi(f'Rows dropped ({meta["int_flag_col"]}=0)', str(meta["int_dropped"])))
-    overview.append("</div></div>")
+    overview.append("</div>")
+    if skipped_vars:
+        skip_items = "".join(
+            f'<li><strong>{esc(s["var"])}</strong> - {esc(s["reason"])}</li>' for s in skipped_vars)
+        overview.append(
+            '<p class="meta-line" style="margin-top:10px">'
+            f'<strong>Skipped from CA/MCA</strong> (needs &ge;2 distinct values to avoid a 0-component '
+            f'contingency table): its Pareto tab is still generated, only pairwise/multi-way CA/MCA is skipped.'
+            f'<ul style="margin:6px 0 0 18px">{skip_items}</ul></p>')
+    overview.append("</div>")
 
     summary = interpretation_ctx["summary"]
     overview.append('<div class="card"><h2>Top 5 pairwise associations (all 15 pairs)</h2>')
@@ -1378,17 +1423,23 @@ def build_html_report(path, meta, variables_ctx, mca_ctx, interpretation_ctx, to
     overview.append(render_lift_ranking_table(summary["lift_sorted"], limit=5))
     overview.append("</div>")
 
-    three_way = [mca_ctx["highlight"]] + mca_ctx["triples"]
-    combo_pool = [{"label": t["label"], **t["stats"]["top_combo"]} for t in three_way if t["stats"].get("top_combo")]
-    lift_pool = [{"label": t["label"], **t["stats"]["top_lift"]} for t in three_way if t["stats"].get("top_lift")]
-    combo_pool.sort(key=lambda c: c["duration"], reverse=True)
-    lift_pool.sort(key=lambda c: c["lift"], reverse=True)
-    overview.append(f'<div class="card"><h2>Top 5 three-way (MCA) findings (across all {len(three_way)} combinations)</h2>')
-    overview.append("<h3>By total downtime</h3>")
-    overview.append(render_top3way_combo_table(combo_pool, limit=5))
-    overview.append('<h3 style="margin-top:16px">By lift</h3>')
-    overview.append(render_top3way_lift_table(lift_pool, limit=5))
-    overview.append("</div>")
+    has_highlight = "highlight" in mca_ctx
+    three_way = ([mca_ctx["highlight"]] if has_highlight else []) + mca_ctx["triples"]
+    if three_way:
+        combo_pool = [{"label": t["label"], **t["stats"]["top_combo"]} for t in three_way if t["stats"].get("top_combo")]
+        lift_pool = [{"label": t["label"], **t["stats"]["top_lift"]} for t in three_way if t["stats"].get("top_lift")]
+        combo_pool.sort(key=lambda c: c["duration"], reverse=True)
+        lift_pool.sort(key=lambda c: c["lift"], reverse=True)
+        overview.append(f'<div class="card"><h2>Top 5 three-way (MCA) findings (across all {len(three_way)} combinations)</h2>')
+        overview.append("<h3>By total downtime</h3>")
+        overview.append(render_top3way_combo_table(combo_pool, limit=5))
+        overview.append('<h3 style="margin-top:16px">By lift</h3>')
+        overview.append(render_top3way_lift_table(lift_pool, limit=5))
+        overview.append("</div>")
+    else:
+        overview.append('<div class="card"><h2>Top 5 three-way (MCA) findings</h2>'
+                         '<p class="meta-line">Fewer than 3 usable variables - no 3-way MCA combinations were '
+                         'generated. See the "all variables" MCA in the Multi-Cause tab instead.</p></div>')
 
     overview.append('<div class="card"><h2>Pareto overview - click a variable to open its tab</h2><div class="pareto-grid">')
     for var in VARIABLES:
@@ -1403,13 +1454,15 @@ def build_html_report(path, meta, variables_ctx, mca_ctx, interpretation_ctx, to
                   for var in VARIABLES]
 
     # ---- MCA panel ----
-    mca_options = [("mca-" + mca_ctx["highlight"]["name"], mca_ctx["highlight"]["label"] + "  (highlighted)")]
-    mca_panels = [render_mca_combo(mca_ctx["highlight"]["name"], mca_ctx["highlight"]["stats"],
-                                    mca_ctx["highlight"]["png"], mca_ctx["highlight"]["label"], top_n)]
+    mca_options, mca_panels = [], []
+    if has_highlight:
+        mca_options.append(("mca-" + mca_ctx["highlight"]["name"], mca_ctx["highlight"]["label"] + "  (highlighted)"))
+        mca_panels.append(render_mca_combo(mca_ctx["highlight"]["name"], mca_ctx["highlight"]["stats"],
+                                            mca_ctx["highlight"]["png"], mca_ctx["highlight"]["label"], top_n))
     for t in mca_ctx["triples"]:
         mca_options.append(("mca-" + t["name"], t["label"]))
         mca_panels.append(render_mca_combo(t["name"], t["stats"], t["png"], t["label"], top_n))
-    mca_options.append(("mca-" + mca_ctx["all"]["name"], mca_ctx["all"]["label"] + "  (all 6 variables)"))
+    mca_options.append(("mca-" + mca_ctx["all"]["name"], mca_ctx["all"]["label"] + "  (all usable variables)"))
     mca_panels.append(render_mca_combo(mca_ctx["all"]["name"], mca_ctx["all"]["stats"], mca_ctx["all"]["png"],
                                         mca_ctx["all"]["label"], top_n))
     mca_panels[0] = mca_panels[0].replace('class="mca-panel subpanel"', 'class="mca-panel subpanel active"', 1)
@@ -1490,6 +1543,27 @@ def main():
     min_count = args.min_count
     outdir = args.outdir
 
+    # ---------------- Variable usability (avoid n_components=0 crashes) ----------------
+    usable_vars, skipped_vars = check_variable_usability(df, VARIABLES)
+    if len(usable_vars) < 2:
+        names = ", ".join(f"{s['var']} ({s['reason']})" for s in skipped_vars)
+        raise SystemExit("ERROR: fewer than 2 usable variables (need >=2 distinct values each) for any "
+                          f"CA/MCA - nothing to analyze. Skipped: {names}")
+    have_mca = len(usable_vars) >= 3
+
+    highlight_vars, highlight_note = None, None
+    if have_mca:
+        if set(HIGHLIGHT_TRIPLE).issubset(usable_vars):
+            highlight_vars = HIGHLIGHT_TRIPLE
+        else:
+            highlight_vars = next(iter(combinations(usable_vars, 3)))
+            unusable_members = [v for v in HIGHLIGHT_TRIPLE if v not in usable_vars]
+            highlight_note = (f"Requested highlight combination ({' + '.join(HIGHLIGHT_TRIPLE)}) skipped - "
+                               f"{', '.join(unusable_members)} not usable; substituted "
+                               f"{' + '.join(highlight_vars)} instead.")
+    else:
+        highlight_note = f"Fewer than 3 usable variables ({len(usable_vars)}) - no 3-way MCA was generated."
+
     # ---------------- Summary ----------------
     summary = ["DOWNTIME CA / MCA ANALYSIS SUMMARY", "=" * 70,
                f"Input file           : {os.path.abspath(args.csv_path)}"]
@@ -1511,7 +1585,17 @@ def main():
     for v in VARIABLES:
         summary.append(f"Unique {v:<14}: {df[v].nunique()}")
     summary.append("")
-    summary.append("Variables analyzed: " + ", ".join(VARIABLES))
+    if skipped_vars:
+        summary.append("Skipped from CA/MCA (needs >=2 distinct values to avoid a 0-component contingency table):")
+        for s in skipped_vars:
+            summary.append(f"  - {s['var']}: {s['reason']}")
+        summary.append("  (its univariate Pareto report is still generated below - only pairwise CA/MCA is skipped)")
+    else:
+        summary.append("Skipped from CA/MCA: none - every variable has >=2 distinct values.")
+    if highlight_note:
+        summary.append(highlight_note)
+    summary.append("")
+    summary.append("Variables analyzed (CA/MCA): " + ", ".join(usable_vars))
     summary.append("")
     summary.append("Output layout:")
     summary.append("  INTERPRETATION.md          auto-generated takeaways and notes")
@@ -1519,7 +1603,7 @@ def main():
     summary.append("  report.html                 interactive HTML dashboard (tabs, tables, maps)")
     summary.append("  <Variable>/                 descriptive CA + pairwise CA/lift/top-N vs every other variable")
     summary.append("  MultiWayMCA/                3-way MCA for every combination + all-6 MCA")
-    summary.append(f"                              (highlighted: {' + '.join(HIGHLIGHT_TRIPLE)})")
+    summary.append(f"                              (highlighted: {' + '.join(highlight_vars) if highlight_vars else 'none - see note above'})")
     summary.append("  pivots/                     duration-sum pivot CSVs for every pair")
     write(os.path.join(outdir, "00_Summary.txt"), "\n".join(summary) + "\n")
 
@@ -1563,7 +1647,10 @@ def main():
         univariate_stats.append(uni_stats)
         variables_ctx[var] = {"uni_stats": uni_stats, "pareto_png": pareto_png, "pairwise": {}}
 
-        for other in VARIABLES:
+        if var not in usable_vars:
+            continue  # univariate report done; skip all CA/MCA pairing for this variable
+
+        for other in usable_vars:
             if other == var:
                 continue
             ca_text, ca_stats, ca_plot_src = get_ca(var, other)
@@ -1604,39 +1691,45 @@ def main():
     ca_stats_all = [entry[1] for entry in ca_cache.values()]
     lift_stats_all = [entry[1] for entry in lift_cache.values() if entry[1] is not None]
 
-    # ---------------- Pivot CSVs (all pairs) ----------------
-    for a, b in combinations(VARIABLES, 2):
+    # ---------------- Pivot CSVs (all usable pairs) ----------------
+    for a, b in combinations(usable_vars, 2):
         write_pivot_csv(os.path.join(outdir, "pivots", f"{safe(a)}_x_{safe(b)}_pivot.csv"), df, a, b)
 
     # ---------------- Multi-way MCA ----------------
-    triples = [t for t in combinations(VARIABLES, 3) if set(t) != set(HIGHLIGHT_TRIPLE)]
     mca_ctx = {"triples": []}
+    highlight_stats = None
 
-    highlight_name = "00_MCA_" + "_".join(safe(v) for v in HIGHLIGHT_TRIPLE)
-    highlight_png = os.path.join(outdir, "MultiWayMCA", f"{highlight_name}_map.png")
-    highlight_text, highlight_stats = mca_report(df, HIGHLIGHT_TRIPLE, total_duration, top_n, min_count,
-                                                  plot_path=highlight_png)
-    write(os.path.join(outdir, "MultiWayMCA", f"{highlight_name}.txt"), highlight_text)
-    mca_ctx["highlight"] = {"name": highlight_name, "stats": highlight_stats, "png": highlight_png,
-                             "label": " x ".join(HIGHLIGHT_TRIPLE)}
+    if have_mca:
+        triples = [t for t in combinations(usable_vars, 3) if set(t) != set(highlight_vars)]
 
-    for t in triples:
-        name = "MCA_triple_" + "_".join(safe(v) for v in t)
-        png = os.path.join(outdir, "MultiWayMCA", f"{name}_map.png")
-        text, stats = mca_report(df, t, total_duration, top_n, min_count, plot_path=png)
-        write(os.path.join(outdir, "MultiWayMCA", f"{name}.txt"), text)
-        mca_ctx["triples"].append({"name": name, "stats": stats, "png": png, "label": " x ".join(t)})
+        highlight_name = "00_MCA_" + "_".join(safe(v) for v in highlight_vars)
+        highlight_png = os.path.join(outdir, "MultiWayMCA", f"{highlight_name}_map.png")
+        highlight_text, highlight_stats = mca_report(df, highlight_vars, total_duration, top_n, min_count,
+                                                      plot_path=highlight_png)
+        write(os.path.join(outdir, "MultiWayMCA", f"{highlight_name}.txt"), highlight_text)
+        mca_ctx["highlight"] = {"name": highlight_name, "stats": highlight_stats, "png": highlight_png,
+                                 "label": " x ".join(highlight_vars)}
+
+        for t in triples:
+            name = "MCA_triple_" + "_".join(safe(v) for v in t)
+            png = os.path.join(outdir, "MultiWayMCA", f"{name}_map.png")
+            text, stats = mca_report(df, t, total_duration, top_n, min_count, plot_path=png)
+            write(os.path.join(outdir, "MultiWayMCA", f"{name}.txt"), text)
+            mca_ctx["triples"].append({"name": name, "stats": stats, "png": png, "label": " x ".join(t)})
 
     all_png = os.path.join(outdir, "MultiWayMCA", "MCA_all_variables_map.png")
-    all_text, all_stats = mca_report(df, VARIABLES, total_duration, top_n, min_count, plot_path=all_png)
+    all_text, all_stats = mca_report(df, usable_vars, total_duration, top_n, min_count, plot_path=all_png)
     write(os.path.join(outdir, "MultiWayMCA", "MCA_all_variables.txt"), all_text)
-    mca_ctx["all"] = {"name": "MCA_all_variables", "stats": all_stats, "png": all_png, "label": " x ".join(VARIABLES)}
+    mca_ctx["all"] = {"name": "MCA_all_variables", "stats": all_stats, "png": all_png, "label": " x ".join(usable_vars)}
+    if highlight_stats is None:
+        highlight_stats = all_stats  # fewer than 3 usable variables - fall back to the "all" MCA for interpretation
+    interp_highlight_vars = list(highlight_vars) if highlight_vars else list(usable_vars)
 
     # ---------------- Interpretation ----------------
     summary_stats = compute_interpretation_summary(univariate_stats, ca_stats_all, lift_stats_all)
     interpretation = build_interpretation_md(
         args.csv_path, int_flag_col, int_dropped, total_duration, total_events, level_labels,
-        univariate_stats, summary_stats, highlight_stats, top_n, min_count)
+        univariate_stats, summary_stats, highlight_stats, top_n, min_count, interp_highlight_vars)
     write(os.path.join(outdir, "INTERPRETATION.md"), interpretation)
 
     # ---------------- HTML dashboard ----------------
@@ -1646,11 +1739,13 @@ def main():
     # disk in this folder, the same as the .txt/.csv files, not from anything
     # kept only in memory during the analysis run.
     meta = {"csv_name": os.path.basename(args.csv_path), "total_events": total_events,
-            "total_duration": total_duration, "int_flag_col": int_flag_col, "int_dropped": int_dropped}
+            "total_duration": total_duration, "int_flag_col": int_flag_col, "int_dropped": int_dropped,
+            "usable_vars": usable_vars, "skipped_vars": skipped_vars}
     interpretation_ctx = dict(csv_path=args.csv_path, int_flag_col=int_flag_col, int_dropped=int_dropped,
                               total_duration=total_duration, total_events=total_events, level_labels=level_labels,
                               univariate_stats=univariate_stats, summary=summary_stats,
-                              mca_highlight_stats=highlight_stats, top_n=top_n, min_count=min_count)
+                              mca_highlight_stats=highlight_stats, top_n=top_n, min_count=min_count,
+                              highlight_vars=interp_highlight_vars)
 
     report_data_path = os.path.join(outdir, "report_data.json")
     save_report_data(report_data_path, {
@@ -1661,11 +1756,17 @@ def main():
     build_html_report(os.path.join(outdir, "report.html"), data["meta"], data["variables"], data["mca"],
                        data["interpretation"], data["top_n"])
 
-    n_pairs = len(list(combinations(VARIABLES, 2)))
-    n_triples = len(list(combinations(VARIABLES, 3)))
+    n_pairs = len(list(combinations(usable_vars, 2)))
+    n_triples = len(list(combinations(usable_vars, 3)))
     print(f"Done. Wrote reports to: {os.path.abspath(outdir)}")
-    print(f"  - {len(VARIABLES)} per-variable folders (univariate + {n_pairs} pairwise CA/Lift reports + plots)")
-    print(f"  - {n_triples} 3-way MCA reports (incl. highlighted {HIGHLIGHT_TRIPLE}) + 1 all-variables MCA (+ maps)")
+    print(f"  - {len(VARIABLES)} per-variable folders (univariate; {n_pairs} pairwise CA/Lift reports + plots "
+          f"among the {len(usable_vars)} usable variables)")
+    if skipped_vars:
+        print(f"  - Skipped from CA/MCA: {', '.join(s['var'] for s in skipped_vars)} (see 00_Summary.txt for why)")
+    if have_mca:
+        print(f"  - {n_triples} 3-way MCA reports (incl. highlighted {tuple(highlight_vars)}) + 1 all-variables MCA (+ maps)")
+    else:
+        print("  - No 3-way MCA (fewer than 3 usable variables) - 1 all-variables MCA only (+ map)")
     print(f"  - {n_pairs} pivot CSVs")
     print("  - report_data.json  (the file report.html is built from - inspect it, or re-run with")
     print("                       --rebuild-html-only to regenerate report.html from it without recomputing)")

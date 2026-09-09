@@ -4,7 +4,16 @@
     "total_events": 1500,
     "total_duration": 506600,
     "int_flag_col": null,
-    "int_dropped": 0
+    "int_dropped": 0,
+    "usable_vars": [
+      "Machine ID",
+      "Machine Group",
+      "ReasonCode",
+      "Product Code",
+      "Lot ID",
+      "DurationLevel"
+    ],
+    "skipped_vars": []
   },
   "variables": {
     "Machine ID": {
@@ -112563,7 +112572,12 @@
       ]
     },
     "top_n": 5,
-    "min_count": 5
+    "min_count": 5,
+    "highlight_vars": [
+      "Machine Group",
+      "ReasonCode",
+      "DurationLevel"
+    ]
   },
   "top_n": 5
 }
