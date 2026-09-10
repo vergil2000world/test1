@@ -1,0 +1,87 @@
+MTBI — ROBUST DEADLINE / ON-TIME DAX (replaces Deadline_Date + On_Time_Upload)
+================================================================================
+Add these as 3 New Columns on the Resources table, IN THIS ORDER. Delete
+your old Deadline_Date and On_Time_Upload first (right-click -> Delete),
+then add these three under the same names (LastModified_Date is new).
+
+--------------------------------------------------------------------------
+1) LastModified_Date   <- NEW helper column, fixes text-vs-date issues
+--------------------------------------------------------------------------
+LastModified_Date =
+VAR RawVal = Resources[LastModified]
+RETURN
+    IFERROR(
+        IF(
+            ISTEXT(RawVal),
+            DATEVALUE(LEFT(RawVal, 10)),   -- takes "2026-09-10" out of "2026-09-10T08:37:32Z"
+            RawVal
+        ),
+        BLANK()
+    )
+
+(Why: SharePoint sometimes returns LastModified as text like
+"2026-09-10T08:37:32Z" instead of a real datetime. If Power Query left
+that column as Text, any date comparison against it silently breaks.
+This column forces it into a real date no matter which type it arrived as.)
+
+--------------------------------------------------------------------------
+2) Deadline_Date  (robust version — trims whitespace, forces Year to a number)
+--------------------------------------------------------------------------
+Deadline_Date =
+VAR MonthNum =
+    SWITCH(
+        TRIM(Resources[Month]),
+        "January", 1, "February", 2, "March", 3, "April", 4,
+        "May", 5, "June", 6, "July", 7, "August", 8,
+        "September", 9, "October", 10, "November", 11, "December", 12,
+        BLANK()
+    )
+VAR QuarterNum =
+    SWITCH(TRIM(Resources[Quarter]), "Q1", 1, "Q2", 2, "Q3", 3, "Q4", 4, BLANK())
+VAR YearNum = IFERROR(INT(Resources[Year]), BLANK())
+RETURN
+    IFERROR(
+        SWITCH(
+            TRUE(),
+            TRIM(Resources[Resource_Type]) = "Monthly Report" && NOT ISBLANK(MonthNum) && NOT ISBLANK(YearNum),
+                DATE(YearNum, MonthNum, 1) + 39,
+            TRIM(Resources[Resource_Type]) = "Quarter Report" && NOT ISBLANK(QuarterNum) && NOT ISBLANK(YearNum),
+                DATE(YearNum, QuarterNum * 3 + 1, 1) + 14,
+            BLANK()
+        ),
+        BLANK()
+    )
+
+--------------------------------------------------------------------------
+3) On_Time_Upload  (robust version — uses LastModified_Date, wrapped in IFERROR)
+--------------------------------------------------------------------------
+On_Time_Upload =
+IFERROR(
+    IF(
+        ISBLANK(Resources[Deadline_Date]) || ISBLANK(Resources[LastModified_Date]),
+        BLANK(),
+        IF(Resources[LastModified_Date] <= Resources[Deadline_Date], "Yes", "No")
+    ),
+    BLANK()
+)
+
+================================================================================
+No changes needed to any measure — "On-Time Upload Rate", "Trackable
+Records (On-Time Scope)", "Late Uploads (Count)" and "Average Days Late"
+all still reference On_Time_Upload / Deadline_Date by the same names.
+Just swap "Resources[LastModified]" for "Resources[LastModified_Date]"
+inside "Average Days Late":
+
+Average Days Late =
+VAR LateRecords = FILTER(Resources, Resources[On_Time_Upload] = "No")
+RETURN
+    AVERAGEX(LateRecords, DATEDIFF(Resources[Deadline_Date], Resources[LastModified_Date], DAY))
+
+================================================================================
+If the rate STILL shows "--" after this: it means Deadline_Date is coming
+back BLANK() for every row even with the TRIM/INT fixes, which points to
+Resource_Type, Month, or Quarter having a value that LOOKS right visually
+but has a hidden character (e.g. Resource_Type = "Monthly Report " with a
+trailing space, or Quarter = "Q4" but stored with a non-breaking space).
+In that case, screenshot the "Trackable Records (On-Time Scope)" measure
+as a Card by itself — if that shows 0, the filter isn't matching any row.
