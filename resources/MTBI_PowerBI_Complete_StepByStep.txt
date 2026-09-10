@@ -1,0 +1,259 @@
+MTBI RESOURCE STANDARD — COMPLETE STEP-BY-STEP (Power Query + DAX + Dashboard)
+================================================================================
+Based on your ACTUAL loaded table (12 rows, columns: ItemId, Id, Name, Path,
+LastModified, Size, MediaType, IsFolder, ETag, FileLocator, Resource_Type).
+Resource_Type already exists and is correct (Quarter Report x4, Monthly
+Report x1, Support Document x7) — skip step 1 below, you already did it.
+Everything else in this file is new. Do the steps in order, top to bottom.
+
+================================================================================
+PART A — POWER QUERY (Home tab -> "Transform data" button -> opens Power
+Query Editor -> select the Resources table on the left)
+================================================================================
+
+Click "Add Column" tab -> "Custom Column" for each of the following. Type
+the Column Name exactly as shown, paste the formula into the box below "=",
+click OK, then move to the next one. Do them in THIS order — later ones
+depend on earlier ones.
+
+--------------------------------------------------------------------------
+A1) Column name: Year
+--------------------------------------------------------------------------
+let
+    NameNoExt = Text.BeforeDelimiter([Name], ".", {0, RelativePosition.FromEnd})
+in
+    try Number.FromText(Text.End(NameNoExt, 4)) otherwise null
+
+(Grabs the last 4 characters before the file extension — works for both
+"Q4_2025.txt" -> 2025 and "RCA_Report_January_2025.txt" -> 2025. Support
+Document names like "Links.md" don't end in a year, so Year will be null
+for those — that's correct, they don't need one.)
+
+--------------------------------------------------------------------------
+A2) Column name: Month
+--------------------------------------------------------------------------
+let
+    Segments = Text.Split([Path], "/"),
+    MonthlyIndex = List.PositionOf(Segments, "Monthly Reports")
+in
+    if [Resource_Type] = "Monthly Report" and MonthlyIndex >= 0 and MonthlyIndex + 2 < List.Count(Segments)
+    then Segments{MonthlyIndex + 2}
+    else null
+
+(Only fills in for Monthly Report rows, reading the month folder name
+straight from the Path, e.g. ".../Monthly Reports/2025/January/..." -> "January".)
+
+--------------------------------------------------------------------------
+A3) Column name: Quarter
+--------------------------------------------------------------------------
+if [Resource_Type] = "Quarter Report" and Text.Length([Name]) >= 2
+then Text.Start([Name], 2)
+else null
+
+(Only fills in for Quarter Report rows: "Q4_2025.txt" -> "Q4".)
+
+--------------------------------------------------------------------------
+A4) Column name: Naming_OK
+--------------------------------------------------------------------------
+if [Resource_Type] = "Quarter Report" then
+    Text.StartsWith([Name], [Quarter] ?? "") and
+    Text.EndsWith([Name], "_" & Text.From([Year]) & ".txt") and
+    List.Contains({"Q1","Q2","Q3","Q4"}, [Quarter])
+else if [Resource_Type] = "Monthly Report" then
+    (Text.StartsWith([Name], "RCA_Report_") or Text.StartsWith([Name], "Actions_Plan_") or Text.StartsWith([Name], "Effectiveness_Report_"))
+    and Text.EndsWith([Name], ([Month] ?? "zzz") & "_" & Text.From([Year]) & ".txt")
+else
+    true
+
+(TRUE/FALSE — does the filename follow the naming convention for its
+branch? Support Documents always pass — no fixed naming rule was defined
+for them.)
+
+--------------------------------------------------------------------------
+A5) Column name: Folder_OK
+--------------------------------------------------------------------------
+if [Resource_Type] = "Quarter Report" then
+    Text.Contains([Path], "/Quarter Reports/" & Text.From([Year]) & "/")
+else if [Resource_Type] = "Monthly Report" then
+    Text.Contains([Path], "/Monthly Reports/" & Text.From([Year]) & "/" & ([Month] ?? "zzz") & "/")
+else if [Resource_Type] = "Support Document" then
+    Text.Contains([Path], "/Support Documents/")
+else
+    false
+
+(TRUE/FALSE — is the file sitting in the folder path it's supposed to be
+in for its branch and year/month?)
+
+--------------------------------------------------------------------------
+After adding A1-A5: set data types before closing.
+--------------------------------------------------------------------------
+Click each column header's data type icon (top-left of the column) and set:
+  Year        -> Whole Number
+  Naming_OK   -> True/False
+  Folder_OK   -> True/False
+  Month, Quarter -> leave as Text
+
+Click "Close & Apply" (Home tab, top-left) to load these into the model.
+
+================================================================================
+PART B — DAX CALCULATED COLUMNS (back in the main Power BI window ->
+click the Table view icon on the far left, the grid icon -> Resources
+table selected -> Table tools tab -> "New Column")
+================================================================================
+
+--------------------------------------------------------------------------
+B1) Deadline_Date
+--------------------------------------------------------------------------
+Deadline_Date =
+VAR MonthNum =
+    SWITCH(
+        Resources[Month],
+        "January", 1, "February", 2, "March", 3, "April", 4,
+        "May", 5, "June", 6, "July", 7, "August", 8,
+        "September", 9, "October", 10, "November", 11, "December", 12,
+        BLANK()
+    )
+VAR QuarterNum =
+    SWITCH(Resources[Quarter], "Q1", 1, "Q2", 2, "Q3", 3, "Q4", 4, BLANK())
+RETURN
+    SWITCH(
+        TRUE(),
+        Resources[Resource_Type] = "Monthly Report" && NOT ISBLANK(MonthNum),
+            DATE(Resources[Year], MonthNum, 1) + 39,
+        Resources[Resource_Type] = "Quarter Report" && NOT ISBLANK(QuarterNum),
+            DATE(Resources[Year], QuarterNum * 3 + 1, 1) + 14,
+        BLANK()
+    )
+
+(Monthly reports: due ~10th of the month after the reported month.
+Quarter reports: due 15 days after the quarter ends. Support Documents:
+no deadline -> blank. EDIT the two numbers, 39 and 14, if your real
+policy differs — right now they're a reasonable placeholder.)
+
+--------------------------------------------------------------------------
+B2) On_Time_Upload
+--------------------------------------------------------------------------
+On_Time_Upload =
+IF(
+    ISBLANK(Resources[Deadline_Date]),
+    BLANK(),
+    IF(Resources[LastModified] <= Resources[Deadline_Date], "Yes", "No")
+)
+
+================================================================================
+PART C — DAX MEASURES (Table view or Report view -> select Resources in
+Fields pane -> Home tab -> "New Measure")
+================================================================================
+
+Total Files Tracked =
+COUNTROWS(Resources)
+
+Naming Convention Compliance =
+DIVIDE(
+    COUNTROWS(FILTER(Resources, Resources[Naming_OK] = TRUE())),
+    COUNTROWS(Resources)
+)
+
+Folder Structure Compliance =
+DIVIDE(
+    COUNTROWS(FILTER(Resources, Resources[Folder_OK] = TRUE())),
+    COUNTROWS(Resources)
+)
+
+Trackable Records (On-Time Scope) =
+COUNTROWS(FILTER(Resources, NOT ISBLANK(Resources[On_Time_Upload])))
+
+On-Time Upload Rate =
+DIVIDE(
+    COUNTROWS(FILTER(Resources, Resources[On_Time_Upload] = "Yes")),
+    [Trackable Records (On-Time Scope)]
+)
+
+Late Uploads (Count) =
+COUNTROWS(FILTER(Resources, Resources[On_Time_Upload] = "No"))
+
+Average Days Late =
+VAR LateRecords = FILTER(Resources, Resources[On_Time_Upload] = "No")
+RETURN
+    AVERAGEX(LateRecords, DATEDIFF(Resources[Deadline_Date], Resources[LastModified], DAY))
+
+Resource Standard Index =
+AVERAGEX(
+    { [Naming Convention Compliance], [Folder Structure Compliance], [On-Time Upload Rate] },
+    [Value]
+)
+
+RSI Status =
+VAR Score = [Resource Standard Index]
+RETURN
+    SWITCH(TRUE(), Score >= 0.80, "Good", Score >= 0.60, "Needs Attention", "Critical")
+
+RSI Status Color =
+VAR Score = [Resource Standard Index]
+RETURN
+    SWITCH(TRUE(), Score >= 0.80, "#0CA30C", Score >= 0.60, "#FAB219", "#D03B3B")
+
+Non-Compliant Files (Naming or Folder) =
+COUNTROWS(FILTER(Resources, Resources[Naming_OK] = FALSE() || Resources[Folder_OK] = FALSE()))
+
+NOTE on Storage Compliance Rate: intentionally not included. Since this
+data only ever comes from scanning SharePoint, every row is by definition
+already "in SharePoint" — that rate would always read 100% and mean
+nothing. Skip this KPI on the dashboard, or replace its tile with "Total
+Files Tracked" instead.
+
+Format every *Rate / *Compliance / Index measure as Percentage, 1 decimal:
+right-click the measure in the Fields pane -> Format -> Percentage.
+
+================================================================================
+PART D — BUILD THE DASHBOARD (Report view, the middle icon on the far left)
+================================================================================
+
+D1) KPI cards — top row, 4 cards side by side (Visualizations pane -> "Card"
+    or "New card" visual):
+      Card 1: Resource Standard Index
+      Card 2: Naming Convention Compliance
+      Card 3: Folder Structure Compliance
+      Card 4: On-Time Upload Rate
+    For each card: click it -> Format your visual (paint roller icon) ->
+    "Callout value" or "Background" -> turn on conditional formatting ->
+    Format by "Field value" -> pick RSI Status Color (or make matching
+    Status Color measures for the other three the same way, swapping the
+    "Score" variable inside RSI Status/RSI Status Color for that measure).
+
+D2) Breakdown by branch — Clustered column chart:
+      X-axis: Resource_Type
+      Values: Naming Convention Compliance, Folder Structure Compliance,
+              On-Time Upload Rate
+    Shows which of the 3 branches (Support Documents / Quarter Reports /
+    Monthly Reports) is weakest.
+
+D3) Trend over time — Line chart:
+      X-axis: Year and Month (for Monthly Report) or Year and Quarter
+      (for Quarter Report) — build two separate trend charts, one per
+      branch, using a visual-level filter (Resource_Type = that branch).
+      Values: Resource Standard Index or the individual rate you care about.
+
+D4) Drill-down table — Table visual with columns:
+      Name, Resource_Type, Path, LastModified, Naming_OK, Folder_OK,
+      On_Time_Upload
+    Add a slicer on Naming_OK or Folder_OK so you can filter straight to
+    the non-compliant files.
+
+D5) Sanity check: Total Files Tracked should equal the number of rows in
+    your table (currently 12 — 4 Quarter Reports + 1 Monthly Report +
+    7 Support Documents). Your Monthly Reports branch only has 1 file
+    right now (January) — that's expected only if your flow hasn't
+    finished scanning all 12 months yet; if the flow run is complete and
+    you're still only seeing January, that's a separate bug to check in
+    the flow, not in Power BI.
+
+================================================================================
+PART E — REFRESH
+================================================================================
+Home tab -> Refresh, any time the underlying CSV changes (i.e. every time
+your Power Automate flow reruns and overwrites mtbi_resources_records.csv
+via the "Update file" action). If you publish this report to the Power BI
+Service later, you can set up Scheduled Refresh there via a gateway
+connection to SharePoint so it updates automatically without you opening
+Power BI Desktop.
