@@ -100,11 +100,14 @@ def run(csv_path, period0="Jul", period1="Aug", std_a=None, std_p=None):
     closed_A = (OEE_cf_A - OEE_aug) / gap * 100 if gap != 0 else None
     closed_P = (OEE_cf_P - OEE_aug) / gap * 100 if gap != 0 else None
 
+    closed_A_str = f"{closed_A:.1f}%" if closed_A is not None else "N/A (gap = 0, nothing to attribute)"
+    closed_P_str = f"{closed_P:.1f}%" if closed_P is not None else "N/A (gap = 0, nothing to attribute)"
+
     lines.append("")
     lines.append("=== STEP 4 - COUNTERFACTUAL ===")
     lines.append(f"OEE_{period0}={OEE_jul*100:.2f}%  OEE_{period1}={OEE_aug*100:.2f}%  gap={gap*100:.2f} pts")
-    lines.append(f"Restore Availability only -> OEE={OEE_cf_A*100:.2f}%  gap closed={closed_A:.1f}%")
-    lines.append(f"Restore Performance only  -> OEE={OEE_cf_P*100:.2f}%  gap closed={closed_P:.1f}%")
+    lines.append(f"Restore Availability only -> OEE={OEE_cf_A*100:.2f}%  gap closed={closed_A_str}")
+    lines.append(f"Restore Performance only  -> OEE={OEE_cf_P*100:.2f}%  gap closed={closed_P_str}")
 
     candidates = {"Availability": (z_A, closed_A), "Performance": (z_P, closed_P)}
     valid = {k: v for k, v in candidates.items() if v[1] is not None}
