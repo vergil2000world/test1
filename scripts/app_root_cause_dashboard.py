@@ -265,6 +265,65 @@ def step4_counterfactual_pooled(s0, s1):
     }
 
 
+def significance_for_metrics(s0, s1, hist_df, metrics):
+    """Historical-baseline z-test, generalized to any list of metrics
+    that exist in both the period stats and the historical baseline."""
+    n0, n1 = s0["N_Records"], s1["N_Records"]
+    results = {}
+    for metric in metrics:
+        observed_diff = s1[f"{metric}_mean"] - s0[f"{metric}_mean"]
+        hist_std = hist_df[metric].std(ddof=1)
+        z = z_from_historical_baseline(observed_diff, hist_std, n0, n1)
+        results[metric] = {
+            "z": z,
+            "label": significance_label(z),
+            "observed_diff": observed_diff,
+            "historical_std": hist_std,
+        }
+    return results
+
+
+def availability_driver_decomposition(s0, s1):
+    """MTTR vs MTBI counterfactual decomposition of the *model-based*
+    availability (AV_Model_% = 100 / (1 + MTTR/MTBI)) — a separate lens
+    from the Availability-vs-Performance OEE decomposition above."""
+    mttr0, mttr1 = s0["MTTR_mean"], s1["MTTR_mean"]
+    mtbi0, mtbi1 = s0["MTBI_mean"], s1["MTBI_mean"]
+
+    av0 = 100.0 / (1.0 + (mttr0 / mtbi0)) if pd.notna(mttr0) and pd.notna(mtbi0) and mtbi0 != 0 else np.nan
+    av1 = 100.0 / (1.0 + (mttr1 / mtbi1)) if pd.notna(mttr1) and pd.notna(mtbi1) and mtbi1 != 0 else np.nan
+
+    av_cf_mttr = 100.0 / (1.0 + (mttr0 / mtbi1)) if pd.notna(mttr0) and pd.notna(mtbi1) and mtbi1 != 0 else np.nan
+    av_cf_mtbi = 100.0 / (1.0 + (mttr1 / mtbi0)) if pd.notna(mttr1) and pd.notna(mtbi0) and mtbi0 != 0 else np.nan
+
+    gap = av0 - av1
+    if gap != 0 and not pd.isna(gap):
+        gap_closed_mttr = (av_cf_mttr - av1) / gap * 100.0 if pd.notna(av_cf_mttr) else np.nan
+        gap_closed_mtbi = (av_cf_mtbi - av1) / gap * 100.0 if pd.notna(av_cf_mtbi) else np.nan
+    else:
+        gap_closed_mttr = 0.0
+        gap_closed_mtbi = 0.0
+
+    contrib = {"MTTR": gap_closed_mttr, "MTBI": gap_closed_mtbi}
+    contrib = {k: v for k, v in contrib.items() if pd.notna(v)}
+
+    if contrib:
+        root = max(contrib, key=contrib.get)
+        contribution = contrib[root]
+    else:
+        root = None
+        contribution = np.nan
+
+    return {
+        "AV_Model_Jul_%": av0,
+        "AV_Model_Aug_%": av1,
+        "Gap_Closed_MTTR_%": gap_closed_mttr,
+        "Gap_Closed_MTBI_%": gap_closed_mtbi,
+        "Root_Cause": root,
+        "Root_Cause_Contribution_%": contribution,
+    }
+
+
 # ============================================================
 # LOAD DATA
 # ============================================================
@@ -277,10 +336,25 @@ decomp = step2_log_decomposition(s0, s1)
 sig_results = step3_significance_phase1(s0, s1, hist_df)
 cf = step4_counterfactual_pooled(s0, s1)
 
+# Source-vs-model availability gap, added post-load (loaders stay untouched)
+for _df in (df_jul, df_aug, pooled_actual):
+    _df["Gap_Source_vs_Model_%"] = _df["Availability_%"] - _df["AV_Model_%"]
+hist_df["Gap_Source_vs_Model_%"] = hist_df["Availability_%"] - hist_df["AV_Model_%"]
+s0["Gap_Source_vs_Model_%_mean"] = df_jul["Gap_Source_vs_Model_%"].mean()
+s1["Gap_Source_vs_Model_%_mean"] = df_aug["Gap_Source_vs_Model_%"].mean()
+
+avail_sig_results = significance_for_metrics(
+    s0, s1, hist_df, ["Availability_%", "MTTR", "MTBI", "AV_Model_%"]
+)
+av_driver = availability_driver_decomposition(s0, s1)
+
 uph_gap = pct_gap(s0["UPH_mean"], s1["UPH_mean"])
 availability_gap = pct_gap(s0["Availability_%_mean"], s1["Availability_%_mean"])
 performance_gap = pct_gap(s0["Performance_%_mean"], s1["Performance_%_mean"])
 oee_gap = pct_gap(s0["Derived_OEE_%_mean"], s1["Derived_OEE_%_mean"])
+mttr_gap = pct_gap(s0["MTTR_mean"], s1["MTTR_mean"])
+mtbi_gap = pct_gap(s0["MTBI_mean"], s1["MTBI_mean"])
+model_av_gap = pct_gap(s0["AV_Model_%_mean"], s1["AV_Model_%_mean"])
 
 summary_df = pd.DataFrame([
     {
@@ -316,6 +390,58 @@ counterfactual_df = pd.DataFrame({
     "Gap_Closed_%": [cf["Gap_Closed_Availability_%"], cf["Gap_Closed_Performance_%"]],
 })
 
+# ---- Availability deep-dive tables (MTTR / MTBI model view) ----
+
+availability_summary_df = pd.DataFrame([
+    {
+        "Period": s["Period"],
+        "N_Records": s["N_Records"],
+        "N_Machines": s["N_Machines"],
+        "Availability_%_mean": round(s["Availability_%_mean"], 4),
+        "MTTR_mean": round(s["MTTR_mean"], 4),
+        "MTBI_mean": round(s["MTBI_mean"], 4),
+        "AV_Model_%_mean": round(s["AV_Model_%_mean"], 4),
+        "Gap_Source_vs_Model_%_mean": round(s["Gap_Source_vs_Model_%_mean"], 4),
+    }
+    for s in [s0, s1]
+])
+
+avail_significance_df = pd.DataFrame([
+    {
+        "Metric": m,
+        "Observed_Diff": avail_sig_results[m]["observed_diff"],
+        "Historical_STD": avail_sig_results[m]["historical_std"],
+        "Z_Score": avail_sig_results[m]["z"],
+        "Label": avail_sig_results[m]["label"],
+    }
+    for m in ["Availability_%", "MTTR", "MTBI", "AV_Model_%"]
+])
+
+driver_df = pd.DataFrame([{
+    "AV_Model_Jul_%": round(av_driver["AV_Model_Jul_%"], 4) if pd.notna(av_driver["AV_Model_Jul_%"]) else np.nan,
+    "AV_Model_Aug_%": round(av_driver["AV_Model_Aug_%"], 4) if pd.notna(av_driver["AV_Model_Aug_%"]) else np.nan,
+    "Gap_Closed_MTTR_%": round(av_driver["Gap_Closed_MTTR_%"], 2) if pd.notna(av_driver["Gap_Closed_MTTR_%"]) else np.nan,
+    "Gap_Closed_MTBI_%": round(av_driver["Gap_Closed_MTBI_%"], 2) if pd.notna(av_driver["Gap_Closed_MTBI_%"]) else np.nan,
+    "Root_Cause": av_driver["Root_Cause"],
+    "Root_Cause_Contribution_%": round(av_driver["Root_Cause_Contribution_%"], 2) if pd.notna(av_driver["Root_Cause_Contribution_%"]) else np.nan,
+}])
+
+source_vs_model_df = pd.DataFrame({
+    "Metric": ["Source Availability", "Model Availability"],
+    PERIOD0: [s0["Availability_%_mean"], s0["AV_Model_%_mean"]],
+    PERIOD1: [s1["Availability_%_mean"], s1["AV_Model_%_mean"]],
+})
+source_vs_model_melt = source_vs_model_df.melt(id_vars="Metric", var_name="Period", value_name="Value")
+
+driver_contrib_df = pd.DataFrame({
+    "Driver": ["MTTR", "MTBI"],
+    "Gap_Closed_%": [av_driver["Gap_Closed_MTTR_%"], av_driver["Gap_Closed_MTBI_%"]],
+})
+
+avail_z_df = avail_significance_df[avail_significance_df["Metric"].isin(["Availability_%", "MTTR", "MTBI"])]
+
+
+
 
 # ============================================================
 # DESIGN TOKENS
@@ -350,9 +476,13 @@ PLOTLY_TEMPLATE = go.layout.Template(
         title=dict(font=dict(family=FONT_DISPLAY, color=INK, size=17)),
         paper_bgcolor=SURFACE,
         plot_bgcolor=SURFACE,
-        margin=dict(l=48, r=24, t=56, b=44),
-        xaxis=dict(gridcolor=LINE, zerolinecolor=LINE, linecolor=LINE, ticks="outside", tickcolor=LINE),
-        yaxis=dict(gridcolor=LINE, zerolinecolor=LINE, linecolor=LINE, ticks="outside", tickcolor=LINE),
+        margin=dict(l=48, r=48, t=56, b=44, autoexpand=True),
+        xaxis=dict(gridcolor="#EDEAE1", griddash="dot", gridwidth=1, zerolinecolor=LINE,
+                    linecolor=LINE, ticks="outside", tickcolor=LINE, tickfont=dict(color=INK_FAINT, size=12),
+                    automargin=True),
+        yaxis=dict(gridcolor="#EDEAE1", griddash="dot", gridwidth=1, zerolinecolor=LINE,
+                    linecolor=LINE, ticks="outside", tickcolor=LINE, tickfont=dict(color=INK_SOFT, size=13),
+                    automargin=True),
         legend=dict(bgcolor="rgba(0,0,0,0)", font=dict(family=FONT_BODY, size=12)),
         colorway=[ACCENT, "#3E6FA6", GOOD, WATCH, RISK],
     )
@@ -571,25 +701,45 @@ kpi_row = html.Div(
 # CHARTS
 # ============================================================
 
+AVAIL_BLUE = "#3E6FA6"
+
+max_share = float(drop_share_df["Share_%"].max())
 fig_drop_share = px.bar(
     drop_share_df, x="Share_%", y="Factor", orientation="h",
     title="Share of drop dominance", text="Share_%",
-    color="Factor", color_discrete_map={"Availability": "#3E6FA6", "Performance": RISK},
+    color="Factor", color_discrete_map={"Availability": AVAIL_BLUE, "Performance": RISK},
 )
-fig_drop_share.update_traces(texttemplate="%{text:.1f}%", textposition="outside",
-                              marker_line_width=0, textfont=dict(family=FONT_MONO, size=12, color=INK))
-fig_drop_share.update_layout(template=PLOTLY_TEMPLATE, showlegend=False, height=380,
-                              bargap=0.45, xaxis_title=None, yaxis_title=None)
+fig_drop_share.update_traces(
+    texttemplate="%{text:.1f}%", textposition="outside", cliponaxis=False,
+    marker_line_width=0, textfont=dict(family=FONT_MONO, size=13, color=INK),
+)
+fig_drop_share.update_layout(
+    template=PLOTLY_TEMPLATE, showlegend=False, height=340,
+    margin=dict(l=16, r=64, t=56, b=48),
+    bargap=0.55,
+    xaxis=dict(title="% share of total decline", ticksuffix="%",
+                range=[0, max_share * 1.28], automargin=True),
+    yaxis=dict(title=None, automargin=True, ticklabelposition="outside"),
+)
 
+max_gap = float(counterfactual_df["Gap_Closed_%"].max())
 fig_counterfactual = px.bar(
     counterfactual_df, x="Gap_Closed_%", y="Scenario", orientation="h",
     title="Counterfactual effect — gap closed if restored", text="Gap_Closed_%",
     color="Scenario", color_discrete_sequence=[GOOD, WATCH],
 )
-fig_counterfactual.update_traces(texttemplate="%{text:.1f}%", textposition="outside",
-                                  marker_line_width=0, textfont=dict(family=FONT_MONO, size=12, color=INK))
-fig_counterfactual.update_layout(template=PLOTLY_TEMPLATE, showlegend=False, height=380,
-                                  bargap=0.45, xaxis_title=None, yaxis_title=None)
+fig_counterfactual.update_traces(
+    texttemplate="%{text:.1f}%", textposition="outside", cliponaxis=False,
+    marker_line_width=0, textfont=dict(family=FONT_MONO, size=13, color=INK),
+)
+fig_counterfactual.update_layout(
+    template=PLOTLY_TEMPLATE, showlegend=False, height=340,
+    margin=dict(l=16, r=64, t=56, b=48),
+    bargap=0.55,
+    xaxis=dict(title="% of OEE gap closed", ticksuffix="%",
+                range=[0, max_gap * 1.28], automargin=True),
+    yaxis=dict(title=None, automargin=True, ticklabelposition="outside"),
+)
 
 fig_significance = px.bar(
     significance_df, x="Metric", y="Z_Score", color="Label",
@@ -613,6 +763,92 @@ fig_box = px.box(
 )
 fig_box.update_layout(template=PLOTLY_TEMPLATE, height=380, xaxis_title=None,
                        legend_title_text="", legend=dict(orientation="h", y=-0.18))
+
+
+# ============================================================
+# AVAILABILITY DEEP-DIVE — KPI mini-row (Source / MTTR / MTBI / Model)
+# ============================================================
+
+mttr_status_label, mttr_status_fg, mttr_status_bg = status_from_gap(mttr_gap, good_is_positive=False)
+mtbi_status_label, mtbi_status_fg, mtbi_status_bg = status_from_gap(mtbi_gap, good_is_positive=True)
+model_av_status_label, model_av_status_fg, model_av_status_bg = status_from_gap(model_av_gap, good_is_positive=True)
+
+avail_kpi_row = html.Div(
+    style={"display": "flex", "flexWrap": "wrap", "gap": "16px"},
+    children=[
+        kpi_card("Source Availability", s0["Availability_%_mean"], s1["Availability_%_mean"],
+                 availability_gap, "%", avail_status_label, avail_status_fg, avail_status_bg),
+        kpi_card("MTTR", s0["MTTR_mean"], s1["MTTR_mean"], mttr_gap, "",
+                 mttr_status_label, mttr_status_fg, mttr_status_bg, good_is_positive=False),
+        kpi_card("MTBI", s0["MTBI_mean"], s1["MTBI_mean"], mtbi_gap, "",
+                 mtbi_status_label, mtbi_status_fg, mtbi_status_bg),
+        kpi_card("Model Availability", s0["AV_Model_%_mean"], s1["AV_Model_%_mean"], model_av_gap, "%",
+                 model_av_status_label, model_av_status_fg, model_av_status_bg),
+    ]
+)
+
+# ---- Availability deep-dive charts ----
+
+fig_source_model = px.bar(
+    source_vs_model_melt, x="Metric", y="Value", color="Period", barmode="group",
+    title="Source vs. modelled availability", text="Value",
+    color_discrete_map={PERIOD0: INK_FAINT, PERIOD1: ACCENT},
+)
+fig_source_model.update_traces(
+    texttemplate="%{text:.1f}%", textposition="outside", cliponaxis=False,
+    marker_line_width=0, textfont=dict(family=FONT_MONO, size=12, color=INK),
+)
+max_src_model = float(source_vs_model_melt["Value"].max())
+fig_source_model.update_layout(
+    template=PLOTLY_TEMPLATE, height=340,
+    margin=dict(l=16, r=24, t=56, b=48),
+    bargap=0.35, bargroupgap=0.08,
+    yaxis=dict(title=None, ticksuffix="%", range=[0, max_src_model * 1.22], automargin=True),
+    xaxis=dict(title=None, automargin=True),
+    legend_title_text="", legend=dict(orientation="h", y=-0.16),
+)
+
+max_driver = float(driver_contrib_df["Gap_Closed_%"].max())
+fig_availability_driver = px.bar(
+    driver_contrib_df, x="Gap_Closed_%", y="Driver", orientation="h",
+    title="Availability driver contribution — MTTR vs. MTBI", text="Gap_Closed_%",
+    color="Driver", color_discrete_map={"MTTR": WATCH, "MTBI": AVAIL_BLUE},
+)
+fig_availability_driver.update_traces(
+    texttemplate="%{text:.1f}%", textposition="outside", cliponaxis=False,
+    marker_line_width=0, textfont=dict(family=FONT_MONO, size=13, color=INK),
+)
+fig_availability_driver.update_layout(
+    template=PLOTLY_TEMPLATE, showlegend=False, height=340,
+    margin=dict(l=16, r=64, t=56, b=48),
+    bargap=0.55,
+    xaxis=dict(title="% of model-availability gap closed", ticksuffix="%",
+                range=[0, max_driver * 1.28], automargin=True),
+    yaxis=dict(title=None, automargin=True, ticklabelposition="outside"),
+)
+
+fig_avail_z = px.bar(
+    avail_z_df, x="Metric", y="Z_Score", color="Label",
+    title=f"Availability-related z-scores (±{Z_SIGNIFICANT:.1f} threshold)",
+    color_discrete_map={
+        "VERY_SIGNIFICANT": RISK, "SIGNIFICANT": WATCH, "MODERATE": WATCH,
+        "LIKELY_RANDOM": INK_FAINT, "N/A": INK_FAINT,
+    },
+)
+fig_avail_z.add_hline(y=Z_SIGNIFICANT, line_dash="dot", line_color=RISK, line_width=1.5)
+fig_avail_z.add_hline(y=-Z_SIGNIFICANT, line_dash="dot", line_color=RISK, line_width=1.5)
+fig_avail_z.update_traces(marker_line_width=0)
+fig_avail_z.update_layout(template=PLOTLY_TEMPLATE, height=380, xaxis_title=None,
+                           legend_title_text="", legend=dict(orientation="h", y=-0.18))
+
+fig_avail_box = px.box(
+    pooled_actual.melt(id_vars="Period", value_vars=["Availability_%", "MTTR", "MTBI", "AV_Model_%"],
+                        var_name="Metric", value_name="Value"),
+    x="Metric", y="Value", color="Period", title="Availability, MTTR, MTBI & model distributions",
+    color_discrete_map={PERIOD0: INK_FAINT, PERIOD1: ACCENT},
+)
+fig_avail_box.update_layout(template=PLOTLY_TEMPLATE, height=380, xaxis_title=None,
+                             legend_title_text="", legend=dict(orientation="h", y=-0.18))
 
 
 # ============================================================
@@ -760,6 +996,78 @@ app.layout = html.Div(
             ]
         ),
 
+        # ---------------- AVAILABILITY DEEP-DIVE ----------------
+        html.Div(
+            style=SECTION_STYLE,
+            children=[
+                html.Div(style={"display": "flex", "justifyContent": "space-between", "alignItems": "center",
+                                  "flexWrap": "wrap", "gap": "10px", "marginBottom": "4px"}, children=[
+                    html.Div([
+                        html.Div("Availability deep-dive", style=SECTION_TITLE_STYLE),
+                        html.P("Source Availability vs. the MTTR/MTBI reliability model — "
+                                "AV_Model_% = 100 / (1 + MTTR / MTBI)",
+                                style={"margin": "-12px 0 0 0", "color": INK_FAINT, "fontSize": "13px"}),
+                    ]),
+                    chip(f"Root driver: {av_driver['Root_Cause']} "
+                          f"({fmt_num(av_driver['Root_Cause_Contribution_%'], 0)}% of model gap)",
+                          ACCENT, "#FBEADF"),
+                ]),
+
+                html.Div(avail_kpi_row, style={"marginTop": "18px", "marginBottom": "22px"}),
+
+                html.Div(
+                    style={"display": "grid", "gridTemplateColumns": "1fr 1fr", "gap": "18px"},
+                    children=[
+                        dcc.Graph(figure=fig_source_model, config={"displayModeBar": False}),
+                        dcc.Graph(figure=fig_availability_driver, config={"displayModeBar": False}),
+                    ]
+                ),
+                html.Div(
+                    style={"display": "grid", "gridTemplateColumns": "1fr 1fr", "gap": "18px", "marginTop": "18px"},
+                    children=[
+                        dcc.Graph(figure=fig_avail_z, config={"displayModeBar": False}),
+                        dcc.Graph(figure=fig_avail_box, config={"displayModeBar": False}),
+                    ]
+                ),
+
+                html.Div(style={
+                    "marginTop": "22px", "padding": "18px 20px", "borderRadius": "14px",
+                    "backgroundColor": PAPER, "border": f"1px solid {LINE}",
+                }, children=[
+                    html.Div("Takeaways", style={**LABEL_STYLE, "marginBottom": "10px"}),
+                    html.Ul(style={"margin": "0", "paddingLeft": "18px", "color": INK_SOFT,
+                                     "fontSize": "13.5px", "lineHeight": "1.85"}, children=[
+                        html.Li([
+                            "Source Availability moves ", html.B(f"{fmt_num(s0['Availability_%_mean'])}%"),
+                            " \u2192 ", html.B(f"{fmt_num(s1['Availability_%_mean'])}%"),
+                            f" ({fmt_pct(availability_gap)}), z-score ",
+                            html.B(fmt_num(avail_sig_results['Availability_%']['z'])),
+                            f" \u2192 {avail_sig_results['Availability_%']['label'].replace('_', ' ').title()}.",
+                        ]),
+                        html.Li([
+                            "MTTR moves ", html.B(f"{fmt_num(s0['MTTR_mean'], 4)}"), " \u2192 ",
+                            html.B(f"{fmt_num(s1['MTTR_mean'], 4)}"),
+                            f", z-score {fmt_num(avail_sig_results['MTTR']['z'])}.",
+                        ]),
+                        html.Li([
+                            "MTBI moves ", html.B(f"{fmt_num(s0['MTBI_mean'], 4)}"), " \u2192 ",
+                            html.B(f"{fmt_num(s1['MTBI_mean'], 4)}"),
+                            f", z-score {fmt_num(avail_sig_results['MTBI']['z'])}.",
+                        ]),
+                        html.Li([
+                            "Model-based dominant driver: ", html.B(av_driver["Root_Cause"] or "N/A"),
+                            f" ({fmt_num(av_driver['Root_Cause_Contribution_%'])}% of the model-availability gap closed).",
+                        ]),
+                        html.Li(
+                            "Where source and model Availability diverge, treat the MTTR/MTBI model as "
+                            "exploratory — not a validated reconstruction of the source KPI.",
+                            style={"color": INK_FAINT},
+                        ),
+                    ]),
+                ]),
+            ]
+        ),
+
         # ---------------- TABLES ----------------
         html.Div(
             style=SECTION_STYLE,
@@ -771,6 +1079,15 @@ app.layout = html.Div(
 
                 html.Div("Significance table", style={**LABEL_STYLE, "marginTop": "26px"}),
                 data_table(significance_df),
+
+                html.Div("Availability deep-dive — period summary", style={**LABEL_STYLE, "marginTop": "26px"}),
+                data_table(availability_summary_df),
+
+                html.Div("Availability deep-dive — significance table", style={**LABEL_STYLE, "marginTop": "26px"}),
+                data_table(avail_significance_df),
+
+                html.Div("Availability deep-dive — driver decomposition", style={**LABEL_STYLE, "marginTop": "26px"}),
+                data_table(driver_df),
 
                 html.Div("Record-level data", style={**LABEL_STYLE, "marginTop": "26px"}),
                 data_table(pooled_actual.round(4), page_size=15, filterable=True, sortable=True),
