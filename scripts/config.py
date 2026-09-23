@@ -29,8 +29,8 @@ COLUMN_MAP_ACTUAL = {
     "uph": "UPH",
     "availability_source": "OEE",   # source column is named OEE but IS Availability
     "mtbf": "MTBF",
+    "teud": "TEUD",                  # MTTR = TEUD / F2 (confirmed by user)
     "f2": "F2",
-    "mttr_denominator": "TEUD",     # temporary placeholder until TEUD is confirmed correct
 }
 
 COLUMN_MAP_HISTORICAL = {**COLUMN_MAP_ACTUAL, "machine_id": "MACHINE_LABEL"}

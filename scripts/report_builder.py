@@ -39,7 +39,7 @@ def build(s0, s1, p1, p2, phase2_relevant):
     lines.append(f"Periods   : {config.PERIOD0} -> {config.PERIOD1}")
     lines.append(f"{config.PERIOD0}: {s0['N_Records']} records / {s0['N_Machines']} machines   |   "
                  f"{config.PERIOD1}: {s1['N_Records']} records / {s1['N_Machines']} machines")
-    lines.append("Source 'OEE' column = Availability. UPH used as-is. MTTR = F2/TEUD (temporary).")
+    lines.append("Source 'OEE' column = Availability. UPH used as-is. MTTR = TEUD / F2.")
     lines.append(f"Significant if |z| >= {config.Z_SIGNIFICANT}; dominant if gap/share >= "
                  f"{config.DOMINANCE_GAP_CLOSED_MIN:.0f}%; CONFIRMED needs both, LIKELY needs dominance alone.")
     lines.append("")

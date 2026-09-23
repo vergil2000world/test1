@@ -29,7 +29,8 @@ def enrich(df, column_map, uph_theoretical):
                         not to reconstruct Availability itself.
     Performance_%   <- UPH / uph_theoretical * 100
     OEE_%           <- Availability_% * Performance_% / 100
-    MTTR            <- F2 / mttr_denominator (temporary, see config.py)
+    MTTR            <- TEUD / F2 (confirmed formula - not F2/TEUD)
+    MTBF            <- direct input column (mapped as 'mtbf')
     """
     required = list(column_map.values())
     missing = [c for c in required if c not in df.columns]
@@ -38,7 +39,7 @@ def enrich(df, column_map, uph_theoretical):
 
     df = df.copy()
     df = safe_numeric(df, [column_map["uph"], column_map["availability_source"],
-                            column_map["mtbf"], column_map["f2"], column_map["mttr_denominator"]])
+                            column_map["mtbf"], column_map["teud"], column_map["f2"]])
 
     df["MACHINE_ID"] = df[column_map["machine_id"]]
     df["UPH"] = df[column_map["uph"]]
@@ -46,8 +47,8 @@ def enrich(df, column_map, uph_theoretical):
     df["Performance_%"] = df["UPH"] / uph_theoretical * 100.0
     df["OEE_%"] = df["Availability_%"] * df["Performance_%"] / 100.0
     df["MTBF"] = df[column_map["mtbf"]]
-    df["MTTR"] = np.where(df[column_map["mttr_denominator"]] > 0,
-                           df[column_map["f2"]] / df[column_map["mttr_denominator"]], np.nan)
+    df["MTTR"] = np.where(df[column_map["f2"]] > 0,
+                           df[column_map["teud"]] / df[column_map["f2"]], np.nan)
     return df
 
 
